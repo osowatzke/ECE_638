@@ -1,0 +1,127 @@
+\documentclass[fleqn]{article}
+\usepackage[nodisplayskipstretch]{setspace}
+\usepackage{amsmath, nccmath, bm}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+\newcommand{\zerodisplayskip}{
+	\setlength{\abovedisplayskip}{0pt}%
+	\setlength{\belowdisplayskip}{0pt}%
+	\setlength{\abovedisplayshortskip}{0pt}%
+	\setlength{\belowdisplayshortskip}{0pt}%
+	\setlength{\mathindent}{0pt}}
+	
+\makeatletter
+	\newenvironment{equationCenter}{\@fleqnfalse\begin{equation*}}{\end{equation*}}
+\makeatother
+
+\title{Exam 2}
+\author{Owen Sowatzke}
+\date{November 12, 2024}
+
+\begin{document}
+
+	\offinterlineskip
+	\setlength{\lineskip}{12pt}
+	\zerodisplayskip
+	\maketitle
+	
+	\begin{enumerate}
+		\item[5.] The space-time code for number of transmit antennas $M_{TX}=4$, number of receive antennas $M_{RX}=1$, and number of channel's uses $N=4$ is described by the following signaling matrix:
+		
+		\begin{equationCenter}
+			\mathbf{X} = \begin{bmatrix}
+				x_1 & -x_2^* & -x_3^* &  0 \\ 
+				x_2 &  x_1^* &  0     &  x_3^* \\
+				x_3 &  0     &  x_1^* & -x_2^* \\
+				0   & -x_3^* &  x_2^* &  x_1^*
+			\end{bmatrix}
+		\end{equationCenter}
+		
+		\begin{enumerate}
+			\item Can this space-time block code be used to design the receiver that will result in spatial interference cancellation? If so describe the corresponding receiver configuration. What is the code rate of this space-time code?
+			
+			\begin{equation*}
+				\mathbf{Y} = \mathbf{H}\mathbf{X} + \mathbf{Z}
+			\end{equation*}
+			
+			\begin{equation*}
+				\begin{bmatrix}
+					y_1 \\ y_2 \\ y_3 \\ y_4
+				\end{bmatrix} = \begin{bmatrix}
+					h_1 & h_2 & h_3 & h_4
+				\end{bmatrix}\begin{bmatrix}
+					x_1 & -x_2^* & -x_3^* &  0 \\ 
+					x_2 &  x_1^* &  0     &  x_3^* \\
+					x_3 &  0     &  x_1^* & -x_2^* \\
+					0   & -x_3^* &  x_2^* &  x_1^*
+				\end{bmatrix} + \begin{bmatrix}
+					z_1 \\ z_2 \\ z_3 \\ z_4
+				\end{bmatrix}
+			\end{equation*}
+			
+			\begin{equation*}
+				\begin{bmatrix}
+					y_1 \\ y_2 \\ y_3 \\ y_4
+				\end{bmatrix} = \begin{bmatrix}
+					 h_1x_1   + h_2x_2   + h_3x_3 \\
+					-h_1x_2^* + h_2x_1^* - h_4x_3^* \\
+					-h_1x_3^* + h_3x_1^* + h_4x_2^* \\
+					 h_2x_3^* - h_3x_2^* + h_4x_1^*
+				\end{bmatrix} + \begin{bmatrix}
+					z_1 \\ z_2 \\ z_3 \\ z_4
+				\end{bmatrix}
+			\end{equation*}
+			
+			\begin{equation*}
+				\begin{bmatrix}
+					y_1 \\ y_2^* \\ y_3^* \\ y_4^*
+				\end{bmatrix} = \begin{bmatrix}
+					 h_1x_1   + h_2x_2   + h_3x_3 \\
+					-h_1^*x_2 + h_2^*x_1 - h_4^*x_3 \\
+					-h_1^*x_3 + h_3^*x_1 + h_4^*x_2 \\
+					 h_2^*x_3 - h_3^*x_2 + h_4^*x_1
+				\end{bmatrix} + \begin{bmatrix}
+					z_1 \\ z_2^* \\ z_3^* \\ z_4^*
+				\end{bmatrix}
+			\end{equation*}
+			
+			\begin{equation*}
+				\begin{bmatrix}
+					y_1 \\ y_2^* \\ y_3^* \\ y_4^*
+				\end{bmatrix} = \begin{bmatrix}
+					h_1   &  h_2   &  h_3 \\
+				    h_2^* & -h_1^* & -h_4^* \\
+					h_3^* &  h_4^* & -h_1^* \\
+					h_4^* & -h_3^* &  h_2^*
+				\end{bmatrix} \begin{bmatrix}
+					x_1 \\ x_2 \\ x_3
+				\end{bmatrix} + \begin{bmatrix}
+					z_1 \\ z_2^* \\ z_3^* \\ z_4^*
+				\end{bmatrix}
+			\end{equation*}
+			
+			\begin{equation*}
+				\mathbf{\tilde{Y}} = \mathbf{\tilde{H}x} + \mathbf{\tilde{z}}
+			\end{equation*}
+			
+			\begin{equation*}
+				\mathbf{\tilde{H}^\dagger\tilde{Y}} = \mathbf{\tilde{H}^\dagger\tilde{H}x} + \mathbf{\tilde{H}^\dagger\tilde{z}}
+			\end{equation*}
+			
+			\begin{equation*}
+				\mathbf{\tilde{H}^\dagger\tilde{H}} = \begin{bmatrix}
+					h_1^* &  h_2 &  h_3 &  h_4 \\
+					h_2^* & -h_1 &  h_4 & -h_3 \\
+					h_3^* & -h_4 & -h_1 &  h_2
+				\end{bmatrix} \begin{bmatrix}
+					h_1   &  h_2   &  h_3 \\
+				    h_2^* & -h_1^* & -h_4^* \\
+					h_3^* &  h_4^* & -h_1^* \\
+					h_4^* & -h_3^* &  h_2^*
+				\end{bmatrix}
+			\end{equation*}
+		\end{enumerate}
+		
+	\end{enumerate}
+\end{document}
