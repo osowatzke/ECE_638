@@ -323,7 +323,27 @@
 					h_4 & -jh_4 & -h_3 &  jh_3 &  h_2 & -jh_2
 				\end{bmatrix}
 			\end{equation*}
+			
+			We can then use QR decomposition to write $\mathbf{\tilde{H}}$ as follows:
+			
+			\begin{equation*}
+				\mathbf{\tilde{H}} = \mathbf{\tilde{Q}}\mathbf{\tilde{R}}
+			\end{equation*}
 		\end{enumerate}
+		
+		where $\mathbf{\tilde{Q}}$ is a unitary matrix and $\mathbf{\tilde{R}}$ is an upper triangular matrix.
+		
+		Next, we can express the received vector $\mathbf{\tilde{y}}$ as follows:
+		
+		\begin{equation*}
+			\mathbf{\tilde{y}} = \mathbf{\tilde{H}\tilde{x}} + \mathbf{\tilde{z}} = \mathbf{\tilde{Q}\tilde{R}\tilde{x}} + \mathbf{\tilde{z}}
+		\end{equation*}
+		
+		\begin{equation*}
+			\Rightarrow \mathbf{\tilde{Q}^{\dagger}\tilde{y}} = \mathbf{\tilde{R}\tilde{x}} + \mathbf{\tilde{Q}^{\dagger}\tilde{z}}
+		\end{equation*}
+		
+		
 		
 	\end{enumerate}
 \end{document}
