@@ -147,6 +147,8 @@
 			\pagebreak
 			\item Represent the signaling matrix $\mathbf{X}$ in the same fashion as for linear space-time (LST) codes. If the channel matrix is given by $\mathbf{H}=\begin{bmatrix} h_1 & h_2 & h_3 & h_4 \end{bmatrix}$ using detection approach for LST determine the equations for the estimated symbols $\hat{x}_i$.
 			
+			Let $x_1 = a_1 + jb_1$, $x_2 = a_2 + jb_2$, and $x_3 = a_3 + jb_3$.
+			
 			\begin{equation*}
 				\mathbf{X} = a_1\begin{bmatrix}
 					1 & 0 & 0 & 0 \\
@@ -158,21 +160,25 @@
 					0 & -1 &  0 &  0 \\
 					0 &  0 & -1 &  0 \\
 					0 &  0 &  0 & -1
-				\end{bmatrix} + a_2\begin{bmatrix}
-					0 & -1 & 0 &  0 \\
-					1 &  0 & 0 &  0 \\
-					0 &  0 & 0 & -1 \\
-					0 &  0 & 1 &  0
 				\end{bmatrix}
 			\end{equation*}
 			
 			\begin{equation*}
-				  + jb_2\begin{bmatrix}
+				 + a_2\begin{bmatrix}
+					0 & -1 & 0 &  0 \\
+					1 &  0 & 0 &  0 \\
+					0 &  0 & 0 & -1 \\
+					0 &  0 & 1 &  0
+				\end{bmatrix} + jb_2\begin{bmatrix}
 					0 & 1 &  0 & 0 \\
 					1 & 0 &  0 & 0 \\
 					0 & 0 &  0 & 1 \\
 					0 & 0 & -1 & 0
-				\end{bmatrix} + a_3\begin{bmatrix}
+				\end{bmatrix}
+			\end{equation*}
+			
+			\begin{equation*}
+				+ a_3\begin{bmatrix}
 					0 &  0 & -1 & 0 \\
 					0 &  0 &  0 & 1 \\
 					1 &  0 &  0 & 0 \\
