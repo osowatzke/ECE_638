@@ -150,7 +150,11 @@
 			Let $x_1 = a_1 + jb_1$, $x_2 = a_2 + jb_2$, and $x_3 = a_3 + jb_3$.
 			
 			\begin{equation*}
-				\mathbf{X} = a_1\begin{bmatrix}
+				\mathbf{X} = a_1\mathbf{A_1} + jb_1\mathbf{B_1} + \cdots + a_3\mathbf{A_3} + jb_3\mathbf{B_3}
+			\end{equation*}
+			
+			\begin{equation*}
+				= a_1\begin{bmatrix}
 					1 & 0 & 0 & 0 \\
 					0 & 1 & 0 & 0 \\
 					0 & 0 & 1 & 0 \\
@@ -188,6 +192,135 @@
 					0 & 0 & 0 & -1 \\
 					1 & 0 & 0 &  0 \\
 					0 & 1 & 0 &  0
+				\end{bmatrix}
+			\end{equation*}
+			
+			We can define define the transmitted vector as follows:
+			
+			\begin{equation*}
+				\mathbf{\tilde{x}} = \begin{bmatrix}
+					a_1 & b_1 & \cdots & a_3 & b_3
+				\end{bmatrix}^T
+			\end{equation*}
+			
+			We can also define the noise vector as $\mathbf{\tilde{z}} = \text{vec}(\mathbf{Z})$ and the received vector as $\mathbf{\tilde{y}} = \text{vec}(\mathbf{Y})$.
+			
+			Next, if we define the modified channel matrix as
+			
+			\begin{equation*}
+				\mathbf{\tilde{H}} = \begin{bmatrix}
+					\text{vec}(\mathbf{HA_1}) & \text{vec}(j\mathbf{HB_1}) & \cdots & \text{vec}(\mathbf{HA_3}) & \text{vec}(j\mathbf{HB_3})
+				\end{bmatrix}
+			\end{equation*} 
+			
+			\begin{equation*}
+				\mathbf{HA_1} = \begin{bmatrix}
+					h_1 & h_2 & h_3 & h_4
+				\end{bmatrix}\begin{bmatrix}
+					1 & 0 & 0 & 0 \\
+					0 & 1 & 0 & 0 \\
+					0 & 0 & 1 & 0 \\
+					0 & 0 & 0 & 1
+				\end{bmatrix}
+			\end{equation*}
+			
+			\begin{equation*}
+				= \begin{bmatrix}
+					h_1 & h_2 & h_3 & h_4
+				\end{bmatrix}
+			\end{equation*}
+			
+			\begin{equation*}
+				\mathbf{HB_1} = \begin{bmatrix}
+					h_1 & h_2 & h_3 & h_4
+				\end{bmatrix}\begin{bmatrix}
+					1 &  0 &  0 &  0 \\
+					0 & -1 &  0 &  0 \\
+					0 &  0 & -1 &  0 \\
+					0 &  0 &  0 & -1
+				\end{bmatrix}
+			\end{equation*}
+			
+			\begin{equation*}
+				 = \begin{bmatrix}
+					h_1 & -h_2 & -h_3 & -h_4
+				\end{bmatrix}
+			\end{equation*}
+			
+			\begin{equation*}
+				\mathbf{HA_2} = \begin{bmatrix}
+					h_1 & h_2 & h_3 & h_4
+				\end{bmatrix}\begin{bmatrix}
+					0 & -1 & 0 &  0 \\
+					1 &  0 & 0 &  0 \\
+					0 &  0 & 0 & -1 \\
+					0 &  0 & 1 &  0
+				\end{bmatrix}
+			\end{equation*}
+			
+			\begin{equation*}
+				= \begin{bmatrix}
+					h_2 & -h_1 & h_4 & -h_3
+				\end{bmatrix}
+			\end{equation*}
+			
+			\begin{equation*}
+				\mathbf{HB_2} = \begin{bmatrix}
+					h_1 & h_2 & h_3 & h_4
+				\end{bmatrix}\begin{bmatrix}
+					0 & 1 &  0 & 0 \\
+					1 & 0 &  0 & 0 \\
+					0 & 0 &  0 & 1 \\
+					0 & 0 & -1 & 0
+				\end{bmatrix}
+			\end{equation*}
+			
+			\begin{equation*}
+				= \begin{bmatrix}
+					h_2 & h_1 & -h_4 & h_3
+				\end{bmatrix}
+			\end{equation*}
+			
+			\begin{equation*}
+				\mathbf{HA_3} = \begin{bmatrix}
+					h_1 & h_2 & h_3 & h_4
+				\end{bmatrix}\begin{bmatrix}
+					0 &  0 & -1 & 0 \\
+					0 &  0 &  0 & 1 \\
+					1 &  0 &  0 & 0 \\
+					0 & -1 &  0 & 0
+				\end{bmatrix}
+			\end{equation*}
+			
+			\begin{equation*}
+				= \begin{bmatrix}
+					h_3 & -h_4 & -h_1 & h_2
+				\end{bmatrix}
+			\end{equation*}
+			
+			\begin{equation*}
+				\mathbf{HB_3} = \begin{bmatrix}
+					h_1 & h_2 & h_3 & h_4
+				\end{bmatrix}\begin{bmatrix}
+					0 & 0 & 1 &  0 \\
+					0 & 0 & 0 & -1 \\
+					1 & 0 & 0 &  0 \\
+					0 & 1 & 0 &  0
+				\end{bmatrix}
+			\end{equation*}
+			
+			\begin{equation*}
+				= \begin{bmatrix}
+					h_3 & h_4 & h_1 & -h_2
+				\end{bmatrix}
+			\end{equation*}
+			
+			\begin{equation*}
+				\Rightarrow \mathbf{\tilde{H}} = \begin{bmatrix}
+					h_1 &  jh_1 &  h_2 &  jh_2 &  h_3 &  jh_3 \\
+					h_2 & -jh_2 & -h_1 &  jh_1 & -h_4 &  jh_4 \\
+					h_3 & -jh_3 &  h_4 & -jh_4 & -h_1 &  jh_1 \\
+					h_4 & -jh_4 & -h_3 &  jh_3 &  h_2 & -jh_2
 				\end{bmatrix}
 			\end{equation*}
 		\end{enumerate}
