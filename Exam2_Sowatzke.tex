@@ -143,6 +143,47 @@
 			However, in a real orthogonal design, the matrix $\mathbf{\tilde{H}}$ is real. This results in $\mathbf{\tilde{H}^\dagger\tilde{H}} = (|h_1|^2 + \cdots + |h_4|^2)\mathbf{I}$. In other words, spatial interference cancellation is realized.
 			
 			In this case, the coding rate would be $3/4$, because 3 symbols are transmitted in 4 symbol intervals.
+			
+			\pagebreak
+			\item Represent the signaling matrix $\mathbf{X}$ in the same fashion as for linear space-time (LST) codes. If the channel matrix is given by $\mathbf{H}=\begin{bmatrix} h_1 & h_2 & h_3 & h_4 \end{bmatrix}$ using detection approach for LST determine the equations for the estimated symbols $\hat{x}_i$.
+			
+			\begin{equation*}
+				\mathbf{X} = a_1\begin{bmatrix}
+					1 & 0 & 0 & 0 \\
+					0 & 1 & 0 & 0 \\
+					0 & 0 & 1 & 0 \\
+					0 & 0 & 0 & 1
+				\end{bmatrix} + jb_1\begin{bmatrix}
+					1 &  0 &  0 &  0 \\
+					0 & -1 &  0 &  0 \\
+					0 &  0 & -1 &  0 \\
+					0 &  0 &  0 & -1
+				\end{bmatrix} + a_2\begin{bmatrix}
+					0 & -1 & 0 &  0 \\
+					1 &  0 & 0 &  0 \\
+					0 &  0 & 0 & -1 \\
+					0 &  0 & 1 &  0
+				\end{bmatrix}
+			\end{equation*}
+			
+			\begin{equation*}
+				  + jb_2\begin{bmatrix}
+					0 & 1 &  0 & 0 \\
+					1 & 0 &  0 & 0 \\
+					0 & 0 &  0 & 1 \\
+					0 & 0 & -1 & 0
+				\end{bmatrix} + a_3\begin{bmatrix}
+					0 &  0 & -1 & 0 \\
+					0 &  0 &  0 & 1 \\
+					1 &  0 &  0 & 0 \\
+					0 & -1 &  0 & 0
+				\end{bmatrix} + jb_3\begin{bmatrix}
+					0 & 0 & 1 &  0 \\
+					0 & 0 & 0 & -1 \\
+					1 & 0 & 0 &  0 \\
+					0 & 1 & 0 &  0
+				\end{bmatrix}
+			\end{equation*}
 		\end{enumerate}
 		
 	\end{enumerate}
