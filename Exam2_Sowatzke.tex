@@ -61,6 +61,50 @@
 			\rho_{\text{even}} = |H_{\text{even}}|^2\rho_0 = 10
 		\end{equation*}
 		
+		Assume $p_i \geq \rho_{tsh}\ \forall\ i$
+		
+		\begin{equation*}
+			\sum_i{\frac{P_i}{P}} = 1
+		\end{equation*}
+		
+		\begin{equation*}
+			\Rightarrow \sum_i{\left(\frac{1}{\rho_{tsh}} - \frac{1}{\rho_i}\right)} = 1
+		\end{equation*}
+		
+		\begin{equation*}
+			\Rightarrow \frac{32}{\rho_{tsh}} - \frac{16}{\rho_{\text{odd}}} - \frac{16}{\rho_{\text{even}}} = 1
+		\end{equation*}
+		
+		\begin{equation*}
+			\Rightarrow \frac{32}{\rho_{tsh}} = 1 + \frac{16}{\rho_{\text{odd}}} + \frac{16}{\rho_{\text{even}}}
+		\end{equation*}
+		
+		\begin{equation*}
+			\Rightarrow \frac{32}{\rho_{tsh}} = 1 + \frac{16}{5} + \frac{16}{10} = 5.8
+		\end{equation*}
+		
+		\begin{equation*}
+			\Rightarrow \rho_{tsh} = \frac{32}{5.8} \approx 5.5172
+		\end{equation*}
+		
+		Note that this is inconsistent with the assumption that $p_i \geq \rho_{tsh}\ \forall\ i$. Therefore, $\rho_{\text{odd}} < \rho_{tsh} \leq \rho_{\text{even}}$.
+		
+		\begin{equation*}
+			\Rightarrow \sum_{i\ \text{even}}{\left(\frac{1}{\rho_{tsh}} - \frac{1}{\rho_i}\right)} = 1
+		\end{equation*}
+		
+		\begin{equation*}
+			\Rightarrow \frac{16}{\rho_{tsh}} - \frac{16}{\rho_{\text{even}}} = 1
+		\end{equation*}
+		
+		\begin{equation*}
+			\Rightarrow \frac{16}{\rho_{tsh}} = 1 + \frac{16}{\rho_{\text{even}}} = 1 + \frac{16}{10} = 2.6
+		\end{equation*}
+		
+		\begin{equation*}
+			\Rightarrow \rho_{tsh} = \frac{16}{2.6} \approx 6.1538
+		\end{equation*}
+		
 		\item[5.] The space-time code for number of transmit antennas $M_{TX}=4$, number of receive antennas $M_{RX}=1$, and number of channel's uses $N=4$ is described by the following signaling matrix:
 		
 		\begin{equationCenter}
