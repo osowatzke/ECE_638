@@ -38,9 +38,13 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 			f_{R_i}(r_i) = \frac{\alpha_i\mu_i^{\mu_i}r_i^{\alpha_i\mu_i-1}}{\hat{r}_i^{\alpha_i\mu_i}\Gamma(\mu_i)}\text{exp}\left(\mu_i\frac{r_i^{\alpha_i}}{\hat{r}_i^{\alpha_i}}\right),
 		\end{equationCenter}
 		
-		where $\alpha_i > 0$ is the parameter of nonlinearity, $\Gamma(.)$ is the Gamma function, and $\mu_i > 0$ is the inverse of the normalized variance of $r_i^{\alpha_i}$, namely $\mu_i = \text{E}^2\left\{r_i^{\alpha_i}\right\}/\text{Var}\left\{r_i^{\alpha_i}\right\}$, where $\text{E}\{x\}$ is the expectation operator, and $\hat{r}_i$ is a $\alpha_i$-root mean value $\hat{r}_i=\sqrt[\alpha_i]{\text{E}\left\{r_i^{\alpha_i}\right\}}$. If the phase estimation is done from unmodulated carrier by using phase-locked loop (PLL) and if only the Gaussian noise is present in the phase-locked loop circuit, then the PDF of
-this phase error is
+		where $\alpha_i > 0$ is the parameter of nonlinearity, $\Gamma(.)$ is the Gamma function, and $\mu_i > 0$ is the inverse of the normalized variance of $r_i^{\alpha_i}$, namely $\mu_i = \text{E}^2\left\{r_i^{\alpha_i}\right\}/\text{Var}\left\{r_i^{\alpha_i}\right\}$, where $\text{E}\{x\}$ is the expectation operator, and $\hat{r}_i$ is a $\alpha_i$-root mean value $\hat{r}_i=\sqrt[\alpha_i]{\text{E}\left\{r_i^{\alpha_i}\right\}}$. If the phase estimation is done from unmodulated carrier by using phase-locked loop (PLL) and if only the Gaussian noise is present in the phase-locked loop circuit, then the PDF of this phase error is
 
+		\begin{equationCenter}
+			p_{\varphi_i}(\varphi_i) = \frac{1}{2\pi}\frac{\text{exp}(\zeta_i\text{cos}(\varphi_i))}{I_0(\zeta_i)}, \quad -\pi < \varphi_i \leq \pi,
+		\end{equationCenter}
+		
+		where $I_0(x)$ is the modified Bessel function of the first kind and zero order for the argument x, $\zeta_i$ is the SNR in the PLL circuit in the i-th receiver branch. Write the expressions for the average bit error probability of uncoded BPSK and QPSK signal detections in the presence of phase error and $\alpha$-$\mu$ fading assuming that EGC receiver is used. \underline{Note}: Do not evaluate the integrals.
 		
 		\item[3.] Let us now consider the time-invariant frequency-selective block-fading channel with 32 subchannels of bandwidth 2 MHz, with frequency response amplitudes being $1$ for odd subchannels and $\sqrt{2}$ for even subchannels, respectively. For the transmit power 10 mW and noise power-spectral density of $N_0=10^{-9}$ W/Hz determine the OFDM channel capacity. What is corresponding optimum power allocation strategy based on OFDM to achieve this channel capacity? Provide the corresponding OFDM transmitter and receiver configurations.
 		
