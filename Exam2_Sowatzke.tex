@@ -105,6 +105,22 @@
 			\Rightarrow \rho_{tsh} = \frac{16}{2.6} \approx 6.1538
 		\end{equation*}
 		
+		\begin{equation*}
+			\therefore C = \sum_i{W\text{log}_2\left(1 + \frac{|H_i|^2P_i}{N_0W}\right)} = \sum_{i\ \text{even}}{W\text{log}_2\left[1 + \frac{|H_i|^2P}{N_0W}\left(\frac{P_i}{P}\right)\right]}
+		\end{equation*}
+		
+		\begin{equation*}
+			= \sum{W\text{log}_2\left[1 + \rho_{\text{even}}\left(\frac{P_\text{even}}{P}\right)\right]}
+		\end{equation*}
+		
+		\begin{equation*}
+			 = \sum{W\text{log}_2\left[1 + \rho_{\text{even}}\left(\frac{1}{\rho_{tsh}} - \frac{1}{\rho_{\text{even}}}\right)\right]}
+		\end{equation*}
+		
+		\begin{equation*}
+			 = \sum{W\text{log}_2\left(\frac{\rho_{\text{even}}}{\rho_{tsh}}\right)} = 16W\text{log}_2\left(\frac{\rho_{\text{even}}}{\rho_{tsh}}\right) \approx 22.4141\ \text{Mbps}
+		\end{equation*}
+		
 		\item[5.] The space-time code for number of transmit antennas $M_{TX}=4$, number of receive antennas $M_{RX}=1$, and number of channel's uses $N=4$ is described by the following signaling matrix:
 		
 		\begin{equationCenter}
