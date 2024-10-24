@@ -121,6 +121,23 @@
 			 = \sum{W\text{log}_2\left(\frac{\rho_{\text{even}}}{\rho_{tsh}}\right)} = 16W\text{log}_2\left(\frac{\rho_{\text{even}}}{\rho_{tsh}}\right) \approx 22.4141\ \text{Mbps}
 		\end{equation*}
 		
+		The optimum power allocation strategy is water filling.
+		
+		\begin{equation*}
+			\frac{P_i}{P} = \begin{cases}
+				\frac{1}{\rho_{tsh}} - \frac{1}{\rho_i} & \rho_i \geq \rho_{tsh} \\
+				0 & \rho_i < \rho_{tsh}
+			\end{cases}
+		\end{equation*}
+		
+		\begin{equation*}
+			\Rightarrow P_{\text{odd}} = 0\ \text{mW}
+		\end{equation*}
+		
+		\begin{equation*}
+			\Rightarrow P_{\text{even}} = P\left(\frac{1}{\rho_{tsh}} - \frac{1}{\rho_{\text{even}}}\right) = 10\left(\frac{1}{6.1538} - \frac{1}{10}\right) = 0.625\ \text{mW}
+		\end{equation*}		
+		
 		\item[5.] The space-time code for number of transmit antennas $M_{TX}=4$, number of receive antennas $M_{RX}=1$, and number of channel's uses $N=4$ is described by the following signaling matrix:
 		
 		\begin{equationCenter}
