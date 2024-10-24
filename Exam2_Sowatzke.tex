@@ -31,6 +31,36 @@
 	\begin{enumerate}
 		\item[3.] Let us now consider the time-invariant frequency-selective block-fading channel with 32 subchannels of bandwidth 2 MHz, with frequency response amplitudes being $1$ for odd subchannels and $\sqrt{2}$ for even subchannels, respectively. For the transmit power 10 mW and noise power-spectral density of $N_0=10^{-9}$ W/Hz determine the OFDM channel capacity. What is corresponding optimum power allocation strategy based on OFDM to achieve this channel capacity? Provide the corresponding OFDM transmitter and receiver configurations.
 		
+		\begin{equation*}
+			C = \underset{P_i \ :\ \sum_i{P_i \leq P}}{\sum}{W\text{log}_2\left(1 + \frac{|H_i|^2P_i}{N_0W}\right)}
+		\end{equation*}
+		
+		\begin{equation*}
+			\frac{P_i}{P} = \begin{cases}
+				\frac{1}{\rho_{tsh}} - \frac{1}{\rho_i} & \rho_i \geq \rho_{tsh} \\
+				0 & \rho_i < \rho_{tsh}
+			\end{cases}
+		\end{equation*}
+		
+		where
+		
+		\begin{equation*}
+			\rho_i = \frac{|H_i|^2P}{N_0W} = |H_i|^2\rho_0 
+		\end{equation*}
+		
+		\begin{equation*}
+			\rho_0 = \frac{P}{N_0W} = \frac{10 \times 10^{-3}}{10^{-9}(2 \times 10^6)} = 5
+		\end{equation*}
+		
+		\pagebreak
+		\begin{equation*}
+			\rho_{\text{odd}} = |H_{\text{odd}}|^2\rho_0 = 5
+		\end{equation*}
+		
+		\begin{equation*}
+			\rho_{\text{even}} = |H_{\text{even}}|^2\rho_0 = 10
+		\end{equation*}
+		
 		\item[5.] The space-time code for number of transmit antennas $M_{TX}=4$, number of receive antennas $M_{RX}=1$, and number of channel's uses $N=4$ is described by the following signaling matrix:
 		
 		\begin{equationCenter}
