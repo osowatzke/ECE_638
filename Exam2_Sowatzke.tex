@@ -195,8 +195,11 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 		
 		$\mathbf{\hat{x}} = \mathbf{A_{MMSE}y} =(\mathbf{H^{\dagger}H} + \mathbf{I_{M_{Tx}}}/\text{SNR})^{-1}\mathbf{H^{\dagger}y}$
 		
-		The minimum variance of error will then be
+		The minimum variance of error will be:
 		
+		$\text{Var}\{(\mathbf{Az},\mathbf{d})\} = N_0\norm{\mathbf{A^{\dagger}d}}^2$
+		
+		where $\mathbf{d} = \mathbf{x} - \mathbf{\hat{x}}$
 		
 		\item[5.] The space-time code for number of transmit antennas $M_{TX}=4$, number of receive antennas $M_{RX}=1$, and number of channel's uses $N=4$ is described by the following signaling matrix:
 		
