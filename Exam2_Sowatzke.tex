@@ -156,6 +156,29 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 		
 		\item[4.] This problem is related to MIMO wireless communications. Let $\mathbf{x}$ be transmitted vector, $\mathbf{y}$ be received vector, and $\mathbf{z}$ be (AWGN) noise vector, which are related by: $\mathbf{y}=\mathbf{Hx} + \mathbf{z}$, where $\mathbf{H}$ is the channel matrix. Determine the estimate of $\mathbf{x}$ to minimize the MSE. What is the minimum variance of error of this detector?
 		
+		\pagebreak
+		We can use a Linear MMSE receiver to estimate of $\mathbf{x}$, which we denote as $\mathbf{\hat{x}}$. In this receiver, we chose a linear transformation matrix $\mathbf{A}$ to minimize the following MSE:
+		
+		$\text{MSE}(\mathbf{A}) = \langle \norm{\mathbf{\hat{x}} - \mathbf{x}}^2_F \rangle = \langle \norm{\mathbf{Ay} - \mathbf{x}}^2_F \rangle = \langle \norm{\mathbf{A}(\mathbf{Hx} + \mathbf{z}) - \mathbf{x}}^2_F \rangle$
+		
+		$ = \langle \norm{\mathbf{AHx} + \mathbf{Az} - \mathbf{x}}^2_F \rangle = \langle \norm{(\mathbf{AH} - \mathbf{I_{M_{Tx}}})\mathbf{x} + \mathbf{Az}}^2_F \rangle$
+		
+		$\norm{\mathbf{A}}_F$ is the Frobenius norm of a matrix and is defined as follows:
+		
+		$\norm{\mathbf{A}}_F = \sqrt{\text{Tr}(\mathbf{AA^{\dagger}})}$
+		
+		$\Rightarrow \text{MSE}(\mathbf{A}) = \langle \text{Tr}[((\mathbf{AH} - \mathbf{I_{M_{Tx}}})\mathbf{x} + \mathbf{Az})((\mathbf{AH} - \mathbf{I_{M_{Tx}}})\mathbf{x} + \mathbf{Az})^{\dagger}]\rangle$
+		
+		$ = \langle \text{Tr}[(\mathbf{AH} - \mathbf{I_{M_{Tx}}})\mathbf{xx^{\dagger}}(\mathbf{AH} - \mathbf{I_{M_{Tx}}})^{\dagger}] \rangle + \langle \text{Tr}[\mathbf{Azx^{\dagger}}(A\mathbf{H} - \mathbf{I_{M_{Tx}}})^{\dagger}] \rangle$
+		
+		$ + \langle \text{Tr}[(A\mathbf{H} - \mathbf{I_{M_{Tx}}})\mathbf{xz^{\dagger}A^{\dagger}}] \rangle + \langle \text{Tr}[\mathbf{Azz^{\dagger}A^{\dagger}}] \rangle$
+		
+		Assume that $\mathbf{x}$ and $\mathbf{z}$ are independent and the elements of $\mathbf{x}$ and $\mathbf{z}$ are zero-mean i.i.d. random variables.
+		
+		$\Rightarrow \text{MSE}(\mathbf{A}) = \text{Tr}[\rho(\mathbf{AH} - \mathbf{I_{M_{Tx}}})(\mathbf{AH} - \mathbf{I_{M_{Tx}}})^{\dagger}] + \text{Tr}[N_0\mathbf{AA^{\dagger}}]$
+		
+		$ = \text{Tr}[\rho(\mathbf{AH} - \mathbf{I_{M_{Tx}}})(\mathbf{AH} - \mathbf{I_{M_{Tx}}})^{\dagger} + N_0\mathbf{AA^{\dagger}}]$
+		
 		\item[5.] The space-time code for number of transmit antennas $M_{TX}=4$, number of receive antennas $M_{RX}=1$, and number of channel's uses $N=4$ is described by the following signaling matrix:
 		
 		\begin{equationCenter}
