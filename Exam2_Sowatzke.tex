@@ -34,19 +34,7 @@
 		When Maximum-Ratio Combining is Used:
 		
 		\begin{equation*}
-			\bar{P}_s = \int_{0}^{\infty}{P_s(\rho)f_{\rho_{\oplus}}(\rho)d\rho}
-		\end{equation*}
-		
-		\begin{equation*}
-			= \int_{0}^{\rho_{tsh}}{P_s(\rho)f_{\rho_{\oplus}}(\rho)d\rho} + \int_{\rho_{tsh}}^{\infty}{P_s(\rho)f_{\rho_{\oplus}}(\rho)d\rho}
-		\end{equation*}
-		
-		\begin{equation*}
-			= \int_{0}^{\rho_{tsh}}{P_s(\rho)(1 - e^{-\rho_{tsh}})(1/\bar{\rho})e^{-{\rho}/{\bar{\rho}}}d\rho}
-		\end{equation*}
-		
-		\begin{equation*}
-			+ \int_{\rho_{tsh}}^{\infty}{P_s(\rho)(2 - e^{-\rho_{tsh}})(1/\bar{\rho})e^{-{\rho}/{\bar{\rho}}}d\rho}
+			\bar{P}_s = \int_{0}^{\infty}{P_s(\rho)f_{\rho_{\oplus}}(\rho)d\rho} = \int_{0}^{\infty}{P_s(\rho)\frac{\rho^{M-1}e^{-\rho/\bar{\rho}}}{\bar{\rho}^M(M-1)!}d\rho}
 		\end{equation*}
 		
 		\item In this problem, we study the receiver diversity based on equal gain combining (EGC). Let us assume that either BPSK or QPSK is used to transmit messages over a generalized-fading wireless channel. According to
