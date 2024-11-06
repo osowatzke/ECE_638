@@ -179,6 +179,18 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 		
 		$ = \text{Tr}[\rho(\mathbf{AH} - \mathbf{I_{M_{Tx}}})(\mathbf{AH} - \mathbf{I_{M_{Tx}}})^{\dagger} + N_0\mathbf{AA^{\dagger}}]$
 		
+		We can minimize the MSE w.r.t $\mathbf{A}$ by setting the MSE variation w.r.t $\mathbf{A}$ to zero.
+		
+		$\delta(\text{MSE}) = \text{Tr}\left\{\delta\mathbf{A}[\rho\mathbf{H}(\mathbf{AH} - \mathbf{I_{M_{Tx}}})^{\dagger} + N_0\mathbf{A}^{\dagger}]\right.$
+		
+		$ \left. + [\rho(\mathbf{AH} - \mathbf{I_{M_{Tx}}})\mathbf{H}^{\dagger} + N_0\mathbf{A}]\delta\mathbf{A}^{\dagger}\right\} = 0$
+		
+		We can then solve for $\mathbf{A}$. Doing so results in the following:
+		
+		$\mathbf{A_{MMSE}} = \mathbf{H^{\dagger}}(\mathbf{HH^{\dagger}} + \mathbf{I_{M_{Rx}}}/\text{SNR})^{-1} = (\mathbf{H^{\dagger}H} + \mathbf{I_{M_{Tx}}}/\text{SNR})^{-1}\mathbf{H^{\dagger}}$
+		
+		where $SNR = \rho/N_0$
+		
 		\item[5.] The space-time code for number of transmit antennas $M_{TX}=4$, number of receive antennas $M_{RX}=1$, and number of channel's uses $N=4$ is described by the following signaling matrix:
 		
 		\begin{equationCenter}
