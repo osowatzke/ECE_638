@@ -31,6 +31,24 @@
 	\begin{enumerate}
 		\item A four-dimensional (4-D) signal constellation is described by the following set of points $\{\pm a, \pm a, \pm a, \pm a\}$ ($a>0$). Different signal constellation points are used with the same probability. Determine the average symbol energy. Chose the appropriate basis functions $\{\Phi_1(t), \Phi_2(t), \Phi_3(t), \Phi_4(t)\}$ and express the signal constellation points in terms of basis functions. For AWGN channel, determine the average symbol error probability as a function of the average energy ($E_{av}$). Evaluate now the average symbol error probability in the presence of Rayleigh fading. Finally, evaluate the symbol error probability in the presence of Rayleigh fading when \underline{maximum-ratio combining diversity} is used. \underline{Note}: Do not evaluate integrals.
 
+		When Maximum-Ratio Combining is Used:
+		
+		\begin{equation*}
+			\bar{P}_s = \int_{0}^{\infty}{P_s(\rho)f_{\rho_{\oplus}}(\rho)d\rho}
+		\end{equation*}
+		
+		\begin{equation*}
+			= \int_{0}^{\rho_{tsh}}{P_s(\rho)f_{\rho_{\oplus}}(\rho)d\rho} + \int_{\rho_{tsh}}^{\infty}{P_s(\rho)f_{\rho_{\oplus}}(\rho)d\rho}
+		\end{equation*}
+		
+		\begin{equation*}
+			= \int_{0}^{\rho_{tsh}}{P_s(\rho)(1 - e^{-\rho_{tsh}})(1/\bar{\rho})e^{-{\rho}/{\bar{\rho}}}d\rho}
+		\end{equation*}
+		
+		\begin{equation*}
+			+ \int_{\rho_{tsh}}^{\infty}{P_s(\rho)(2 - e^{-\rho_{tsh}})(1/\bar{\rho})e^{-{\rho}/{\bar{\rho}}}d\rho}
+		\end{equation*}
+		
 		\item In this problem, we study the receiver diversity based on equal gain combining (EGC). Let us assume that either BPSK or QPSK is used to transmit messages over a generalized-fading wireless channel. According to
 the generalized-fading channel model, the signal envelope at the ith receiver branch ($i=1,2,\ldots,L$) follows $\alpha$-$\mu$ distribution with probability density function (PDF) given by
 
