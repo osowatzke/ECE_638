@@ -34,7 +34,7 @@
 		Average symbol energy:
 		
 		\begin{equation*}
-			E_{av} = \frac{1}{16}\sum_{i=0}^{16}{E_i} = \frac{1}{16}\sum_{i=0}^{16}{\norm{s_i}} = \frac{1}{16}\sum_{i}^{16}{4a^2} = 4a^2
+			E_{av} = \frac{1}{16}\sum_{i=0}^{16}{E_i} = \frac{1}{16}\sum_{i=0}^{16}{\norm{s_i}^2} = \frac{1}{16}\sum_{i}^{16}{4a^2} = 4a^2
 		\end{equation*}
 		
 		Define the basis functions as follows:
@@ -83,10 +83,34 @@
 			\end{cases}
 		\end{equation*}
 		
+		The symbol error probability $P_s(\rho)$ can be approximated as follows:
+		
+		\begin{equation*}
+			P_s(\rho) \approx M_{d_\text{min}}Q\left(\frac{d_\text{min}}{\sqrt{2N_0}}\right)
+		\end{equation*}
+		
+		where $M_{d_\text{min}}$ is the number of nearest neighbors and $d_\text{min}$ is the minimum distance between neighboring constellation points.
+		
+		For each point in the constellation, there will be $M_{d_\text{min}} = 4$ nearest neighbors (one element different and all others the same). For each nearest neighbor, $d_\text{min} = 2a$.
+		
+		\begin{equation*}
+			\Rightarrow P_s(\rho) \approx 4Q\left(\frac{2a}{\sqrt{2N_0}}\right) = 4Q\left(\sqrt{\frac{E_{av}}{2N_0}}\right)= 4Q\left(\sqrt{\frac{\rho}{2}}\right)
+		\end{equation*}
+		
+		In Rayleigh fading, the average probability of symbol error is given as follows:
+		
+		\begin{equation*}
+			\bar{P}_s = \int_{0}^{\infty}{P_s(\rho)f(\rho)d\rho} = \int_{0}^{\infty}{4Q\left(\sqrt{\frac{\rho}{2}}\right)\frac{1}{\bar{\rho}}e^{-\frac{\rho}{\bar{\rho}}}d\rho}
+		\end{equation*}
+		
 		When Maximum-Ratio Combining is Used:
 		
 		\begin{equation*}
 			\bar{P}_s = \int_{0}^{\infty}{P_s(\rho)f_{\rho_{\oplus}}(\rho)d\rho} = \int_{0}^{\infty}{P_s(\rho)\frac{\rho^{M-1}e^{-\rho/\bar{\rho}}}{\bar{\rho}^M(M-1)!}d\rho}
+		\end{equation*}
+		
+		\begin{equation*}
+			= \int_{0}^{\infty}{4Q\left(\sqrt{\frac{\rho}{2}}\right)\frac{\rho^{M-1}e^{-\rho/\bar{\rho}}}{\bar{\rho}^M(M-1)!}d\rho}
 		\end{equation*}
 		
 		\item In this problem, we study the receiver diversity based on equal gain combining (EGC). Let us assume that either BPSK or QPSK is used to transmit messages over a generalized-fading wireless channel. According to
