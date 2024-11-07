@@ -34,7 +34,44 @@
 		Average symbol energy:
 		
 		\begin{equation*}
-			E_{av} = \frac{1}{16}\sum_{i}^{16}{E_i} = \frac{1}{16}\sum_{i}^{16}{\norm{s_i}} = \frac{1}{16}\sum_{i}^{16}{4a^2} = 4a^2
+			E_{av} = \frac{1}{16}\sum_{i=0}^{16}{E_i} = \frac{1}{16}\sum_{i=0}^{16}{\norm{s_i}} = \frac{1}{16}\sum_{i}^{16}{4a^2} = 4a^2
+		\end{equation*}
+		
+		Define the basis functions as follows:
+		
+		\begin{equation*}
+			\Phi_k(t) = \sqrt{\frac{2}{T}}\cos\left(\frac{2{\pi}kt}{T}\right),\quad 0 \leq t < T
+		\end{equation*}
+		
+		We can prove the basis functions form an orthonormal basis:
+		
+		\begin{equation*}
+			\int_{0}^{T}{\Phi_j(t)\Phi_k^*(t)dt} = \frac{2}{T}\int_{0}^{T}{\cos\left(\frac{2{\pi}jt}{T}\right)\cos\left(\frac{2{\pi}kt}{T}\right)dt}
+		\end{equation*}
+		
+		\begin{equation*}
+			= \frac{1}{T}\int_{0}^{T}{\cos\left(\frac{2{\pi}(j+k)t}{T}\right)dt} + \frac{1}{T}\int_{0}^{T}{\cos\left(\frac{2{\pi}(j-k)t}{T}\right)dt}
+		\end{equation*}
+		
+		\begin{equation*}
+			= \begin{cases}
+				1 & j = k \\
+				0 & j \neq k
+			\end{cases}
+		\end{equation*}
+		
+		$\therefore$ $\Phi_k(t)$ forms an orthonormal basis.
+		
+		The constellations points can be expressed in terms of the basis functions as follows:
+		
+		\begin{equation*}
+			s_m(t) = \sum_{k=0}^{3}{a\cos({\pi}n_{mk})\cos\left(\frac{2{\pi}kt}{T}\right)}
+		\end{equation*}
+		
+		where $\{0 \leq n_{mk} \leq 1\ \vert\ n_{mk} \in Z\}\ \forall\ k$
+		
+		\begin{equation*}
+			\Rightarrow s_m(t) = \sum_{k=0}^{3}{a\cos\left(\frac{2{\pi}kt}{T}+{\pi}n_{mk}\right)}
 		\end{equation*}
 		
 		When Maximum-Ratio Combining is Used:
