@@ -68,10 +68,19 @@
 			s_m(t) = \sum_{k=0}^{3}{a\cos({\pi}n_{mk})\cos\left(\frac{2{\pi}kt}{T}\right)}
 		\end{equation*}
 		
-		where $\{0 \leq n_{mk} \leq 1\ \vert\ n_{mk} \in Z\}\ \forall\ k$
+		where $\{0 \leq n_{mk} \leq 1\ \vert\ n_{mk} \in Z\}$
 		
 		\begin{equation*}
 			\Rightarrow s_m(t) = \sum_{k=0}^{3}{a\cos\left(\frac{2{\pi}kt}{T}+{\pi}n_{mk}\right)}
+		\end{equation*}
+		
+		We define $n_{mk}$ as follows for each element of $\mathbf{s_m}$
+		
+		\begin{equation*}
+			n_{mk} = \begin{cases}
+				0 & s_{mk} \geq 0\\
+				1 & s_{mk} < 0
+			\end{cases}
 		\end{equation*}
 		
 		When Maximum-Ratio Combining is Used:
