@@ -3,6 +3,8 @@
 \usepackage{amsmath, nccmath, bm}
 \usepackage{amssymb}
 \usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{float}
 
 \newcommand{\zerodisplayskip}{
 	\setlength{\abovedisplayskip}{0pt}%
@@ -128,6 +130,28 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 		
 		where $I_0(x)$ is the modified Bessel function of the first kind and zero order for the argument x, $\zeta_i$ is the SNR in the PLL circuit in the i-th receiver branch. Write the expressions for the average bit error probability of uncoded BPSK and QPSK signal detections in the presence of phase error and $\alpha$-$\mu$ fading assuming that EGC receiver is used. \underline{Note}: Do not evaluate the integrals.
 		
+		The signal in each of the receiver branches can be written as:
+		
+		\begin{equation*}
+			s_i(t) = r_i(t)e^{j(\omega_ct + \phi + \gamma_i(t))}
+		\end{equation*}
+		
+		where $r_i(t)$ is the signal envelope in the i-th branch, $\omega_c$ is the carrier frequency, $\phi$ is the phase of the transmitted symbol (common to all branches), and $\gamma_i(t)$ is the phase error of the i-th branch.
+		
+		In equal gain combining, co-phasing is performed to account for the phase error between branches. This is equivalent to mixing each signal with $e^{-j\hat{\gamma}_i(t)}$ where $\hat{\gamma}_i(t)$ is an estimate of the phase error on each receiver branch.
+		
+		\begin{figure}[H]
+			\centerline{\fbox{\includegraphics[width=0.8\textwidth]{egc.png}}}
+			\caption{Equal Gain Combining}
+			\label{fig::equal_gain_combining}
+		\end{figure}
+		
+		The EGC output with phase error in the receiver branches can be written as:
+		
+		\begin{equation*}
+			r = \sum_{i=1}^{M}{r_ie^{j\varphi_i}}/\sqrt{M}
+		\end{equation*}
+		 
 		\item[3.] Let us now consider the time-invariant frequency-selective block-fading channel with 32 subchannels of bandwidth 2 MHz, with frequency response amplitudes being $1$ for odd subchannels and $\sqrt{2}$ for even subchannels, respectively. For the transmit power 10 mW and noise power-spectral density of $N_0=10^{-9}$ W/Hz determine the OFDM channel capacity. What is corresponding optimum power allocation strategy based on OFDM to achieve this channel capacity? Provide the corresponding OFDM transmitter and receiver configurations.
 		
 		\begin{equation*}
