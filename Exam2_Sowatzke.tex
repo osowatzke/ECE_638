@@ -133,18 +133,22 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 		The signal in each of the receiver branches can be written as:
 		
 		\begin{equation*}
-			s_i(t) = r_i(t)e^{j(\omega_ct + \phi + \gamma_i(t))}
+			s_i(t) = r_i(t)e^{j(\omega_ct + \phi_k + \gamma_i(t))}
 		\end{equation*}
 		
-		where $r_i(t)$ is the signal envelope in the i-th branch, $\omega_c$ is the carrier frequency, $\phi$ is the phase of the transmitted symbol (common to all branches), and $\gamma_i(t)$ is the phase error of the i-th branch.
+		where $r_i(t)$ is the signal envelope in the i-th branch, $\omega_c$ is the carrier frequency, $\phi_k$ is the phase of the k-th transmitted symbol (common to all branches), and $\gamma_i(t)$ is the phase error of the i-th branch.
 		
-		In equal gain combining, co-phasing is performed to account for the phase error between branches. This is equivalent to mixing each signal with $e^{-j\hat{\gamma}_i(t)}$ where $\hat{\gamma}_i(t)$ is an estimate of the phase error on each receiver branch.
+		In equal gain combining, co-phasing is performed to account for the phase error between branches. This is equivalent to mixing each signal with $e^{-j(\omega_ct + \hat{\gamma}_i(t))}$ where $\hat{\gamma}_i(t)$ is an estimate of the phase error on the i-th receiver branch.
 		
 		\begin{figure}[H]
-			\centerline{\fbox{\includegraphics[width=0.8\textwidth]{egc.png}}}
+			\centerline{\fbox{\includegraphics[width=0.7\textwidth]{egc.png}}}
 			\caption{Equal Gain Combining}
 			\label{fig::equal_gain_combining}
 		\end{figure}
+		
+		The resulting phase error in each branch is denoted as
+		
+		$\varphi_i(t) = \gamma_i(t) - \hat{\gamma}_i(t)$
 		
 		The EGC output with phase error in the receiver branches can be written as:
 		
