@@ -133,15 +133,15 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 		The signal in each of the receiver branches can be written as:
 		
 		\begin{equation*}
-			s_i(t) = r_i(t)e^{j(\omega_ct + \phi_k + \gamma_i(t))}
+			s_i(t) = r_i(t)e^{j(\omega_ct + \phi(t) + \gamma_i(t))} + n_i(t)
 		\end{equation*}
 		
-		where $r_i(t)$ is the signal envelope in the i-th branch, $\omega_c$ is the carrier frequency, $\phi_k$ is the phase of the k-th transmitted symbol (common to all branches), and $\gamma_i(t)$ is the phase error of the i-th branch.
+		where $r_i(t)$ is the signal envelope in the i-th branch, $\omega_c$ is the carrier frequency, $\phi(t)$ is the phase of the transmitted symbols (common to all branches), $\gamma_i(t)$ is the phase error of the i-th branch, and $n_i(t)$ is the noise on the i-th branch.
 		
 		In equal gain combining, co-phasing is performed to account for the phase error between branches. This is equivalent to mixing each signal with $e^{-j(\omega_ct + \hat{\gamma}_i(t))}$ where $\hat{\gamma}_i(t)$ is an estimate of the phase error on the i-th receiver branch.
 		
 		\begin{figure}[H]
-			\centerline{\fbox{\includegraphics[width=0.7\textwidth]{egc.png}}}
+			\centerline{\fbox{\includegraphics[width=0.6\textwidth]{egc.png}}}
 			\caption{Equal Gain Combining}
 			\label{fig::equal_gain_combining}
 		\end{figure}
@@ -149,6 +149,33 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 		The resulting phase error in each branch is denoted as
 		
 		$\varphi_i(t) = \gamma_i(t) - \hat{\gamma}_i(t)$
+		
+		The signal at the equal gain combiner output will then be
+		
+		\begin{equation*}
+			s(t) = \sum_{i=1}^{M}{\left(r_i(t)e^{j(\phi(t) + \varphi_i(t))}+n_i(t)\right)} = e^{j\phi(t)}\sum_{i=1}^{M}{r_i(t)e^{j\varphi_i(t)}} + n(t)
+		\end{equation*}
+		
+		If the noise on each branch $n_i(t)$ is independent and has noise PSD $N_0$. Then, the noise at the combiner output $n(t)$ has noise PSD $MN_0$.
+		
+		The corresponding observation vector is defined by
+		
+		\begin{equation*}
+			\mathbf{r} = \begin{bmatrix}
+				r_I \\
+				r_Q
+			\end{bmatrix}
+		\end{equation*}
+		
+		where
+		
+		\begin{equation*}
+			r_I = \sum_{i=1}^{M}{r_i\cos(\phi + \varphi_i)} + n_I
+		\end{equation*}
+		
+		\begin{equation*}
+			r_Q = \sum_{i=1}^{M}{r_i\sin(\phi + \varphi_i)} + n_Q
+		\end{equation*}
 		
 		The EGC output with phase error in the receiver branches can be written as:
 		
