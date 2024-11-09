@@ -191,6 +191,16 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 			\bar{P}_b = \int_{\mathbf{r}}{\int_{\boldsymbol{\varphi}}{P_b(\mathbf{r},\boldsymbol{\varphi})p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi})p_{\mathbf{R}}(\mathbf{r})d\boldsymbol{\varphi}}d\mathbf{r}}
 		\end{equation*}
 		
+		\begin{equation*}
+			= \int_{\mathbf{r}}{\int_{\boldsymbol{\varphi}}{Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\varphi_i)}}{\sigma\sqrt{M}}\right)p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi})p_{\mathbf{R}}(\mathbf{r})d\boldsymbol{\varphi}}d\mathbf{r}}
+		\end{equation*}
+		
+		If the elements $\mathbf{r}$ are independent then
+		
+		\begin{equation*}
+			p_\mathbf{R}(\mathbf{r}) = \prod_{i=1}^{M}{p_{R_i}(r_i)} = \prod_{i=1}^{M}\left[\frac{\alpha_i\mu_i^{\mu_i}r_i^{\alpha_i\mu_i-1}}{\hat{r}_i^{\alpha_i\mu_i}\Gamma(\mu_i)}\text{exp}\left(\mu_i\frac{r_i^{\alpha_i}}{\hat{r}_i^{\alpha_i}}\right)\right]
+		\end{equation*}
+		
 		The EGC output with phase error in the receiver branches can be written as:
 		
 		\begin{equation*}
