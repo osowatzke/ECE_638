@@ -267,12 +267,7 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 			= \int_{\mathbf{r}}{\int_{\boldsymbol{\varphi}}{Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{M}}\right)p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi})p_{\mathbf{R}}(\mathbf{r})d\boldsymbol{\varphi}}d\mathbf{r}}
 		\end{equation*}
 		
-		
-		The EGC output with phase error in the receiver branches can be written as:
-		
-		\begin{equation*}
-			r = \sum_{i=1}^{M}{r_ie^{j\varphi_i}}/\sqrt{M}
-		\end{equation*}
+		where $p_\mathbf{R}(\mathbf{r})$ and $p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi})$ are described above.
 		 
 		\item[3.] Let us now consider the time-invariant frequency-selective block-fading channel with 32 subchannels of bandwidth 2 MHz, with frequency response amplitudes being $1$ for odd subchannels and $\sqrt{2}$ for even subchannels, respectively. For the transmit power 10 mW and noise power-spectral density of $N_0=10^{-9}$ W/Hz determine the OFDM channel capacity. What is corresponding optimum power allocation strategy based on OFDM to achieve this channel capacity? Provide the corresponding OFDM transmitter and receiver configurations.
 		
@@ -384,7 +379,6 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 		
 		\item[4.] This problem is related to MIMO wireless communications. Let $\mathbf{x}$ be transmitted vector, $\mathbf{y}$ be received vector, and $\mathbf{z}$ be (AWGN) noise vector, which are related by: $\mathbf{y}=\mathbf{Hx} + \mathbf{z}$, where $\mathbf{H}$ is the channel matrix. Determine the estimate of $\mathbf{x}$ to minimize the MSE. What is the minimum variance of error of this detector?
 		
-		\pagebreak
 		We can use a Linear MMSE receiver to estimate of $\mathbf{x}$, which we denote as $\mathbf{\hat{x}}$. In this receiver, we chose a linear transformation matrix $\mathbf{A}$ to minimize the following MSE:
 		
 		$\text{MSE}(\mathbf{A}) = \langle \norm{\mathbf{\hat{x}} - \mathbf{x}}^2_F \rangle = \langle \norm{\mathbf{Ay} - \mathbf{x}}^2_F \rangle = \langle \norm{\mathbf{A}(\mathbf{Hx} + \mathbf{z}) - \mathbf{x}}^2_F \rangle$
