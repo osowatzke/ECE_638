@@ -207,6 +207,67 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 			p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi}) = \prod_{i=1}^{M}{p_{\phi}(\phi)} = \prod_{i=1}^{M}\left[\frac{1}{2\pi}\frac{\text{exp}(\zeta_i\text{cos}(\varphi_i))}{I_0(\zeta_i)}\right], \quad -\pi < \varphi_i \leq \pi
 		\end{equation*}
 		
+		Next, we consider QPSK modulation. The probability of error should be the same for all symbols, so we consider $\phi = \pi/4$. For given choices of $r_i$ and $\varphi_i$, we find that the probability of bit error is
+		
+		\begin{equation*}
+			P_b = \frac{1}{2}Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{M}}\right) + \frac{1}{2}Q\left(\frac{\sum_{i=1}^{M}{r_i\sin(\pi/4 + \varphi_i)}}{\sigma\sqrt{M}}\right)
+		\end{equation*}
+		
+		\begin{equation*}
+			= \frac{1}{2}Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{M}}\right) + \frac{1}{2}Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 - \varphi_i)}}{\sigma\sqrt{M}}\right)
+		\end{equation*}
+		
+		The first term in the above expression is the probability of error in the first element of the constellation vector, and the second term is the probability of error in the second element. Each term is weighted by 1/2 because they only result in a single bit error within a two-bit symbol.
+		 
+		As was the case with BPSK, the average probability of bit error can be expressed as follows:
+		
+		\begin{equation*}
+			\bar{P}_b = \int_{\mathbf{r}}{\int_{\boldsymbol{\varphi}}{P_b(\mathbf{r},\boldsymbol{\varphi})p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi})p_{\mathbf{R}}(\mathbf{r})d\boldsymbol{\varphi}}d\mathbf{r}}
+		\end{equation*}
+		
+		Substituting the expression for $P_b(\mathbf{r},\boldsymbol{\varphi})$:
+		
+		\begin{equation*}
+			\bar{P}_b = \frac{1}{2}\int_{\mathbf{r}}{\int_{\boldsymbol{\varphi}}{\left[Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{M}}\right)\right.}}
+		\end{equation*}
+		
+		\begin{equation*}
+			{{\left. + Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 - \varphi_i)}}{\sigma\sqrt{M}}\right)\right]p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi})p_{\mathbf{R}}(\mathbf{r})d\boldsymbol{\varphi}}d\mathbf{r}}
+		\end{equation*}
+		
+		$p_{\varphi_i}(\varphi_i)$ is an even function w.r.t. $\varphi_i$.
+		
+		\begin{equation*}
+			\Rightarrow \int_{\varphi_i=-\pi}^{\pi}{Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 - \varphi_i)}}{\sigma\sqrt{M}}\right)p_{\varphi_i}(\varphi_i)d\varphi_i}
+		\end{equation*}
+		
+		\begin{equation*}
+			= - \int_{\varphi_i=\pi}^{-\pi}{Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{M}}\right)p_{\varphi_i}(-\varphi_i)d\varphi_i}
+		\end{equation*}
+		
+		\begin{equation*}
+			= - \int_{\varphi_i=\pi}^{-\pi}{Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{M}}\right)p_{\varphi_i}(\varphi_i)d\varphi_i}
+		\end{equation*}
+		
+		\begin{equation*}
+			= \int_{\varphi_i=-\pi}^{\pi}{Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{M}}\right)p_{\varphi_i}(\varphi_i)d\varphi_i}
+		\end{equation*}
+		
+		Therefore, for the provided $p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi})$, $\bar{P}_b$ can be expressed as follows:
+		
+		\begin{equation*}
+			\bar{P}_b = \frac{1}{2}\int_{\mathbf{r}}{\int_{\boldsymbol{\varphi}}{\left[Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{M}}\right)\right.}}
+		\end{equation*}
+		
+		\begin{equation*}
+			{{\left. + Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{M}}\right)\right]p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi})p_{\mathbf{R}}(\mathbf{r})d\boldsymbol{\varphi}}d\mathbf{r}}
+		\end{equation*}
+		
+		\begin{equation*}
+			= \int_{\mathbf{r}}{\int_{\boldsymbol{\varphi}}{Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{M}}\right)p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi})p_{\mathbf{R}}(\mathbf{r})d\boldsymbol{\varphi}}d\mathbf{r}}
+		\end{equation*}
+		
+		
 		The EGC output with phase error in the receiver branches can be written as:
 		
 		\begin{equation*}
