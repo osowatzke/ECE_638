@@ -177,6 +177,14 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 			r_Q = \sum_{i=1}^{M}{r_i\sin(\phi + \varphi_i)} + n_Q
 		\end{equation*}
 		
+		where $n_I$ and $n_Q$ are i.i.d. Gaussian Random variables with variance $M\sigma^2$
+		
+		First, we consider BPSK modulation. The probability of error should be the same for all symbols, so we consider $\phi = 0$. For known values of $r_i$ and $\varphi_i$, we find that the probability of bit error is
+		
+		\begin{equation*}
+			P_b = Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\varphi_i)}}{\sigma\sqrt{M}}\right)
+		\end{equation*}
+		 
 		The EGC output with phase error in the receiver branches can be written as:
 		
 		\begin{equation*}
