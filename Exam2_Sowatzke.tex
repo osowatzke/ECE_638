@@ -802,6 +802,41 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 				\mathbf{\hat{x}} = \begin{bmatrix}\text{Re}(\hat{x}_1) & \text{Im}(\hat{x}_1) & \cdots & \text{Re}(\hat{x}_3) & \text{Im}(\hat{x}_3)\end{bmatrix}^T
 			\end{equation*}
 		
+			To avoid taking the pseudo-inverse, we can instead solve for $\mathbf{\tilde{x}}$ in $\mathbf{\tilde{y}_R} = \mathbf{\tilde{H}_R}\mathbf{\tilde{x}} + \mathbf{\tilde{z}_R}$.
+			
+			where $\mathbf{\tilde{H}_R}$ is defined as follows:
+			
+			\begin{equation*}
+				\mathbf{\tilde{H}_R} = \begin{bmatrix}
+					\text{Re}\{\mathbf{\tilde{H}_{.1}}\} \\
+					\text{Im}\{\mathbf{\tilde{H}_{.1}}\} \\
+					\vdots \\
+					\text{Re}\{\mathbf{\tilde{H}_{.4}}\} \\
+					\text{Im}\{\mathbf{\tilde{H}_{.4}}\}
+				\end{bmatrix}
+			\end{equation*}
+			
+			In the above expression, $\mathbf{\tilde{H}_{.k}}$ is the k-th row of $\mathbf{\tilde{H}}$.
+			
+			Similarly, we can define $\mathbf{\tilde{y}_R}$ and $\mathbf{\tilde{z}_R}$ as follows:
+			
+			\begin{equation*}
+				\mathbf{\tilde{y}_R} = \begin{bmatrix}
+					\text{Re}\{\tilde{y}_{11}\} & \text{Im}\{\tilde{y}_{11}\} & \cdots & \text{Re}\{\tilde{y}_{41}\} & \text{Im}\{\tilde{y}_{41}\}
+				\end{bmatrix}^T
+			\end{equation*}
+			
+			\begin{equation*}
+				\mathbf{\tilde{z}_R} = \begin{bmatrix}
+					\text{Re}\{\tilde{z}_{11}\} & \text{Im}\{\tilde{z}_{11}\} & \cdots & \text{Re}\{\tilde{z}_{41}\} & \text{Im}\{\tilde{z}_{41}\}
+				\end{bmatrix}^T
+			\end{equation*}
+			
+			where $\tilde{y}_{ij}$ and $\tilde{z}_{ij}$ are elements of $\mathbf{\tilde{y}}$ and $\mathbf{\tilde{z}}$
+			
+			Then, we can perform QR decomposition of $\mathbf{\tilde{H}_R}$.
+			
+			
 		\end{enumerate}		
 	\end{enumerate}
 \end{document}
