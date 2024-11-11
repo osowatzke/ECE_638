@@ -748,7 +748,9 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 				\end{bmatrix}
 			\end{equation*}
 			
-			Note that the last entry in $\mathbf{\tilde{R}}$ is not proportional to $b_L$ as was the case with the Almouti code example presented in class. However, because $\mathbf{\tilde{x}}$ is real and $\mathbf{\tilde{y}}$ is complex, we can create a set of 8 equations, 4 for the real part of $\mathbf{\tilde{Q}^{\dagger}\tilde{y}} = \mathbf{\tilde{R}\tilde{x}} + \mathbf{\tilde{Q}^{\dagger}\tilde{z}}$ and another 4 for the imaginary part. Specifically, we can express $\mathbf{\tilde{Q}}^{\dagger}\mathbf{\tilde{y}}$ and $\mathbf{\tilde{Q}}^{\dagger}\mathbf{\tilde{z}}$ as follows:
+			Note that the last entry in $\mathbf{\tilde{R}}$ is not proportional to $b_L$ as was the case with the Almouti code example presented in class. We may be tempted to use the pseudo inverse to solve for $\mathbf{\tilde{x}}$ from these equations. However, with complex $\mathbf{\tilde{R}}$ and complex $\mathbf{\tilde{Q}^{\dagger}\tilde{y}}$, we are not guaranteed a real solution for $\mathbf{\tilde{x}}$.
+			
+			Instead, we need to create a set of 8 equations, 4 for the real part of $\mathbf{\tilde{Q}^{\dagger}\tilde{y}} = \mathbf{\tilde{R}\tilde{x}} + \mathbf{\tilde{Q}^{\dagger}\tilde{z}}$ and another 4 for the imaginary part. Specifically, we can express $\mathbf{\tilde{Q}}^{\dagger}\mathbf{\tilde{y}}$ and $\mathbf{\tilde{Q}}^{\dagger}\mathbf{\tilde{z}}$ as follows:
 		
 			\begin{equation*}
 				\mathbf{\tilde{Q}}^{\dagger}\mathbf{\tilde{y}} = \begin{bmatrix} y_1 & y_2 & y_3 & y_4
