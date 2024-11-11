@@ -724,57 +724,84 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 			\begin{equation*}
 				\mathbf{\tilde{H}} = \mathbf{\tilde{Q}}\mathbf{\tilde{R}}
 			\end{equation*}
-		\end{enumerate}
-		
-		where $\mathbf{\tilde{Q}}$ is a unitary matrix and $\mathbf{\tilde{R}}$ is an upper triangular matrix.
-		
-		Next, we can express the received vector $\mathbf{\tilde{y}}$ as follows:
-		
-		\begin{equation*}
-			\mathbf{\tilde{y}} = \mathbf{\tilde{H}\tilde{x}} + \mathbf{\tilde{z}} = \mathbf{\tilde{Q}\tilde{R}\tilde{x}} + \mathbf{\tilde{z}}
-		\end{equation*}
-		
-		\begin{equation*}
-			\Rightarrow \mathbf{\tilde{Q}^{\dagger}\tilde{y}} = \mathbf{\tilde{R}\tilde{x}} + \mathbf{\tilde{Q}^{\dagger}\tilde{z}}
-		\end{equation*}
-		
-		Note that the $\mathbf{\tilde{H}}$ is a 4x6 matrix. Therefore, QR decomposition will produce a matrix $\mathbf{\tilde{R}}$ of the following form:
-		
-		\begin{equation*}
-			\mathbf{\tilde{R}} = \begin{bmatrix}
-				r_{11} & r_{12} & r_{13} & r_{14} & r_{15} & r_{16}\\
-				0      & r_{22} & r_{23} & r_{24} & r_{25} & r_{26}\\
-				0      & 0      & r_{33} & r_{34} & r_{35} & r_{36}\\
-				0      & 0      & 0      & r_{44} & r_{45} & r_{46}
-			\end{bmatrix}
-		\end{equation*}
 			
-		The last entry in $\mathbf{\tilde{R}}$ is not proportional to $b_L$ as was the case with the Almouti code example presented in class.
+			where $\mathbf{\tilde{Q}}$ is a unitary matrix and $\mathbf{\tilde{R}}$ is an upper triangular matrix.
 		
-		However, because $\mathbf{\tilde{x}}$ is real and $\mathbf{\tilde{y}}$ is complex, we can create a set of 8 equations, 4 for the real part of $\mathbf{\tilde{Q}^{\dagger}\tilde{y}} = \mathbf{\tilde{R}\tilde{x}} + \mathbf{\tilde{Q}^{\dagger}\tilde{z}}$ and another 4 for the imaginary part. We can then use the Moore-Penrose pseudoinverse to solve for $\mathbf{\tilde{x}}$
+			Next, we can express the received vector $\mathbf{\tilde{y}}$ as follows:
 		
-		\begin{equation*}
-			\mathbf{\tilde{Q}}^{\dagger}\mathbf{\tilde{y}} = \begin{bmatrix} \breve{y}_1 & \breve{y}_2 & \breve{y}_3 & \breve{y}_4
-			\end{bmatrix}^T
-		\end{equation*}
+			\begin{equation*}
+				\mathbf{\tilde{y}} = \mathbf{\tilde{H}\tilde{x}} + \mathbf{\tilde{z}} = \mathbf{\tilde{Q}\tilde{R}\tilde{x}} + \mathbf{\tilde{z}}
+			\end{equation*}
 		
-		\begin{equation*}
-			\mathbf{\tilde{Q}}^{\dagger}\mathbf{\tilde{z}} = \begin{bmatrix} \breve{z}_1 & \breve{z}_2 & \breve{z}_3 & \breve{z}_4
-			\end{bmatrix}^T
-		\end{equation*}
+			\begin{equation*}
+				\Rightarrow \mathbf{\tilde{Q}^{\dagger}\tilde{y}} = \mathbf{\tilde{R}\tilde{x}} + \mathbf{\tilde{Q}^{\dagger}\tilde{z}}
+			\end{equation*}
 		
-		We can find $\mathbf{\tilde{x}}$ by minimizing the error between $\mathbf{\tilde{R}\tilde{x}}$ and $\mathbf{\tilde{Q}^{\dagger}\tilde{y}}$.
+			Note that the $\mathbf{\tilde{H}}$ is a 4x6 matrix. Therefore, QR decomposition will produce a matrix $\mathbf{\tilde{R}}$ of the following form:
 		
-		\begin{equation*}
-			\mathbf{\hat{x}} = \underset{\mathbf{\tilde{x}}}{\text{arg min}}{\norm{\mathbf{\tilde{Q}^{\dagger}\tilde{y}} - \tilde{R}\tilde{x}}_F}
-		\end{equation*}
+			\begin{equation*}
+				\mathbf{\tilde{R}} = \begin{bmatrix}
+					r_{11} & r_{12} & r_{13} & r_{14} & r_{15} & r_{16}\\
+					0      & r_{22} & r_{23} & r_{24} & r_{25} & r_{26}\\
+					0      & 0      & r_{33} & r_{34} & r_{35} & r_{36}\\
+					0      & 0      & 0      & r_{44} & r_{45} & r_{46}
+				\end{bmatrix}
+			\end{equation*}
+			
+			Note that the last entry in $\mathbf{\tilde{R}}$ is not proportional to $b_L$ as was the case with the Almouti code example presented in class. However, because $\mathbf{\tilde{x}}$ is real and $\mathbf{\tilde{y}}$ is complex, we can create a set of 8 equations, 4 for the real part of $\mathbf{\tilde{Q}^{\dagger}\tilde{y}} = \mathbf{\tilde{R}\tilde{x}} + \mathbf{\tilde{Q}^{\dagger}\tilde{z}}$ and another 4 for the imaginary part. Specifically, we can express $\mathbf{\tilde{Q}}^{\dagger}\mathbf{\tilde{y}}$ and $\mathbf{\tilde{Q}}^{\dagger}\mathbf{\tilde{z}}$ as follows:
 		
-		Finally, we can get $\hat{x}_i$ from $\mathbf{\hat{x}}$ as follows:
+			\begin{equation*}
+				\mathbf{\tilde{Q}}^{\dagger}\mathbf{\tilde{y}} = \begin{bmatrix} y_1 & y_2 & y_3 & y_4
+				\end{bmatrix}^T
+			\end{equation*}
 		
-		\begin{equation*}
-			\mathbf{\hat{x}} = \begin{bmatrix}\text{Re}(\hat{x}_1) & \text{Im}(\hat{x}_1) & \cdots & \text{Re}(\hat{x}_3) & \text{Im}(\hat{x}_3)\end{bmatrix}^T
-		\end{equation*}
+			\begin{equation*}
+				\mathbf{\tilde{Q}}^{\dagger}\mathbf{\tilde{z}} = \begin{bmatrix} z_1 & z_2 & z_3 & z_4
+				\end{bmatrix}^T
+			\end{equation*}
 		
+			Then, we can define $\mathbf{\breve{Y}}$ and $\mathbf{\breve{Z}}$ as follows:
 		
+			\begin{equation*}
+				\mathbf{\breve{Y}} = \begin{bmatrix} \text{Re}\{y_1\} & \text{Im}\{y_1\} & \cdots & \text{Re}\{y_4\} & \text{Im}\{y_4\} \end{bmatrix}^T
+			\end{equation*}
+		
+			\begin{equation*}
+				\mathbf{\breve{Z}} = \begin{bmatrix} \text{Re}\{z_1\} & \text{Im}\{z_1\} & \cdots & \text{Re}\{z_4\} & \text{Im}\{z_4\} \end{bmatrix}^T
+			\end{equation*}
+		
+			Next, we can define $\mathbf{\breve{R}}$ as follows:
+		
+			\begin{equation*}
+				\mathbf{\breve{R}} = \begin{bmatrix}
+					\text{Re}\{r_{11}\} & \cdots & \text{Re}\{r_{13}\} & \text{Re}\{r_{14}\} & \text{Re}\{r_{15}\} & \text{Re}\{r_{16}\} \\
+					\text{Im}\{r_{11}\} & \cdots & \text{Im}\{r_{13}\} & \text{Im}\{r_{14}\} & \text{Im}\{r_{15}\} & \text{Im}\{r_{16}\} \\
+					\vdots & \ddots & \vdots & \vdots & \vdots \\
+					0 & \cdots & 0 & \text{Re}\{r_{44}\} & \text{Re}\{r_{45}\} & \text{Re}\{r_{46}\} \\
+					0 & \cdots & 0 & \text{Im}\{r_{44}\} & \text{Im}\{r_{45}\} & \text{Im}\{r_{46}\}
+				\end{bmatrix}
+			\end{equation*}
+		
+			Now, we can write the following:
+		
+			\begin{equation*}
+				\mathbf{\breve{Y}} = \mathbf{\breve{R}}\mathbf{\tilde{x}} + \mathbf{\breve{Z}}
+			\end{equation*}
+		
+			We can then use the Moore-Penrose pseudoinverse to solve for $\mathbf{\tilde{x}}$
+			
+			We can find $\mathbf{\tilde{x}}$ by minimizing the error between $\mathbf{\tilde{R}\tilde{x}}$ and $\mathbf{\tilde{Q}^{\dagger}\tilde{y}}$.
+		
+			\begin{equation*}
+				\mathbf{\hat{x}} = \underset{\mathbf{\tilde{x}}}{\text{arg min}}{\norm{\mathbf{\tilde{Q}^{\dagger}\tilde{y}} - \tilde{R}\tilde{x}}_F}
+			\end{equation*}
+		
+			Finally, we can get $\hat{x}_i$ from $\mathbf{\hat{x}}$ as follows:
+		
+			\begin{equation*}
+				\mathbf{\hat{x}} = \begin{bmatrix}\text{Re}(\hat{x}_1) & \text{Im}(\hat{x}_1) & \cdots & \text{Re}(\hat{x}_3) & \text{Im}(\hat{x}_3)\end{bmatrix}^T
+			\end{equation*}
+		
+		\end{enumerate}
 	\end{enumerate}
 \end{document}
