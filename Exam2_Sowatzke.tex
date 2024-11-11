@@ -377,6 +377,20 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 			\Rightarrow P_{\text{even}} = P\left(\frac{1}{\rho_{tsh}} - \frac{1}{\rho_{\text{even}}}\right) = 10\left(\frac{1}{6.1538} - \frac{1}{10}\right) = 0.625\ \text{mW}
 		\end{equation*}		
 		
+		The OFDM transmitter and receiver configurations are shown below. According to the power allocation strategy given above, we only map symbols onto even subcarriers in the transmitter and only detect symbols on even subcarriers in the receiver.
+		
+		\begin{figure}[H]
+			\centerline{\fbox{\includegraphics[width=0.95\textwidth]{ofdm_tx_config.png}}}
+			\caption{OFDM Transmitter Configuration}
+			\label{fig::ofdm_tx_config}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centerline{\fbox{\includegraphics[width=0.95\textwidth]{ofdm_rx_config.png}}}
+			\caption{OFDM Receiver Configuration}
+			\label{fig::ofdm_rx_config}
+		\end{figure}
+		
 		\item[4.] This problem is related to MIMO wireless communications. Let $\mathbf{x}$ be transmitted vector, $\mathbf{y}$ be received vector, and $\mathbf{z}$ be (AWGN) noise vector, which are related by: $\mathbf{y}=\mathbf{Hx} + \mathbf{z}$, where $\mathbf{H}$ is the channel matrix. Determine the estimate of $\mathbf{x}$ to minimize the MSE. What is the minimum variance of error of this detector?
 		
 		We can use a Linear MMSE receiver to estimate of $\mathbf{x}$, which we denote as $\mathbf{\hat{x}}$. In this receiver, we chose a linear transformation matrix $\mathbf{A}$ to minimize the following MSE:
