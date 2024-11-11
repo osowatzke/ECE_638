@@ -748,63 +748,11 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 				\end{bmatrix}
 			\end{equation*}
 			
-			Note that the last entry in $\mathbf{\tilde{R}}$ is not proportional to $b_L$ as was the case with the Almouti code example presented in class. We may be tempted to use the pseudo inverse to solve for $\mathbf{\tilde{x}}$ from these equations. However, with complex $\mathbf{\tilde{R}}$ and complex $\mathbf{\tilde{Q}^{\dagger}\tilde{y}}$, we are not guaranteed a real solution for $\mathbf{\tilde{x}}$.
+			Note that the last entry in $\mathbf{\tilde{R}}$ is not proportional to $b_L$ as was the case with the Almouti code example presented in class. We may be tempted to use the Moore-Penrose pseudo inverse to solve for $\mathbf{\tilde{x}}$ from these equations. However, with complex $\mathbf{\tilde{R}}$ and complex $\mathbf{\tilde{Q}^{\dagger}\tilde{y}}$, we are not guaranteed a real solution for $\mathbf{\tilde{x}}$.
 			
-			Instead, we need to create a set of 8 equations, 4 for the real part of $\mathbf{\tilde{Q}^{\dagger}\tilde{y}} = \mathbf{\tilde{R}\tilde{x}} + \mathbf{\tilde{Q}^{\dagger}\tilde{z}}$ and another 4 for the imaginary part. Specifically, we can express $\mathbf{\tilde{Q}}^{\dagger}\mathbf{\tilde{y}}$ and $\mathbf{\tilde{Q}}^{\dagger}\mathbf{\tilde{z}}$ as follows:
+			Instead, we need to create a set of 8 equations, 4 for the real part of $\mathbf{\tilde{Q}^{\dagger}\tilde{y}} = \mathbf{\tilde{R}\tilde{x}} + \mathbf{\tilde{Q}^{\dagger}\tilde{z}}$ and another 4 for the imaginary part. Now, we have 8 real equations and 6 unknowns, so we can use the Moore-Penrose pseudo inverse to solve for a real $\mathbf{\tilde{x}}$
 		
-			\begin{equation*}
-				\mathbf{\tilde{Q}}^{\dagger}\mathbf{\tilde{y}} = \begin{bmatrix} y_1 & y_2 & y_3 & y_4
-				\end{bmatrix}^T
-			\end{equation*}
-		
-			\begin{equation*}
-				\mathbf{\tilde{Q}}^{\dagger}\mathbf{\tilde{z}} = \begin{bmatrix} z_1 & z_2 & z_3 & z_4
-				\end{bmatrix}^T
-			\end{equation*}
-		
-			Then, we can define $\mathbf{\breve{Y}}$ and $\mathbf{\breve{Z}}$ as follows:
-		
-			\begin{equation*}
-				\mathbf{\breve{Y}} = \begin{bmatrix} \text{Re}\{y_1\} & \text{Im}\{y_1\} & \cdots & \text{Re}\{y_4\} & \text{Im}\{y_4\} \end{bmatrix}^T
-			\end{equation*}
-		
-			\begin{equation*}
-				\mathbf{\breve{Z}} = \begin{bmatrix} \text{Re}\{z_1\} & \text{Im}\{z_1\} & \cdots & \text{Re}\{z_4\} & \text{Im}\{z_4\} \end{bmatrix}^T
-			\end{equation*}
-		
-			Next, we can define $\mathbf{\breve{R}}$ as follows:
-		
-			\begin{equation*}
-				\mathbf{\breve{R}} = \begin{bmatrix}
-					\text{Re}\{r_{11}\} & \cdots & \text{Re}\{r_{13}\} & \text{Re}\{r_{14}\} & \text{Re}\{r_{15}\} & \text{Re}\{r_{16}\} \\
-					\text{Im}\{r_{11}\} & \cdots & \text{Im}\{r_{13}\} & \text{Im}\{r_{14}\} & \text{Im}\{r_{15}\} & \text{Im}\{r_{16}\} \\
-					\vdots & \ddots & \vdots & \vdots & \vdots \\
-					0 & \cdots & 0 & \text{Re}\{r_{44}\} & \text{Re}\{r_{45}\} & \text{Re}\{r_{46}\} \\
-					0 & \cdots & 0 & \text{Im}\{r_{44}\} & \text{Im}\{r_{45}\} & \text{Im}\{r_{46}\}
-				\end{bmatrix}
-			\end{equation*}
-		
-			Now, we can write the following:
-		
-			\begin{equation*}
-				\mathbf{\breve{Y}} = \mathbf{\breve{R}}\mathbf{\tilde{x}} + \mathbf{\breve{Z}}
-			\end{equation*}
-		
-			We can then use the Moore-Penrose pseudoinverse to solve for $\mathbf{\tilde{x}}$
-			
-			We can find $\mathbf{\tilde{x}}$ by minimizing the error between $\mathbf{\tilde{R}\tilde{x}}$ and $\mathbf{\tilde{Q}^{\dagger}\tilde{y}}$.
-		
-			\begin{equation*}
-				\mathbf{\hat{x}} = \underset{\mathbf{\tilde{x}}}{\text{arg min}}{\norm{\mathbf{\tilde{Q}^{\dagger}\tilde{y}} - \tilde{R}\tilde{x}}_F}
-			\end{equation*}
-		
-			Finally, we can get $\hat{x}_i$ from $\mathbf{\hat{x}}$ as follows:
-		
-			\begin{equation*}
-				\mathbf{\hat{x}} = \begin{bmatrix}\text{Re}(\hat{x}_1) & \text{Im}(\hat{x}_1) & \cdots & \text{Re}(\hat{x}_3) & \text{Im}(\hat{x}_3)\end{bmatrix}^T
-			\end{equation*}
-		
-			To avoid taking the pseudo-inverse, we can instead solve for $\mathbf{\tilde{x}}$ in $\mathbf{\tilde{y}_R} = \mathbf{\tilde{H}_R}\mathbf{\tilde{x}} + \mathbf{\tilde{z}_R}$.
+			To avoid taking the pseudo-inverse, we can instead solve for $\mathbf{\tilde{x}}$ using $\mathbf{\tilde{y}_R} = \mathbf{\tilde{H}_R}\mathbf{\tilde{x}} + \mathbf{\tilde{z}_R}$.
 			
 			where $\mathbf{\tilde{H}_R}$ is defined as follows:
 			
@@ -836,7 +784,7 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 			
 			where $\tilde{y}_{ij}$ and $\tilde{z}_{ij}$ are elements of $\mathbf{\tilde{y}}$ and $\mathbf{\tilde{z}}$
 			
-			Then, we can perform QR decomposition of $\mathbf{\tilde{H}_R}$.
+			Now, we can perform QR decomposition of $\mathbf{\tilde{H}_R}$.
 			
 			Doing so results in the following:
 			
@@ -844,7 +792,7 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 			
 			$\Rightarrow \mathbf{\tilde{Q}^{\dagger}\tilde{y}_R} = \mathbf{\tilde{R}\tilde{x}} + \mathbf{\tilde{Q}^{\dagger}\tilde{z}_R}$
 			
-			Now, the matrix $\mathbf{\tilde{R}}$ has the following form:
+			The matrix $\mathbf{\tilde{R}}$ has the following form:
 			
 			\begin{equation*}
 				\mathbf{\tilde{R}} = \begin{bmatrix}
@@ -858,9 +806,19 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 				\end{bmatrix}
 			\end{equation*}
 			
-			We can setup a set of equations using the first six rows of \newline $\mathbf{\tilde{Q}^{\dagger}\tilde{y}_R} = \mathbf{\tilde{R}\tilde{x}} + \mathbf{\tilde{Q}^{\dagger}\tilde{z}_R}$
+			Therefore, we can setup a set of equations using the first six rows of \newline $\mathbf{\tilde{Q}^{\dagger}\tilde{y}_R} = \mathbf{\tilde{R}\tilde{x}} + \mathbf{\tilde{Q}^{\dagger}\tilde{z}_R}$
 			
 			The last row in the resulting set of equations will be proportional to $b_3$, allowing us to solve for $b_3$. The second to last row will be a linear combination of $a_3$ and $b_3$, allowing us to solve for $a_3$. We can repeat this process for all remaining rows to solve for $\mathbf{\tilde{x}}$.
+
+			$\mathbf{\tilde{x}}$ is related to $\hat{x}_i$ as follows:
+		
+			\begin{equation*}
+				\mathbf{\tilde{x}} = \begin{bmatrix}\text{Re}(\hat{x}_1) & \text{Im}(\hat{x}_1) & \cdots & \text{Re}(\hat{x}_3) & \text{Im}(\hat{x}_3)\end{bmatrix}^T
+			\end{equation*}
+			
+			Therefore, we can easily determine $\hat{x}_i$ using the elements of $\mathbf{\tilde{x}}$.
+			
+			Note that we can also perform QR decomposition of the 4x3 matrix $\mathbf{\tilde{H}}$ given in part a) and solve for $\mathbf{\tilde{x}}$ using the equations in part a). Doing so, we will find a 3x1 complex vector $\mathbf{\tilde{x}}$ that is equivalent to $\mathbf{\hat{x}}$
 		\end{enumerate}		
 	\end{enumerate}
 \end{document}
