@@ -36,7 +36,7 @@
 		Average symbol energy:
 		
 		\begin{equation*}
-			E_{av} = \frac{1}{16}\sum_{i=0}^{16}{E_i} = \frac{1}{16}\sum_{i=0}^{16}{\norm{s_i}^2} = \frac{1}{16}\sum_{i}^{16}{4a^2} = 4a^2
+			E_{av} = \frac{1}{16}\sum_{i=1}^{16}{E_i} = \frac{1}{16}\sum_{i=1}^{16}{\norm{s_i}^2} = \frac{1}{16}\sum_{i=1}^{16}{4a^2} = 4a^2
 		\end{equation*}
 		
 		Define the basis functions as follows:
@@ -67,21 +67,21 @@
 		The constellations points can be expressed in terms of the basis functions as follows:
 		
 		\begin{equation*}
-			s_m(t) = \sum_{k=0}^{3}{a\cos({\pi}n_{mk})\cos\left(\frac{2{\pi}kt}{T}\right)}
+			s_m(t) = \sum_{k=0}^{3}{a\sqrt{\frac{2}{T}}\cos({\pi}n_{mk})\cos\left(\frac{2{\pi}kt}{T}\right)}
 		\end{equation*}
 		
-		where $\{0 \leq n_{mk} \leq 1\ \vert\ n_{mk} \in Z\}$
+		where $n_{mk} \in \{0, 1\}$
 		
 		\begin{equation*}
-			\Rightarrow s_m(t) = \sum_{k=0}^{3}{a\cos\left(\frac{2{\pi}kt}{T}+{\pi}n_{mk}\right)}
+			\Rightarrow s_m(t) = \sum_{k=0}^{3}{a\sqrt{\frac{2}{T}}cos\left(\frac{2{\pi}kt}{T}+{\pi}n_{mk}\right)}
 		\end{equation*}
 		
 		We define $n_{mk}$ as follows for each element of $\mathbf{s_m}$
 		
 		\begin{equation*}
 			n_{mk} = \begin{cases}
-				0 & s_{mk} \geq 0\\
-				1 & s_{mk} < 0
+				0 & s_{mk} = a\\
+				1 & s_{mk} = -a
 			\end{cases}
 		\end{equation*}
 		
@@ -802,6 +802,6 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 				\mathbf{\hat{x}} = \begin{bmatrix}\text{Re}(\hat{x}_1) & \text{Im}(\hat{x}_1) & \cdots & \text{Re}(\hat{x}_3) & \text{Im}(\hat{x}_3)\end{bmatrix}^T
 			\end{equation*}
 		
-		\end{enumerate}
+		\end{enumerate}		
 	\end{enumerate}
 \end{document}
