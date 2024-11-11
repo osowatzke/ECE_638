@@ -836,7 +836,29 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 			
 			Then, we can perform QR decomposition of $\mathbf{\tilde{H}_R}$.
 			
+			Doing so results in the following:
 			
+			$\mathbf{\tilde{y}_R} = \mathbf{\tilde{H}_R\tilde{x}} + \mathbf{\tilde{z}_R} = \mathbf{\tilde{Q}\tilde{R}\tilde{x}} + \mathbf{\tilde{z}_R}$
+			
+			$\Rightarrow \mathbf{\tilde{Q}^{\dagger}\tilde{y}_R} = \mathbf{\tilde{R}\tilde{x}} + \mathbf{\tilde{Q}^{\dagger}\tilde{z}_R}$
+			
+			Now, the matrix $\mathbf{\tilde{R}}$ has the following form:
+			
+			\begin{equation*}
+				\mathbf{\tilde{R}} = \begin{bmatrix}
+					r_{11} & r_{12} & \cdots & r_{15} & r_{16} \\
+					0 & r_{22} & \cdots & r_{25} & r_{26} \\ 
+					\vdots & \vdots & \ddots & \vdots & \vdots \\
+					0 & 0 & \cdots & r_{55} & r_{56} \\
+					0 & 0 & \cdots & 0 & r_{66} \\
+					0 & 0 & \cdots & 0 & 0 \\
+					0 & 0 & \cdots & 0 & 0
+				\end{bmatrix}
+			\end{equation*}
+			
+			We can setup a set of equations using the first six rows of \newline $\mathbf{\tilde{Q}^{\dagger}\tilde{y}_R} = \mathbf{\tilde{R}\tilde{x}} + \mathbf{\tilde{Q}^{\dagger}\tilde{z}_R}$
+			
+			The last row in the resulting set of equations will be proportional to $b_3$, allowing us to solve for $b_3$. The second to last row will be a linear combination of $a_3$ and $b_3$, allowing us to solve for $a_3$. We can repeat this process for all remaining rows to solve for $\mathbf{\tilde{x}}$.
 		\end{enumerate}		
 	\end{enumerate}
 \end{document}
