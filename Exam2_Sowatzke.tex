@@ -146,7 +146,7 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 			\label{fig::equal_gain_combining}
 		\end{figure}
 		
-		The resulting phase error in each branch is denoted as
+		The resulting phase error in each branch will be
 		
 		$\varphi_i(t) = \gamma_i(t) - \hat{\gamma}_i(t)$
 		
@@ -560,7 +560,7 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 			
 			Note that conjugates are unneeded for real data.
 			
-			For the general case, we can also consider the case when $\mathbf{\tilde{H}}$ is full rank. Then, $\mathbf{\tilde{H}}$ is a 4x3 matrix, so $\mathbf{\tilde{H}^{\dagger}\tilde{H}}$ is invertible. 
+			For the general case, we can also consider the case when $\mathbf{\tilde{H}}$ is full rank. $\mathbf{\tilde{H}}$ is a 4x3 matrix, so $\mathbf{\tilde{H}^{\dagger}\tilde{H}}$ is invertible. 
 			
 			$\mathbf{H^+} = (\mathbf{H^{\dagger}H})^{-1}\mathbf{H^{\dagger}} \Rightarrow$
 			
@@ -568,7 +568,7 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 				\mathbf{H^+y} = \underbrace{(\mathbf{H^{\dagger}H})^{-1}\mathbf{H^{\dagger}H}}_{\mathbf{I}}\mathbf{x} + \mathbf{H^+z}
 			\end{equation*}
 			 
-			This only works when $\mathbf{\tilde{H}}$ is full rank. If this is not the case, then the space time code will \textbf{\underline{not}} result in spatial interference cancellation.
+			The above equations only works when $\mathbf{\tilde{H}}$ is full rank. If  $\mathbf{\tilde{H}}$ is not full rank, then the space time code will \textbf{\underline{not}} result in spatial interference cancellation.
 			
 			\begin{figure}[H]
 				\centerline{\fbox{\includegraphics[width=0.6\textwidth]{complex_space_time_code_rx.png}}}
@@ -576,7 +576,7 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 				\label{fig::complex_space_time_code}
 			\end{figure}
 			
-			Note that for a complex space time code a mux has been added to form $\mathbf{\tilde{y}}$ from $\mathbf{y}$. This mux will select the $y^*$ for the second through fourth symbols. Because the space-time code is not an orthogonal space-time block code, the adjoint of $\mathbf{\tilde{H}}$ ($\mathbf{\tilde{H}^{\dagger}}$) has been replaced with the Moore Penrose Pseudo-Inverse of $\mathbf{\tilde{H}}$ ($\mathbf{\tilde{H}^+}$). We can also use QR decomposition to solve for $\mathbf{\hat{x}}$ as shown in the next part of this problem.
+			Note that for a complex space time code a mux has been added to form $\mathbf{\tilde{y}}$ from $\mathbf{y}$. This mux will select the $y^*$ for the second through fourth symbols. Because $\mathbf{X}$ is not an orthogonal space-time block code, the adjoint of $\mathbf{\tilde{H}}$ ($\mathbf{\tilde{H}^{\dagger}}$) has been replaced with the Moore Penrose Pseudo-Inverse of $\mathbf{\tilde{H}}$ ($\mathbf{\tilde{H}^+}$). We can also use QR decomposition to solve for $\mathbf{\hat{x}}$ as shown in the part b) of this problem.
 			
 			For both the real and complex case given above, the coding rate is $3/4$, because 3 symbols are transmitted in 4 symbol intervals.
 			
