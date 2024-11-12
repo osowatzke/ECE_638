@@ -550,7 +550,15 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 			
 			For the space-time block code to be an orthogonal space-time block code, we must be able to write $\mathbf{\tilde{H}^{\dagger}\tilde{H}}$ as $\alpha\mathbf{I}$ where $\alpha$ is a constant.
 			
-			Note that this is not the case in general for the code provided, so the code $\mathbf{X}$ is not an orthogonal space-time block code. However, in a real orthogonal design, the matrix $\mathbf{\tilde{H}}$ is real. This results in $\mathbf{\tilde{H}^\dagger\tilde{H}} = (|h_1|^2 + \cdots + |h_4|^2)\mathbf{I}$. In other words, if $\mathbf{X}$ is a real orthogonal space-time block code operating in a real orthogonal design, we can cancel spatial interference.
+			Note that this is not the case in general for the code provided, so the code $\mathbf{X}$ is not an orthogonal space-time block code. However, in a real orthogonal design, the matrix $\mathbf{\tilde{H}}$ is real. This results in $\mathbf{\tilde{H}^\dagger\tilde{H}} = (|h_1|^2 + \cdots + |h_4|^2)\mathbf{I}$. In other words, if $\mathbf{X}$ is a real orthogonal space-time block code operating within a real orthogonal design, we can cancel spatial interference.
+			
+			\begin{figure}[H]
+				\centerline{\fbox{\includegraphics[width=0.6\textwidth]{real_space_time_code_rx.png}}}
+				\caption{Configuration for Real Space Time Code Receiver.}
+				\label{fig::real_space_time_code}
+			\end{figure}
+			
+			Note that conjugates are unneeded for real data.
 			
 			For the general case, we can also consider the case when $\mathbf{\tilde{H}}$ is full rank. Then, $\mathbf{\tilde{H}}$ is a 4x3 matrix, so $\mathbf{\tilde{H}^{\dagger}\tilde{H}}$ is invertible. 
 			
@@ -560,11 +568,17 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 				\mathbf{H^+y} = \underbrace{(\mathbf{H^{\dagger}H})^{-1}\mathbf{H^{\dagger}H}}_{\mathbf{I}}\mathbf{x} + \mathbf{H^+z}
 			\end{equation*}
 			 
-			it does \textbf{\underline{not}} result in spatial interference cancellation.
+			This only works when $\mathbf{\tilde{H}}$ is full rank. If this is not the case, then the space time code will \textbf{\underline{not}} result in spatial interference cancellation.
 			
-			However, in a real orthogonal design, the matrix $\mathbf{\tilde{H}}$ is real. This results in $\mathbf{\tilde{H}^\dagger\tilde{H}} = (|h_1|^2 + \cdots + |h_4|^2)\mathbf{I}$. In other words, spatial interference cancellation is realized.
+			\begin{figure}[H]
+				\centerline{\fbox{\includegraphics[width=0.6\textwidth]{complex_space_time_code_rx.png}}}
+				\caption{Configuration for Complex Space Time Code Receiver.}
+				\label{fig::complex_space_time_code}
+			\end{figure}
 			
-			In this case, the coding rate would be $3/4$, because 3 symbols are transmitted in 4 symbol intervals.
+			Note that for a complex space time code a mux has been added to form $\mathbf{\tilde{y}}$ from $\mathbf{y}$. This mux will select the $y^*$ for the second through fourth symbols. Because the space-time code is not an orthogonal space-time block code, the adjoint of $\mathbf{\tilde{H}}$ ($\mathbf{\tilde{H}^{\dagger}}$) has been replaced with the Moore Penrose Pseudo-Inverse of $\mathbf{\tilde{H}}$ ($\mathbf{\tilde{H}^+}$). We can also use QR decomposition to solve for $\mathbf{\hat{x}}$ as shown in the next part of this problem.
+			
+			For both the real and complex case given above, the coding rate is $3/4$, because 3 symbols are transmitted in 4 symbol intervals.
 			
 			\item Represent the signaling matrix $\mathbf{X}$ in the same fashion as for linear space-time (LST) codes. If the channel matrix is given by $\mathbf{H}=\begin{bmatrix} h_1 & h_2 & h_3 & h_4 \end{bmatrix}$ using detection approach for LST determine the equations for the estimated symbols $\hat{x}_i$.
 			
@@ -844,7 +858,7 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 			
 			Therefore, we can easily determine $\hat{x}_i$ using the elements of $\mathbf{\tilde{x}}$.
 			
-			Note that we can also perform QR decomposition of the 4x3 matrix $\mathbf{\tilde{H}}$ given in part a) and solve for $\mathbf{\tilde{x}}$ using the equations in part a). Doing so, we will find a 3x1 complex vector $\mathbf{\tilde{x}}$ that is equivalent to $\mathbf{\hat{x}}$
+			Note that we can also perform QR decomposition of the 4x3 matrix $\mathbf{\tilde{H}}$ given in part a) and solve for $\mathbf{\tilde{x}}$ using the equations in part a). Doing so, we will find a 3x1 complex vector $\mathbf{\tilde{x}}$, which we can use as $\mathbf{\hat{x}}$
 		\end{enumerate}		
 	\end{enumerate}
 \end{document}
