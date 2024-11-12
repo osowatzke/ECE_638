@@ -512,8 +512,10 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 			\end{equation*}
 			
 			\begin{equation*}
-				\mathbf{\tilde{Y}} = \mathbf{\tilde{H}x} + \mathbf{\tilde{z}}
+				\mathbf{\tilde{y}} = \mathbf{\tilde{H}x} + \mathbf{\tilde{z}}
 			\end{equation*}
+			
+			We can attempt to solve for $\mathbf{x} = \begin{bmatrix} x_1 & x_2 & x_3 \end{bmatrix}^T$ assuming that $\mathbf{X}$ is an orthogonal space time code:
 			
 			\begin{equation*}
 				\mathbf{\tilde{H}^\dagger\tilde{Y}} = \mathbf{\tilde{H}^\dagger\tilde{H}x} + \mathbf{\tilde{H}^\dagger\tilde{z}}
@@ -546,9 +548,19 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 				a - a^* = \text{Re}\{a\} + j\text{Im}\{a\} - (\text{Re}\{a\} - j\text{Im}\{a\}) = j2\text{Im}\{a\}
 			\end{equation*}
 			
-			For the space-time block code to result in spatial interference cancellation, we must be able to write $\mathbf{\tilde{H}^{\dagger}\tilde{H}}$ as $\alpha\mathbf{I}$.
+			For the space-time block code to be an orthogonal space-time block code, we must be able to write $\mathbf{\tilde{H}^{\dagger}\tilde{H}}$ as $\alpha\mathbf{I}$ where $\alpha$ is a constant.
 			
-			Note that this is not the case in general for the code provided, so it does \textbf{\underline{not}} result in spatial interference cancellation.
+			Note that this is not the case in general for the code provided, so the code $\mathbf{X}$ is not an orthogonal space-time block code. However, in a real orthogonal design, the matrix $\mathbf{\tilde{H}}$ is real. This results in $\mathbf{\tilde{H}^\dagger\tilde{H}} = (|h_1|^2 + \cdots + |h_4|^2)\mathbf{I}$. In other words, if $\mathbf{X}$ is a real orthogonal space-time block code operating in a real orthogonal design, we can cancel spatial interference.
+			
+			For the general case, we can also consider the case when $\mathbf{\tilde{H}}$ is full rank. Then, $\mathbf{\tilde{H}}$ is a 4x3 matrix, so $\mathbf{\tilde{H}^{\dagger}\tilde{H}}$ is invertible. 
+			
+			$\mathbf{H^+} = (\mathbf{H^{\dagger}H})^{-1}\mathbf{H^{\dagger}} \Rightarrow$
+			
+			\begin{equation*}
+				\mathbf{H^+y} = \underbrace{(\mathbf{H^{\dagger}H})^{-1}\mathbf{H^{\dagger}H}}_{\mathbf{I}}\mathbf{x} + \mathbf{H^+z}
+			\end{equation*}
+			 
+			it does \textbf{\underline{not}} result in spatial interference cancellation.
 			
 			However, in a real orthogonal design, the matrix $\mathbf{\tilde{H}}$ is real. This results in $\mathbf{\tilde{H}^\dagger\tilde{H}} = (|h_1|^2 + \cdots + |h_4|^2)\mathbf{I}$. In other words, spatial interference cancellation is realized.
 			
