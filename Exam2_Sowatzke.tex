@@ -31,21 +31,21 @@
 	\maketitle
 	
 	\begin{enumerate}
-		\item A four-dimensional (4-D) signal constellation is described by the following set of points $\{\pm a, \pm a, \pm a, \pm a\}$ ($a>0$). Different signal constellation points are used with the same probability. Determine the average symbol energy. Chose the appropriate basis functions $\{\Phi_1(t), \Phi_2(t), \Phi_3(t), \Phi_4(t)\}$ and express the signal constellation points in terms of basis functions. For AWGN channel, determine the average symbol error probability as a function of the average energy ($E_{av}$). Evaluate now the average symbol error probability in the presence of Rayleigh fading. Finally, evaluate the symbol error probability in the presence of Rayleigh fading when \underline{maximum-ratio combining diversity} is used. \underline{Note}: Do not evaluate integrals.
+		\item A four-dimensional (4-D) signal constellation is described by the following set of points $\{\pm a, \pm a, \pm a, \pm a\}$ ($a>0$). Different signal constellation points are used with the same probability. Determine the average symbol energy. Chose the appropriate basis functions $\{\Phi_1(t), \Phi_2(t), \Phi_3(t), \Phi_4(t)\}$ and express the signal constellation points in terms of basis functions. For AWGN channel, determine the average symbol error probability as a function of the average energy ($E_\text{av}$). Evaluate now the average symbol error probability in the presence of Rayleigh fading. Finally, evaluate the symbol error probability in the presence of Rayleigh fading when \underline{maximum-ratio combining diversity} is used. \underline{Note}: Do not evaluate integrals.
 
 		Average symbol energy:
 		
 		\begin{equation*}
-			E_{av} = \frac{1}{16}\sum_{i=1}^{16}{E_i} = \frac{1}{16}\sum_{i=1}^{16}{\norm{s_i}^2} = \frac{1}{16}\sum_{i=1}^{16}{4a^2} = 4a^2
+			E_\text{av} = \frac{1}{16}\sum_{i=1}^{16}{E_i} = \frac{1}{16}\sum_{i=1}^{16}{\norm{s_i}^2} = \frac{1}{16}\sum_{i=1}^{16}{4a^2} = 4a^2
 		\end{equation*}
 		
 		Define the basis functions as follows:
 		
 		\begin{equation*}
-			\Phi_k(t) = \sqrt{\frac{2}{T}}\cos\left(\frac{2{\pi}kt}{T}\right),\quad 0 \leq t < T
+			\Phi_k(t) = \sqrt{\frac{2}{T}}\cos\left(\frac{2{\pi}(k-1)t}{T}\right),\quad 0 \leq t < T,\quad k \in \{1,4\}
 		\end{equation*}
 		
-		We can prove the basis functions form an orthonormal basis:
+		We can prove these basis functions form an orthonormal basis:
 		
 		\begin{equation*}
 			\int_{0}^{T}{\Phi_j(t)\Phi_k^*(t)dt} = \frac{2}{T}\int_{0}^{T}{\cos\left(\frac{2{\pi}jt}{T}\right)\cos\left(\frac{2{\pi}kt}{T}\right)dt}
@@ -76,7 +76,7 @@
 			\Rightarrow s_m(t) = \sum_{k=0}^{3}{a\sqrt{\frac{2}{T}}cos\left(\frac{2{\pi}kt}{T}+{\pi}n_{mk}\right)}
 		\end{equation*}
 		
-		We define $n_{mk}$ as follows for each element of $\mathbf{s_m}$
+		We define $n_{mk}$ as follows for each element $s_{mk}$ of a constellation point $\mathbf{s_m}$:
 		
 		\begin{equation*}
 			n_{mk} = \begin{cases}
@@ -96,7 +96,7 @@
 		For each point in the constellation, there will be $M_{d_\text{min}} = 4$ nearest neighbors (one element different and all others the same). For each nearest neighbor, $d_\text{min} = 2a$.
 		
 		\begin{equation*}
-			\Rightarrow P_s(\rho) \approx 4Q\left(\frac{2a}{\sqrt{2N_0}}\right) = 4Q\left(\sqrt{\frac{E_{av}}{2N_0}}\right)= 4Q\left(\sqrt{\frac{\rho}{2}}\right)
+			\Rightarrow P_s(\rho) \approx 4Q\left(\frac{2a}{\sqrt{2N_0}}\right) = 4Q\left(\sqrt{\frac{E_\text{av}}{2N_0}}\right)= 4Q\left(\sqrt{\frac{\rho}{2}}\right)
 		\end{equation*}
 		
 		In Rayleigh fading, the average probability of symbol error is given as follows:
