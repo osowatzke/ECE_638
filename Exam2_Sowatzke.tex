@@ -42,7 +42,7 @@
 		Define the basis functions as follows:
 		
 		\begin{equation*}
-			\Phi_k(t) = \sqrt{\frac{2}{T}}\cos\left(\frac{2{\pi}(k-1)t}{T}\right),\quad 0 \leq t < T,\quad k \in \{1,4\}
+			\Phi_k(t) = \sqrt{\frac{2}{T}}\cos\left(\frac{2{\pi}kt}{T}\right),\quad 0 \leq t < T,\quad k \in \{0,3\}
 		\end{equation*}
 		
 		We can prove these basis functions form an orthonormal basis:
@@ -76,7 +76,7 @@
 			\Rightarrow s_m(t) = \sum_{k=0}^{3}{a\sqrt{\frac{2}{T}}cos\left(\frac{2{\pi}kt}{T}+{\pi}n_{mk}\right)}
 		\end{equation*}
 		
-		We define $n_{mk}$ as follows for each element $s_{mk}$ of a constellation point $\mathbf{s_m}$:
+		We define $n_{mk}$ as follows for each element $s_{mk}$ of constellation point $\mathbf{s_m}$:
 		
 		\begin{equation*}
 			n_{mk} = \begin{cases}
@@ -105,7 +105,7 @@
 			\bar{P}_s = \int_{0}^{\infty}{P_s(\rho)f(\rho)d\rho} = \int_{0}^{\infty}{4Q\left(\sqrt{\frac{\rho}{2}}\right)\frac{1}{\bar{\rho}}e^{-\frac{\rho}{\bar{\rho}}}d\rho}
 		\end{equation*}
 		
-		When Maximum-Ratio Combining is Used:
+		Rayleigh Fading with Maximum-Ratio Combining:
 		
 		\begin{equation*}
 			\bar{P}_s = \int_{0}^{\infty}{P_s(\rho)f_{\rho_{\oplus}}(\rho)d\rho} = \int_{0}^{\infty}{P_s(\rho)\frac{\rho^{M-1}e^{-\rho/\bar{\rho}}}{\bar{\rho}^M(M-1)!}d\rho}
