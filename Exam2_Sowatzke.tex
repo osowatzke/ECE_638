@@ -411,21 +411,21 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 		
 		Assume that $\mathbf{x}$ and $\mathbf{z}$ are independent and the elements of $\mathbf{x}$ and $\mathbf{z}$ are zero-mean i.i.d. random variables.
 		
-		$\Rightarrow \text{MSE}(\mathbf{A}) = \text{Tr}[\rho(\mathbf{AH} - \mathbf{I_{M_{Tx}}})(\mathbf{AH} - \mathbf{I_{M_{Tx}}})^{\dagger}] + \text{Tr}[N_0\mathbf{AA^{\dagger}}]$
+		$\Rightarrow \text{MSE}(\mathbf{A}) = \text{Tr}[\bar{\rho}(\mathbf{AH} - \mathbf{I_{M_{Tx}}})(\mathbf{AH} - \mathbf{I_{M_{Tx}}})^{\dagger}] + \text{Tr}[N_0\mathbf{AA^{\dagger}}]$
 		
-		$ = \text{Tr}[\rho(\mathbf{AH} - \mathbf{I_{M_{Tx}}})(\mathbf{AH} - \mathbf{I_{M_{Tx}}})^{\dagger} + N_0\mathbf{AA^{\dagger}}]$
+		$ = \text{Tr}[\bar{\rho}(\mathbf{AH} - \mathbf{I_{M_{Tx}}})(\mathbf{AH} - \mathbf{I_{M_{Tx}}})^{\dagger} + N_0\mathbf{AA^{\dagger}}]$
 		
 		We can minimize the MSE w.r.t $\mathbf{A}$ by setting the MSE variation w.r.t $\mathbf{A}$ to zero.
 		
-		$\delta(\text{MSE}) = \text{Tr}\left\{\delta\mathbf{A}[\rho\mathbf{H}(\mathbf{AH} - \mathbf{I_{M_{Tx}}})^{\dagger} + N_0\mathbf{A}^{\dagger}]\right.$
+		$\delta(\text{MSE}) = \text{Tr}\left\{\delta\mathbf{A}[\bar{\rho}\mathbf{H}(\mathbf{AH} - \mathbf{I_{M_{Tx}}})^{\dagger} + N_0\mathbf{A}^{\dagger}]\right.$
 		
-		$ \left. + [\rho(\mathbf{AH} - \mathbf{I_{M_{Tx}}})\mathbf{H}^{\dagger} + N_0\mathbf{A}]\delta\mathbf{A}^{\dagger}\right\} = 0$
+		$ \left. + [\bar{\rho}(\mathbf{AH} - \mathbf{I_{M_{Tx}}})\mathbf{H}^{\dagger} + N_0\mathbf{A}]\delta\mathbf{A}^{\dagger}\right\} = 0$
 		
 		We can then solve for $\mathbf{A}$. Doing so results in the following:
 		
 		$\mathbf{A_{MMSE}} = \mathbf{H^{\dagger}}(\mathbf{HH^{\dagger}} + \mathbf{I_{M_{Rx}}}/\text{SNR})^{-1} = (\mathbf{H^{\dagger}H} + \mathbf{I_{M_{Tx}}}/\text{SNR})^{-1}\mathbf{H^{\dagger}}$
 		
-		where $SNR = \rho/N_0$
+		where $\text{SNR} = \bar{\rho}/N_0$
 		
 		The transmitted vector can be estimated from the receiver vector as follows:
 		
@@ -436,6 +436,8 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 		$\text{Var}\{(\mathbf{Az},\mathbf{d})\} = N_0\norm{\mathbf{A^{\dagger}d}}^2$
 		
 		where $\mathbf{d} = \mathbf{x} - \mathbf{\hat{x}}$
+		
+		$\Rightarrow \text{Var}\{(\mathbf{Az},\mathbf{d})\} = N_0\norm{\mathbf{H}(\mathbf{H^{\dagger}H}+\mathbf{I_{M_{Tx}}}/\text{SNR})^{-1}\mathbf{d}}^2$
 		
 		\item[5.] The space-time code for number of transmit antennas $M_{TX}=4$, number of receive antennas $M_{RX}=1$, and number of channel's uses $N=4$ is described by the following signaling matrix:
 		
