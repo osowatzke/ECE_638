@@ -560,7 +560,7 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 				\label{fig::real_space_time_code}
 			\end{figure}
 			
-			Note that conjugates are unneeded for real data.
+			Note that we have removed the conjugates for the real case, because they don't change the solution..
 			
 			For the general case, we can also consider the case when $\mathbf{\tilde{H}}$ is full rank. $\mathbf{\tilde{H}}$ is a 4x3 matrix, so $\mathbf{\tilde{H}^{\dagger}\tilde{H}}$ is invertible. 
 			
@@ -570,6 +570,8 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 				\mathbf{H^+y} = \underbrace{(\mathbf{H^{\dagger}H})^{-1}\mathbf{H^{\dagger}H}}_{\mathbf{I}}\mathbf{x} + \mathbf{H^+z}
 			\end{equation*}
 			 
+			In other words, we can cancel spatial interference for the given space-time code using a zero-forcing interface.
+			
 			The above equations only works when $\mathbf{\tilde{H}}$ is full rank. If  $\mathbf{\tilde{H}}$ is not full rank, then the space time code will \textbf{\underline{not}} result in spatial interference cancellation.
 			
 			\begin{figure}[H]
@@ -632,7 +634,7 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 				\end{bmatrix}
 			\end{equation*}
 			
-			We can define define the transmitted vector as follows:
+			We can define the transmitted vector as follows:
 			
 			\begin{equation*}
 				\mathbf{\tilde{x}} = \begin{bmatrix}
@@ -642,7 +644,7 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 			
 			We can also define the noise vector as $\mathbf{\tilde{z}} = \text{vec}(\mathbf{Z})$ and the received vector as $\mathbf{\tilde{y}} = \text{vec}(\mathbf{Y})$.
 			
-			Next, if we define the modified channel matrix as
+			Next, we can define the modified channel matrix as
 			
 			\begin{equation*}
 				\mathbf{\tilde{H}} = \begin{bmatrix}
@@ -779,7 +781,7 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 				\Rightarrow \mathbf{\tilde{Q}^{\dagger}\tilde{y}} = \mathbf{\tilde{R}\tilde{x}} + \mathbf{\tilde{Q}^{\dagger}\tilde{z}}
 			\end{equation*}
 		
-			Note that the $\mathbf{\tilde{H}}$ is a 4x6 matrix. Therefore, QR decomposition will produce a matrix $\mathbf{\tilde{R}}$ of the following form:
+			Note that $\mathbf{\tilde{H}}$ is a 4x6 matrix. Therefore, QR decomposition will produce a matrix $\mathbf{\tilde{R}}$ of the following form:
 		
 			\begin{equation*}
 				\mathbf{\tilde{R}} = \begin{bmatrix}
@@ -826,7 +828,7 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 			
 			where $\tilde{y}_{ij}$ and $\tilde{z}_{ij}$ are elements of $\mathbf{\tilde{y}}$ and $\mathbf{\tilde{z}}$
 			
-			Now, we can perform QR decomposition of $\mathbf{\tilde{H}_R}$.
+			Now, we can perform a QR decomposition of $\mathbf{\tilde{H}_R}$.
 			
 			Doing so results in the following:
 			
@@ -860,7 +862,7 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 			
 			Therefore, we can easily determine $\hat{x}_i$ using the elements of $\mathbf{\tilde{x}}$.
 			
-			Note that we can also perform QR decomposition of the 4x3 matrix $\mathbf{\tilde{H}}$ given in part a) and solve for $\mathbf{\tilde{x}}$ using the equations in part a). Doing so, we will find a 3x1 complex vector $\mathbf{\tilde{x}}$, which we can use as $\mathbf{\hat{x}}$
+			Note that we can also perform a QR decomposition of the 4x3 matrix $\mathbf{\tilde{H}}$ given in part a) and solve for $\mathbf{\tilde{x}}$ using the equations in part a). Doing so, we will find a 3x1 complex vector $\mathbf{\tilde{x}}$, which we can use as $\mathbf{\hat{x}}$
 		\end{enumerate}		
 	\end{enumerate}
 \end{document}
