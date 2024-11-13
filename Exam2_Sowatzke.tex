@@ -122,7 +122,7 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 			f_{R_i}(r_i) = \frac{\alpha_i\mu_i^{\mu_i}r_i^{\alpha_i\mu_i-1}}{\hat{r}_i^{\alpha_i\mu_i}\Gamma(\mu_i)}\text{exp}\left(\mu_i\frac{r_i^{\alpha_i}}{\hat{r}_i^{\alpha_i}}\right),
 		\end{equationCenter}
 		
-		where $\alpha_i > 0$ is the parameter of nonlinearity, $\Gamma(.)$ is the Gamma function, and $\mu_i > 0$ is the inverse of the normalized variance of $r_i^{\alpha_i}$, namely $\mu_i = \text{E}^2\left\{r_i^{\alpha_i}\right\}/\text{Var}\left\{r_i^{\alpha_i}\right\}$, where $\text{E}\{x\}$ is the expectation operator, and $\hat{r}_i$ is a $\alpha_i$-root mean value $\hat{r}_i=\sqrt[\alpha_i]{\text{E}\left\{r_i^{\alpha_i}\right\}}$. If the phase estimation is done from unmodulated carrier by using phase-locked loop (PLL) and if only the Gaussian noise is present in the phase-locked loop circuit, then the PDF of this phase error is
+		where $\alpha_i > 0$ is the parameter of nonlinearity, $\Gamma(.)$ is the Gamma function, and $\mu_i > 0$ is the inverse of the normalized variance of $r_i^{\alpha_i}$, namely $\mu_i = \text{E}^2\left\{r_i^{\alpha_i}\right\}/\text{Var}\left\{r_i^{\alpha_i}\right\}$, where $\text{E}\{.\}$ is the expectation operator, and $\hat{r}_i$ is a $\alpha_i$-root mean value $\hat{r}_i=\sqrt[\alpha_i]{\text{E}\left\{r_i^{\alpha_i}\right\}}$. If the phase estimation is done from unmodulated carrier by using phase-locked loop (PLL) and if only the Gaussian noise is present in the phase-locked loop circuit, then the PDF of this phase error is
 
 		\begin{equationCenter}
 			p_{\varphi_i}(\varphi_i) = \frac{1}{2\pi}\frac{\text{exp}(\zeta_i\text{cos}(\varphi_i))}{I_0(\zeta_i)}, \quad -\pi < \varphi_i \leq \pi,
@@ -153,10 +153,10 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 		The signal at the equal gain combiner output will then be
 		
 		\begin{equation*}
-			s(t) = \sum_{i=1}^{M}{\left(r_i(t)e^{j(\phi(t) + \varphi_i(t))}+n_i(t)\right)} = e^{j\phi(t)}\sum_{i=1}^{M}{r_i(t)e^{j\varphi_i(t)}} + n(t)
+			s(t) = \sum_{i=1}^{L}{\left(r_i(t)e^{j(\phi(t) + \varphi_i(t))}+n_i(t)\right)} = e^{j\phi(t)}\sum_{i=1}^{L}{r_i(t)e^{j\varphi_i(t)}} + n(t)
 		\end{equation*}
 		
-		If the noise on each branch $n_i(t)$ is independent and has noise PSD $N_0$. Then, the noise at the combiner output $n(t)$ has noise PSD $MN_0$.
+		If the noise on each branch $n_i(t)$ is independent and has noise PSD $N_0$. Then, the noise at the combiner output $n(t)$ has noise PSD $LN_0$.
 		
 		The corresponding observation vector is defined by
 		
@@ -170,51 +170,51 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 		where
 		
 		\begin{equation*}
-			r_I = \sum_{i=1}^{M}{r_i\cos(\phi + \varphi_i)} + n_I
+			r_I = \sum_{i=1}^{L}{r_i\cos(\phi + \varphi_i)} + n_I
 		\end{equation*}
 		
 		\begin{equation*}
-			r_Q = \sum_{i=1}^{M}{r_i\sin(\phi + \varphi_i)} + n_Q
+			r_Q = \sum_{i=1}^{L}{r_i\sin(\phi + \varphi_i)} + n_Q
 		\end{equation*}
 		
-		where $n_I$ and $n_Q$ are i.i.d. Gaussian Random variables with variance $M\sigma^2$
+		where $n_I$ and $n_Q$ are i.i.d. Gaussian Random variables with variance $L\sigma^2$
 		
 		First, we consider BPSK modulation. The probability of error should be the same for all symbols, so we consider $\phi = 0$. For given choices of $r_i$ and $\varphi_i$, we find that the probability of bit error is
 		
 		\begin{equation*}
-			P_b = Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\varphi_i)}}{\sigma\sqrt{M}}\right)
+			P_b = Q\left(\frac{\sum_{i=1}^{L}{r_i\cos(\varphi_i)}}{\sigma\sqrt{L}}\right)
 		\end{equation*}
 		 
-		To find the average probability of bit error we have to integrate across the distributions for $\mathbf{r} = (r_1,...,r_M)$ and $\boldsymbol{\varphi} = (\varphi_1,...,\varphi_M)$.
+		To find the average probability of bit error we have to integrate across the distributions for $\mathbf{r} = (r_1,...,r_L)$ and $\boldsymbol{\varphi} = (\varphi_1,...,\varphi_L)$.
 		
 		\begin{equation*}
 			\bar{P}_b = \int_{\mathbf{r}}{\int_{\boldsymbol{\varphi}}{P_b(\mathbf{r},\boldsymbol{\varphi})p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi})p_{\mathbf{R}}(\mathbf{r})d\boldsymbol{\varphi}}d\mathbf{r}}
 		\end{equation*}
 		
 		\begin{equation*}
-			= \int_{\mathbf{r}}{\int_{\boldsymbol{\varphi}}{Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\varphi_i)}}{\sigma\sqrt{M}}\right)p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi})p_{\mathbf{R}}(\mathbf{r})d\boldsymbol{\varphi}}d\mathbf{r}}
+			= \int_{\mathbf{r}}{\int_{\boldsymbol{\varphi}}{Q\left(\frac{\sum_{i=1}^{L}{r_i\cos(\varphi_i)}}{\sigma\sqrt{L}}\right)p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi})p_{\mathbf{R}}(\mathbf{r})d\boldsymbol{\varphi}}d\mathbf{r}}
 		\end{equation*}
 		
 		If the elements $\mathbf{r}$ are independent then
 		
 		\begin{equation*}
-			p_\mathbf{R}(\mathbf{r}) = \prod_{i=1}^{M}{p_{R_i}(r_i)} = \prod_{i=1}^{M}\left[\frac{\alpha_i\mu_i^{\mu_i}r_i^{\alpha_i\mu_i-1}}{\hat{r}_i^{\alpha_i\mu_i}\Gamma(\mu_i)}\text{exp}\left(\mu_i\frac{r_i^{\alpha_i}}{\hat{r}_i^{\alpha_i}}\right)\right]
+			p_\mathbf{R}(\mathbf{r}) = \prod_{i=1}^{L}{p_{R_i}(r_i)} = \prod_{i=1}^{L}\left[\frac{\alpha_i\mu_i^{\mu_i}r_i^{\alpha_i\mu_i-1}}{\hat{r}_i^{\alpha_i\mu_i}\Gamma(\mu_i)}\text{exp}\left(\mu_i\frac{r_i^{\alpha_i}}{\hat{r}_i^{\alpha_i}}\right)\right]
 		\end{equation*}
 		
 		Similarly, if the elements of $\boldsymbol{\varphi}$ are independent then
 		
 		\begin{equation*}
-			p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi}) = \prod_{i=1}^{M}{p_{\phi}(\phi)} = \prod_{i=1}^{M}\left[\frac{1}{2\pi}\frac{\text{exp}(\zeta_i\text{cos}(\varphi_i))}{I_0(\zeta_i)}\right], \quad -\pi < \varphi_i \leq \pi
+			p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi}) = \prod_{i=1}^{L}{p_{\phi}(\phi)} = \prod_{i=1}^{L}\left[\frac{1}{2\pi}\frac{\text{exp}(\zeta_i\text{cos}(\varphi_i))}{I_0(\zeta_i)}\right], \quad -\pi < \varphi_i \leq \pi
 		\end{equation*}
 		
 		Next, we consider QPSK modulation. The probability of error should be the same for all symbols, so we consider $\phi = \pi/4$. For given choices of $r_i$ and $\varphi_i$, we find that the probability of bit error is
 		
 		\begin{equation*}
-			P_b = \frac{1}{2}Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{M}}\right) + \frac{1}{2}Q\left(\frac{\sum_{i=1}^{M}{r_i\sin(\pi/4 + \varphi_i)}}{\sigma\sqrt{M}}\right)
+			P_b = \frac{1}{2}Q\left(\frac{\sum_{i=1}^{L}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{L}}\right) + \frac{1}{2}Q\left(\frac{\sum_{i=1}^{L}{r_i\sin(\pi/4 + \varphi_i)}}{\sigma\sqrt{L}}\right)
 		\end{equation*}
 		
 		\begin{equation*}
-			= \frac{1}{2}Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{M}}\right) + \frac{1}{2}Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 - \varphi_i)}}{\sigma\sqrt{M}}\right)
+			= \frac{1}{2}Q\left(\frac{\sum_{i=1}^{L}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{L}}\right) + \frac{1}{2}Q\left(\frac{\sum_{i=1}^{L}{r_i\cos(\pi/4 - \varphi_i)}}{\sigma\sqrt{L}}\right)
 		\end{equation*}
 		
 		The first term in the above expression is the probability of error in the first element of the constellation vector, and the second term is the probability of error in the second element. Each term is weighted by 1/2 because they only result in a single bit error within a two-bit symbol.
@@ -228,43 +228,43 @@ the generalized-fading channel model, the signal envelope at the ith receiver br
 		Substituting the expression for $P_b(\mathbf{r},\boldsymbol{\varphi})$:
 		
 		\begin{equation*}
-			\bar{P}_b = \frac{1}{2}\int_{\mathbf{r}}{\int_{\boldsymbol{\varphi}}{\left[Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{M}}\right)\right.}}
+			\bar{P}_b = \frac{1}{2}\int_{\mathbf{r}}{\int_{\boldsymbol{\varphi}}{\left[Q\left(\frac{\sum_{i=1}^{L}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{L}}\right)\right.}}
 		\end{equation*}
 		
 		\begin{equation*}
-			{{\left. + Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 - \varphi_i)}}{\sigma\sqrt{M}}\right)\right]p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi})p_{\mathbf{R}}(\mathbf{r})d\boldsymbol{\varphi}}d\mathbf{r}}
+			{{\left. + Q\left(\frac{\sum_{i=1}^{L}{r_i\cos(\pi/4 - \varphi_i)}}{\sigma\sqrt{L}}\right)\right]p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi})p_{\mathbf{R}}(\mathbf{r})d\boldsymbol{\varphi}}d\mathbf{r}}
 		\end{equation*}
 		
 		$p_{\varphi_i}(\varphi_i)$ is an even function w.r.t. $\varphi_i$.
 		
 		\begin{equation*}
-			\Rightarrow \int_{\varphi_i=-\pi}^{\pi}{Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 - \varphi_i)}}{\sigma\sqrt{M}}\right)p_{\varphi_i}(\varphi_i)d\varphi_i}
+			\Rightarrow \int_{\varphi_i=-\pi}^{\pi}{Q\left(\frac{\sum_{i=1}^{L}{r_i\cos(\pi/4 - \varphi_i)}}{\sigma\sqrt{L}}\right)p_{\varphi_i}(\varphi_i)d\varphi_i}
 		\end{equation*}
 		
 		\begin{equation*}
-			= - \int_{\varphi_i=\pi}^{-\pi}{Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{M}}\right)p_{\varphi_i}(-\varphi_i)d\varphi_i}
+			= - \int_{\varphi_i=\pi}^{-\pi}{Q\left(\frac{\sum_{i=1}^{L}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{L}}\right)p_{\varphi_i}(-\varphi_i)d\varphi_i}
 		\end{equation*}
 		
 		\begin{equation*}
-			= - \int_{\varphi_i=\pi}^{-\pi}{Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{M}}\right)p_{\varphi_i}(\varphi_i)d\varphi_i}
+			= - \int_{\varphi_i=\pi}^{-\pi}{Q\left(\frac{\sum_{i=1}^{L}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{L}}\right)p_{\varphi_i}(\varphi_i)d\varphi_i}
 		\end{equation*}
 		
 		\begin{equation*}
-			= \int_{\varphi_i=-\pi}^{\pi}{Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{M}}\right)p_{\varphi_i}(\varphi_i)d\varphi_i}
+			= \int_{\varphi_i=-\pi}^{\pi}{Q\left(\frac{\sum_{i=1}^{L}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{L}}\right)p_{\varphi_i}(\varphi_i)d\varphi_i}
 		\end{equation*}
 		
 		Therefore, for the provided $p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi})$, $\bar{P}_b$ can be expressed as follows:
 		
 		\begin{equation*}
-			\bar{P}_b = \frac{1}{2}\int_{\mathbf{r}}{\int_{\boldsymbol{\varphi}}{\left[Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{M}}\right)\right.}}
+			\bar{P}_b = \frac{1}{2}\int_{\mathbf{r}}{\int_{\boldsymbol{\varphi}}{\left[Q\left(\frac{\sum_{i=1}^{L}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{L}}\right)\right.}}
 		\end{equation*}
 		
 		\begin{equation*}
-			{{\left. + Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{M}}\right)\right]p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi})p_{\mathbf{R}}(\mathbf{r})d\boldsymbol{\varphi}}d\mathbf{r}}
+			{{\left. + Q\left(\frac{\sum_{i=1}^{L}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{L}}\right)\right]p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi})p_{\mathbf{R}}(\mathbf{r})d\boldsymbol{\varphi}}d\mathbf{r}}
 		\end{equation*}
 		
 		\begin{equation*}
-			= \int_{\mathbf{r}}{\int_{\boldsymbol{\varphi}}{Q\left(\frac{\sum_{i=1}^{M}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{M}}\right)p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi})p_{\mathbf{R}}(\mathbf{r})d\boldsymbol{\varphi}}d\mathbf{r}}
+			= \int_{\mathbf{r}}{\int_{\boldsymbol{\varphi}}{Q\left(\frac{\sum_{i=1}^{L}{r_i\cos(\pi/4 + \varphi_i)}}{\sigma\sqrt{L}}\right)p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi})p_{\mathbf{R}}(\mathbf{r})d\boldsymbol{\varphi}}d\mathbf{r}}
 		\end{equation*}
 		
 		where $p_\mathbf{R}(\mathbf{r})$ and $p_{\boldsymbol{\varphi}}(\boldsymbol{\varphi})$ are described above.
