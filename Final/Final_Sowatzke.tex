@@ -1,0 +1,55 @@
+\documentclass[fleqn]{article}
+\usepackage[nodisplayskipstretch]{setspace}
+\usepackage{amsmath, nccmath, bm}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{float}
+
+\newcommand{\zerodisplayskip}{
+	\setlength{\abovedisplayskip}{0pt}%
+	\setlength{\belowdisplayskip}{0pt}%
+	\setlength{\abovedisplayshortskip}{0pt}%
+	\setlength{\belowdisplayshortskip}{0pt}%
+	\setlength{\mathindent}{0pt}}
+	
+\newcommand{\norm}[1]{\left \lVert #1 \right \rVert}
+
+\makeatletter
+	\newenvironment{equationCenter}{\@fleqnfalse\begin{equation*}}{\end{equation*}}
+\makeatother
+
+\title{Final Exam}
+\author{Owen Sowatzke}
+\date{December 12, 2024}
+
+\begin{document}
+
+	\offinterlineskip
+	\setlength{\lineskip}{12pt}
+	\setcounter{MaxMatrixCols}{20}
+	\zerodisplayskip
+	\maketitle
+	
+	\begin{enumerate}
+		\item[2.] An $(n,k)$ linear block code is described by the following parity-check matrix:
+		
+		\begin{equationCenter}
+			\mathbf{H} = \begin{bmatrix}
+				0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+				0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+				0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 \\
+				1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1
+			\end{bmatrix}
+		\end{equationCenter}
+		
+		\begin{enumerate}
+			\item Determine the code parameters of this code: codeword length, number of information
+bits, code rate, overhead, minimum distance, error correction capability, and error
+detection capability.
+
+			\item Represent the $\mathbf{H}$-matrix in systematic form and determine the generator matrix $\mathbf{G}$ of the corresponding systematic code. Provide the corresponding shift register based
+encoding circuit of this systematic code.
+		\end{enumerate}
+	\end{enumerate}
+\end{document}
