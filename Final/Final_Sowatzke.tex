@@ -5,6 +5,7 @@
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{caption}
 
 \newcommand{\zerodisplayskip}{
 	\setlength{\abovedisplayskip}{0pt}%
@@ -32,6 +33,23 @@
 	\maketitle
 	
 	\begin{enumerate}
+		\item In Figure 1 is shown a $2 \times 2$ polarization-time coding MIMO scheme, which
+employs dual-polarization transmit and receive antennas. Due to multipath effect, the
+initial orthogonality of polarization states is no longer preserved on a receiver side and
+we can use the channel coefficients as shown in Fig. 1 to describe this depolarization
+effect. Show that $2 \times 2$ scheme can be used to deal with depolarization effect.
+Determine the array, diversity and multiplexing gains of this scheme. How would you
+determine the channel capacity of this scheme? Consider now a MIMO scheme
+employing two dual-polarization Tx antennas and two dual-polarization Rx antennas.
+How would approach this system to deal simultaneously with depolarization and
+multipath effects? How would you determine the channel capacity of this scheme?
+
+		\begin{figure}[H]
+			\centerline{\fbox{\includegraphics[width=0.8\textwidth]{2x2_polarization_time_coding_mimo.png}}}
+			\caption{}
+			\label{fig::2x2_polarization_time_coding_mimo}
+		\end{figure}
+
 		\item[2.] An $(n,k)$ linear block code is described by the following parity-check matrix:
 		
 		\begin{equationCenter}
@@ -56,5 +74,7 @@ common way of extending the code is by adding an overall parity-check bit. The e
 
 			\item Determine the code parameters of the extended code in (c): codeword length, number of information bits, code rate, overhead, minimum distance, error correction capability, and error detection capability.
 		\end{enumerate}
+		
+		\
 	\end{enumerate}
 \end{document}
