@@ -78,6 +78,53 @@
 		
 		\item In this problem we are concerned with designing an OFDM system that can provide data rate $\geq 50$ Mb/s for available bandwidth of 20 MHz, and which can tolerate the delay spread of up to 100 ns. Provide the design of such a system and describe the corresponding OFDM transceiver.
 		
+		The guard time should be 2-4 times RMS of delay spread.
+		
+		Let guard time be $4\times$ RMS of delay spread.
+		
+		\begin{equation*}
+			\Rightarrow \text{Guard Time} = \mathbf{400\ ns}
+		\end{equation*}
+		
+		Symbol duration should be at least $5\times$ the guard time. 
+		
+		Let symbol duration by $5\times$ guard time
+		
+		\begin{equation*}
+			\Rightarrow \text{Symbol Duration} = \mathbf{2\ \mu{s}}
+		\end{equation*}
+		
+		Subcarrier spacing:
+		
+		\begin{equation*}
+			{\Delta}f_{sc} = 1/(T_s - T_G) = \mathbf{625\ \text{\textbf{kHz}}}
+		\end{equation*}
+		
+		Number of carriers = (the required bit rate) / (OFDM symbol rate)
+		
+		= (the required bit rate) * (OFDM symbol duration)
+		 
+		\begin{equation*}
+			= 50\ \text{Mbps} \times 2\ {\mu}s = \mathbf{100\ \text{\textbf{bits per OFDM symbol}}}
+		\end{equation*}
+		
+		Determine minimum number of bits per symbol before rate coding:
+		
+		\begin{equation*}
+			100\ \text{bits} \times \frac{625\ \text{kHz}/\text{symbol}}{20\ \text{MHz}} = 3.125
+		\end{equation*}
+		
+		$\Rightarrow$ At least 4 bits per symbol before rate coding. 
+		
+		Example rates and coding:
+		
+		Option 1: 16-QAM and $1/2$ rate coding: 50 subcarriers (2 bits per symbol per subcarrier)
+		
+		Option 2: QPSK with $3/4$ rate coding (1.5 bits per symbol per carrier): 75 subcarriers.
+		
+		128
+		
+		
 		\item This problem is related to \textbf{coded-modulation applied to 9-ary 2-D constellation} described in Problem 3, in the presence of Nakagami fading and AWGN.
 		
 		\begin{enumerate}
