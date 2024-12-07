@@ -54,6 +54,48 @@
 		
 		\begin{enumerate}
 			\item Determine the code parameters of this code: codeword length, number of information bits, code rate, overhead, minimum distance, error correction capability, and error detection capability.
+			
+			$\mathbf{H}$ is a $(n-k) \times n$ matrix.
+
+			$\Rightarrow n = 15,\ k = 11$
+						
+			Codeword length: $n = 15\ \text{bits}$
+			
+			Number of information bits: $k = 11\ \text{bits}$
+			
+			Code rate: $R = k/n = 11/15$
+			
+			Overhead: $n - k = 4\ \text{bits}$
+			
+			The minimum distance of a linear block code is defined by the minimum number of columns of the $\mathbf{H}$-matrix whose sum is equal to the zero vector:
+			
+			Minimum distance: $d_\text{min} = 7$
+			
+			Error correction capability and error detection capability are related to the minimum distance by
+			
+			\begin{equation*}
+				d_{\text{min}} = \geq e_d + e_c + 1
+			\end{equation*}
+			
+			where $e_d$ is the number of detected errors and $e_c$ is the number of corrected errors.
+			
+			To determine error correction capability, we must set $e_d = e_c$ because we must detect the errors in all the bits we correct.
+			
+			\begin{equation*}
+				\Rightarrow d_{\text{min}} \geq 2e_c + 1 \Rightarrow 2e_c \leq d_{\text{min}} - 1 \Rightarrow e_c \leq 3
+			\end{equation*}
+			
+			$\therefore$ we can correct up to 3 bits in error.
+			
+			To determine error detection capability, we must set $e_c = 0$ because we are only responsible for detecting errors.
+			
+			\begin{equation*}
+				\Rightarrow d_{\text{min}} \geq e_d + 1 \Rightarrow e_d \leq d_{\text{min}} - 1 \Rightarrow e_d \leq 6
+			\end{equation*}
+			
+			$\therefore$ we can detect up to 6 bits in error.
+			
+			%\begin{equation*}
 
 			\item Represent the $\mathbf{H}$-matrix in systematic form and determine the generator matrix $\mathbf{G}$ of the corresponding systematic code. Provide the corresponding shift register based encoding circuit of this systematic code.
 
