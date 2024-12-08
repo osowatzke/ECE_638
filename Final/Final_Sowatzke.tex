@@ -98,7 +98,50 @@
 			%\begin{equation*}
 
 			\item Represent the $\mathbf{H}$-matrix in systematic form and determine the generator matrix $\mathbf{G}$ of the corresponding systematic code. Provide the corresponding shift register based encoding circuit of this systematic code.
-
+			
+			The systematic form of $\mathbf{H}$ is given as follows:
+			
+			\begin{equation*}
+				\mathbf{H} = \left[\begin{array}{c|c}
+					\mathbf{P^T} & \mathbf{I}
+				\end{array}\right]
+			\end{equation*}
+			
+			We should be able to use row operations and column permutations to put $\mathbf{H}$ in the requested form. The columns of $\mathbf{H}$ that form an identity matrix are already present. Using column permutations, we can find the systematic form, which is given below:
+			
+			\begin{equation*}
+				\mathbf{H} = \begin{bmatrix}
+					0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 \\
+					0 & 1 & 1 & 1 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 1 & 0 & 0 \\
+					1 & 0 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 0 \\
+					1 & 1 & 0 & 1 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 1
+				\end{bmatrix}
+			\end{equation*}
+		
+			The systematic generator matrix $\mathbf{G}$ is now given as follows:
+			
+			\begin{equation*}
+				\mathbf{G} = \left[\begin{array}{c|c}
+					\mathbf{I} & \mathbf{P}
+				\end{array}\right]
+			\end{equation*}
+			
+			\begin{equation*}
+				\mathbf{G} = \begin{bmatrix}
+					1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1\\
+					0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1\\
+					0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 0\\
+					0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1\\
+					0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 1\\
+					0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0\\
+					0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 1\\
+					0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 1 & 0 & 0\\
+					0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 1\\
+					0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 1 & 1 & 0\\
+					0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1
+				\end{bmatrix}
+			\end{equation*}
+			
 			\item The extended code is created by inserting the additional parity-check bits. The most common way of extending the code is by adding an overall parity-check bit. The extended code is then an $(n+1,k)$ code. Determine the bipartite (Tanner) graph of $\mathbf{H}$-matrix of extended code obtained from the original $\mathbf{H}$-matrix above.
 
 			\item Determine the code parameters of the extended code in (c): codeword length, number of information bits, code rate, overhead, minimum distance, error correction capability, and error detection capability.
