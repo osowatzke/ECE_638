@@ -142,6 +142,17 @@
 				\end{bmatrix}
 			\end{equation*}
 			
+			\begin{equation*}
+				\mathbf{x} = \begin{bmatrix}{\begin{array}{c|c}
+					\mathbf{m} & \mathbf{b}			
+				\end{array}}\end{bmatrix} = \mathbf{m}\begin{bmatrix}
+					\begin{array}{c|c}
+						\mathbf{I} & \mathbf{P}
+					\end{array}
+				\end{bmatrix} = \mathbf{mG} 
+				\Rightarrow \mathbf{b} = \mathbf{mP}
+			\end{equation*}
+			
 			\item The extended code is created by inserting the additional parity-check bits. The most common way of extending the code is by adding an overall parity-check bit. The extended code is then an $(n+1,k)$ code. Determine the bipartite (Tanner) graph of $\mathbf{H}$-matrix of extended code obtained from the original $\mathbf{H}$-matrix above.
 
 			\item Determine the code parameters of the extended code in (c): codeword length, number of information bits, code rate, overhead, minimum distance, error correction capability, and error detection capability.
