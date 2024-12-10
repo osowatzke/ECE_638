@@ -174,6 +174,35 @@
 			\end{equation*}
 			
 			\item The extended code is created by inserting the additional parity-check bits. The most common way of extending the code is by adding an overall parity-check bit. The extended code is then an $(n+1,k)$ code. Determine the bipartite (Tanner) graph of $\mathbf{H}$-matrix of extended code obtained from the original $\mathbf{H}$-matrix above.
+			
+			We can XOR the bits of the parity matrix to add an even overall parity check-bit.
+			
+			\begin{equation*}
+				\mathbf{P} = \begin{bmatrix}
+					0 & 0 & 1 & 1 & 0 \\
+					0 & 1 & 0 & 1 & 0 \\
+					0 & 1 & 1 & 0 & 0 \\
+					0 & 1 & 1 & 1 & 1 \\
+					1 & 0 & 0 & 1 & 0 \\
+					1 & 0 & 1 & 0 & 0 \\
+					1 & 0 & 1 & 1 & 1 \\
+					1 & 1 & 0 & 0 & 0 \\
+					1 & 1 & 0 & 1 & 1 \\
+					1 & 1 & 1 & 0 & 1 \\
+					1 & 1 & 1 & 1 & 0
+				\end{bmatrix}
+			\end{equation*}
+			
+			The parity-check matrix is now given as follows:
+			
+			\begin{equation*}
+				\mathbf{H} = \begin{bmatrix}
+					0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 \\
+					0 & 1 & 1 & 1 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 1 & 0 & 0 \\
+					1 & 0 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 0 \\
+					1 & 1 & 0 & 1 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 1
+				\end{bmatrix}
+			\end{equation*}
 
 			\item Determine the code parameters of the extended code in (c): codeword length, number of information bits, code rate, overhead, minimum distance, error correction capability, and error detection capability.
 		\end{enumerate}
