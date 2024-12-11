@@ -33,14 +33,134 @@
 	\maketitle
 	
 	\begin{enumerate}
-		\item In Figure 1 is shown a $2 \times 2$ polarization-time coding MIMO scheme, which employs dual-polarization transmit and receive antennas. Due to multipath effect, the initial orthogonality of polarization states is no longer preserved on a receiver side and we can use the channel coefficients as shown in Fig. 1 to describe this depolarization effect. Show that $2 \times 2$ scheme can be used to deal with depolarization effect. Determine the array, diversity and multiplexing gains of this scheme. How would you determine the channel capacity of this scheme? Consider now a MIMO scheme employing two dual-polarization Tx antennas and two dual-polarization Rx antennas. How would approach this system to deal simultaneously with depolarization and multipath effects? How would you determine the channel capacity of this scheme?
+		\item In Figure 1 is shown a $2 \times 2$ polarization-time coding MIMO scheme, which employs dual-polarization transmit and receive antennas. Due to multipath effect, the initial orthogonality of polarization states is no longer preserved on a receiver side and we can use the channel coefficients as shown in Fig. 1 to describe this depolarization effect. Show that Alamouti $2 \times 2$ scheme can be used to deal with depolarization effect. Determine the array, diversity and multiplexing gains of this scheme. How would you determine the channel capacity of this scheme? Consider now a MIMO scheme employing two dual-polarization Tx antennas and two dual-polarization Rx antennas. How would approach this system to deal simultaneously with depolarization and multipath effects? How would you determine the channel capacity of this scheme?
 
 		\begin{figure}[H]
 			\centerline{\fbox{\includegraphics[width=0.8\textwidth]{2x2_polarization_time_coding_mimo.png}}}
 			\caption{}
 			\label{fig::2x2_polarization_time_coding_mimo}
 		\end{figure}
-
+		
+%		In a MIMO system, the Alamouti $2\times 2$ scheme is implemented using the following code matrix:
+%		
+%		\begin{equation*}
+%			\mathbf{X} = \begin{bmatrix}
+%				x_1 & -x_2^*\\
+%				x_2 & x_1^*
+%			\end{bmatrix}
+%		\end{equation*}
+%		
+%		In the first channel use, the antenna $T_{x_1}$ transmits $x_1$, and the antenna $T_{x_2}$ transmits $x_2$. In the second channel use, the antenna $T_{x_1}$ transmits $-x_2^*$ and the antenna $T_{x_2}$ transmits $x_1^*$.
+%		
+%		For a dual polarization system, we can leverage the Alamouti in a similar manner to determine to deal with the depolarization effect. In the first channel use, we send $s_x$ on the the x-polarization antenna and $s_y$ on the y-polarization antenna. In the second channel use, we send $-s_y^*$ on the x-polarization antenna and $s_x^*$ on the y-polarization antenna.
+%		
+%		The received signal vectors for the first and second channel use are denoted as $\mathbf{r_{i,1}}$ and $\mathbf{r_{i,2}}$ and are denoted as follows:
+%		
+%		\begin{equation*}
+%			\mathbf{r_{i,1}} = \mathbf{Hs_{i,1}}e^{j(\phi_T - \phi_{LO}) + j\phi_{CD}(k)}
+%		\end{equation*}
+%		
+%		\begin{equation*}
+%			\mathbf{r_{i,2}} = \mathbf{Hs_{i,2}}e^{j(\phi_T - \phi_{LO}) + j\phi_{CD}(k)}
+%		\end{equation*}\\
+%		
+%		 The transmitted symbols are now denoted as $s_x$ and $s_y$, and we use $\mathbf{S}$ to denote the code matrix.
+%		
+%		\begin{equation*}
+%			\mathbf{S} = \begin{bmatrix}
+%				s_x & -s_y^*\\
+%				s_y & s_x^*
+%			\end{bmatrix}
+%		\end{equation*}
+%		
+%		FUCK
+%		
+%		\pagebreak
+		
+		\begin{equation*}
+			\begin{bmatrix}
+				r_{x,1} & r_{x,2} \\
+				r_{y,1} & r_{y,2}
+			\end{bmatrix} = \begin{bmatrix}
+				h_{xx} & h_{xy} \\
+				h_{yx} & h_{yy}
+			\end{bmatrix}\begin{bmatrix}
+				s_x & -s_y^* \\
+				s_y & s_x^*
+			\end{bmatrix} + \begin{bmatrix}
+				n_{x,1} & n_{x,2} \\
+				n_{y,1} & n_{y,2}
+			\end{bmatrix}
+		\end{equation*}
+			
+		\begin{equation*}
+				 = \begin{bmatrix}
+				h_{xx}s_x + h_{xy}s_y & -h_{xx}s_y^* + h_{xy}s_x^* \\
+				h_{yx}s_x + h_{yy}s_y & -h_{yx}s_y^* + h_{yy}s_x^*
+			\end{bmatrix} + \begin{bmatrix}
+				n_{x,1} & n_{x,2} \\
+				n_{y,1} & n_{y,2}
+			\end{bmatrix}
+		\end{equation*}
+		
+		We can estimate the transmitted symbols as follows:
+		
+		\begin{equation*}
+			\tilde{s}_x = h_{xx}^*r_{x,1} + h_{xy}r_{x,2}^* + h_{yx}^*r_{y,1} + h_{yy}r_{y,2}^*
+		\end{equation*}
+		
+		\begin{equation*}
+			\tilde{s}_y = h_{xy}^*r_{x,1} - h_{xx}r_{x,2}^* + h_{yy}^*r_{y,1} - h_{yx}r_{y,2}^*
+		\end{equation*}
+		
+		Substituting, we obtain:
+		
+		\begin{equation*}
+			\tilde{s}_x = h_{xx}^*(h_{xx}s_x + h_{xy}s_y) + h_{xy}(-h_{xx}^*s_y + h_{xy}^*s_x) + h_{yx}^*(h_{yx}s_x + h_{yy}s_y)
+		\end{equation*}
+		
+		\begin{equation*}
+			 + h_{yy}(-h_{yx}^*s_y + h_{yy}^*s_x) + \text{noise}
+		\end{equation*}
+		
+		\begin{equation*}
+			= |h_{xx}|^2s_x + h_{xx}^*h_{xy}s_y - h_{xx}^*h_{xy}s_y + |h_{xy}|^2s_x + |h_{yx}|^*s_x + h_{yx}^*h_{yy}s_y
+		\end{equation*}
+		
+		\begin{equation*}
+			- h_{yx}^*h_{yy}s_y + |h_{yy}|^2s_x + \text{noise}
+		\end{equation*}
+		
+		\begin{equation*}
+			= (|h_{xx}|^2 + |h_{xy}|^2 + |h_{yx}|^2 + |h_{xy}|^2)s_x + \text{noise}
+		\end{equation*}
+		
+		\begin{equation*}
+			\tilde{s}_y = h_{xy}^*r_{x,1} - h_{xx}r_{x,2}^* + h_{yy}^*r_{y,1} - h_{yx}r_{y,2}^*
+		\end{equation*}
+		
+		\begin{equation*}
+			= h_{xy}^*(h_{xx}s_x + h_{xy}s_y) - h_{xx}(-h_{xx}^*s_y + h_{xy}^*s_x) + h_{yy}^*(h_{yx}s_x + h_{yy}s_y)
+		\end{equation*}
+		
+		\begin{equation*}
+			- h_{yx}(-h_{yx}^*s_y + h_{yy}^*s_x) + \text{noise}
+		\end{equation*}
+		
+		\begin{equation*}
+			= h_{xx}h_{xy}^*s_x + |h_{xy}|^2s_y + |h_{xx}|^2s_y - h_{xx}h_{xy}^*s_x + h_{yx}h_{yy}^*s_x + |h_{yy}|^2s_y
+		\end{equation*}
+		
+		\begin{equation*}
+			+ |h_{yx}|^2s_y - h_{yx}h_{yy}^*s_x + \text{noise}
+		\end{equation*}
+		
+		\begin{equation*}
+			= (|h_{xx}|^2 + |h_{xy}|^2 + |h_{yx}|^2 + |h_{yy}|^2)s_y + \text{noise}
+		\end{equation*}
+		
+		Looking at $\tilde{s}_x$ and $\tilde{s}_y$, we can see that the Alamouti $2\times 2$ scheme effectively deals with the depolarization effect.
+		
 		\item An $(n,k)$ linear block code is described by the following parity-check matrix:
 		
 		\begin{equationCenter}
