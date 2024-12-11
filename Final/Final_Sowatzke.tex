@@ -368,10 +368,10 @@
 		
 		Symbol duration should be at least $5\times$ the guard time. 
 		
-		Let symbol duration by $5\times$ guard time
+		Let symbol duration be $5\times$ guard time
 		
 		\begin{equation*}
-			\Rightarrow \text{Symbol Duration} = \mathbf{2\ \mu{s}}
+			\Rightarrow \text{Symbol Duration} = \mathbf{2.0\ \mu{s}}
 		\end{equation*}
 		
 		Subcarrier spacing:
@@ -385,25 +385,40 @@
 		= (the required bit rate) * (OFDM symbol duration)
 		 
 		\begin{equation*}
-			= 50\ \text{Mbps} \times 2\ {\mu}s = \mathbf{100\ \text{\textbf{bits per OFDM symbol}}}
+			= 50\ \text{Mbps} \times 2.0\ {\mu}s = \mathbf{100\ \text{\textbf{bits per OFDM symbol}}}
 		\end{equation*}
 		
-		Determine minimum number of bits per symbol before rate coding:
+		Determine the \underline{maximum} number of subcarriers.
 		
 		\begin{equation*}
-			100\ \text{bits} \times \frac{625\ \text{kHz}/\text{symbol}}{20\ \text{MHz}} = 3.125
+			\frac{20\ \text{MHz}}{625\ \text{kHz}} = 32\ \text{subcarriers}
 		\end{equation*}
 		
-		$\Rightarrow$ At least 4 bits per symbol before rate coding. 
+		Consider 64-QAM with 5/6 rate coding (5 bits per symbol per subcarrier).
 		
-		Example rates and coding:
+		\begin{equation*}
+			\Rightarrow \mathbf{20}\ \text{\textbf{subcarriers}}
+		\end{equation*}
 		
-		Option 1: 16-QAM and $1/2$ rate coding: 50 subcarriers (2 bits per symbol per subcarrier)
+		The bandwidth occupied with be
 		
-		Option 2: QPSK with $3/4$ rate coding (1.5 bits per symbol per carrier): 75 subcarriers.
+		$20 \times 625\ \text{kHz} = 12.5\ \text{MHz} < 20\ \text{MHz}$
 		
-		128
+		Additional advantage: 32-point radix-2 FFT/IFFT can be used, leaving 12 zero subcarriers to provide oversampling.
 		
+		An additional requirement is that an integer number of samples must be used within FFT/IFFT interval and in the symbol interval.
+		
+		Let the number of samples per symbol be $40$ samples.
+		
+		\begin{equation*}
+			\Rightarrow \text{Sampling Rate} = 40/2.0{\mu}s = \mathbf{20}\ \text{\textbf{MHz}}
+		\end{equation*}
+		
+		Then, the FFT/IFFT interval will be
+		
+		\begin{equation*}
+			32/20\ \text{MHz} = \mathbf{1.6 {\mu}s}
+		\end{equation*}		
 		
 		\item This problem is related to \textbf{coded-modulation applied to 9-ary 2-D constellation} described in Problem 3, in the presence of Nakagami fading and AWGN.
 		
