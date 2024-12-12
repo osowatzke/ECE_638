@@ -458,31 +458,20 @@
 			\end{equation*}
 			
 			\begin{equation*}
-				= \mathbf{\boldsymbol{4Q(\sqrt{\rho}) + Q(2\sqrt{\rho}\text{\textbf{sin}}(\pi/8))}}
+				= 4Q(\sqrt{\rho}) + Q(2\sqrt{\rho}\text{sin}(\pi/8))
 			\end{equation*}
 			
-			We can use the union bound to estimate the symbol error probability in an AWGN channel:
+			We can integrate the probability of symbol error over the fading distribution to get the average symbol error probability.
 			
 			\begin{equation*}
-				P_e = \sum_{i=1}^{M}{p_iP_e(m_i)} \leq \sum_{i=1}^{M}{p_i\sum_{k=1,k \neq i}^{M}{P(A_{ik})}}
-			\end{equation*}
-			
-			\begin{equation*}
-				= \frac{1}{2}\sum_{i=1}^{M}{p_i\sum_{k=1,k \neq i}^{M}{\text{erfc}\left(\frac{d_{ik}}{2\sqrt{N_0}}\right)}}
+				\bar{P}_s = \int_{0}^{\infty}{P_s(\rho)f_{\rho}(\rho)d\rho}
 			\end{equation*}
 			
 			\begin{equation*}
-				= \frac{1}{2}(0.5)(8)\text{erfc}\left(\frac{1}{2\sqrt{N_0}}\right) + \frac{1}{2}(8)(0.5/8)(8)\text{erfc}\left(\frac{1}{2\sqrt{N_0}}\right)
+				= \int_{0}^{\infty}{(4Q(\sqrt{\rho}) + Q(2\sqrt{\rho}\text{sin}(\pi/8)))\left(\frac{m}{\bar{\rho}}\right)^m\frac{\rho^{m-1}}{\Gamma(m)}\text{exp}\left(-\frac{m\rho}{\bar{\rho}}\right)d\rho}
 			\end{equation*}
 			
-			The union bound can be used to approximate the symbol error probability for sufficiently high SNRs.
-			
-			\begin{equation*}
-				\Rightarrow P_e \approx \frac{1}{2}\sum_{i=1}^{M}{p_i\sum_{k=1,k \neq i}^{M}{\text{erfc}\left(\frac{d_{ik}}{2\sqrt{N_0}}\right)}}
-			\end{equation*}
-			
-			\begin{equation*}
-			\end{equation*}
+			where $m$ is the fading figure.
 			
 			\item Estimate the coding gain for the extended code from Problem 2(c) and use it in incoming (c)-(e) problems.
 			
