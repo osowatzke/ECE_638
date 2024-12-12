@@ -178,7 +178,17 @@
 		
 		The Almouti scheme also prioritizes diversity over multiplexing gain. As such, the multiplexing gain for this system is 1.	
 		
-		The capacity of a MIMO system with CSIR is given by:
+		In an Almouti scheme, we only have CSIR. We also consider the effects of fading, since there is a multi-path effect. Therefore, we consider the ergodic channel capacity.
+		
+		\begin{equation*}
+			C = \underset{\mathbf{R_x}:\ Tr(\mathbf{R_x}) = \rho}{\text{max}}\left\langle W \text{log}_2[\text{det}(\mathbf{I} + \mathbf{HR_xH^{\dagger}})]\right\rangle_{\mathbf{H}}
+		\end{equation*}
+		
+		The optimum input covariance that maximizes ergodic channel capacity is the scaled identity matrix, so that ergodic channel capacity can be written as:
+		
+		\begin{equation*}
+			C = \left\langle W \text{log}_2\left[\text{det}\left(\mathbf{I} + \frac{\bar{\rho}}{M_{Tx}}\mathbf{HH^{\dagger}}\right)\right]\right\rangle_{\mathbf{H}}
+		\end{equation*}
 		
 %		\begin{equation*}
 %			
@@ -468,7 +478,7 @@
 			\end{equation*}
 			
 			\begin{equation*}
-				= \int_{0}^{\infty}{(4Q(\sqrt{\rho}) + Q(2\sqrt{\rho}\text{sin}(\pi/8)))\left(\frac{m}{\bar{\rho}}\right)^m\frac{\rho^{m-1}}{\Gamma(m)}\text{exp}\left(-\frac{m\rho}{\bar{\rho}}\right)d\rho}
+				\approx \int_{0}^{\infty}{(4Q(\sqrt{\rho}) + Q(2\sqrt{\rho}\text{sin}(\pi/8)))\left(\frac{m}{\bar{\rho}}\right)^m\frac{\rho^{m-1}}{\Gamma(m)}\text{exp}\left(-\frac{m\rho}{\bar{\rho}}\right)d\rho}
 			\end{equation*}
 			
 			where $m$ is the fading figure.
@@ -489,6 +499,18 @@
 			
 			\item Determine the optimum power adaptation strategy as well as the corresponding the spectral efficiency of this scheme, in the presence of fading and AWGN.
 			
+			% Not sure if this is right.
+			
+%			The optimum power adaptation policy is given by
+%			
+%			\begin{equation*}
+%				\frac{P(\rho)}{\bar{P}} = \begin{cases}
+%					1/\rho_{tsh} - 1/\rho K, & \rho \geq p_{tsh}/K \\
+%					0, & \rho < \rho_{tsh}/K
+%				\end{cases}
+%			\end{equation*}
+%			
+%			where 
 			\item Describe the channel inversion technique for this signal constellation and determine the corresponding spectral efficiency, in the presence of fading and AWGN.
 			
 			\item Describe the truncated channel inversion technique for this signal constellation and determine the corresponding spectral efficiency, in the presence of fading and AWGN.
