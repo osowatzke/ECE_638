@@ -178,6 +178,12 @@
 		
 		The Almouti scheme also prioritizes diversity over multiplexing gain. As such, the multiplexing gain for this system is 1.	
 		
+		The capacity of a MIMO system with CSIR is given by:
+		
+%		\begin{equation*}
+%			
+%		\end{equation*}
+		
 		To handle simultaneously deal with depolarization and multipath effects, we can employ a $4 \times 4$ MIMO techniques. Specifically, we can use $4 \times 4$ space-time code to simultaneously deal with depolarization and multipath effects.
 		
 		For space-time block coding, we have
@@ -187,7 +193,6 @@
 		\end{equation*}
 			
 		where $Y$ is the received vector and $\mathbf{X}$ is the transmit 
-		
 		
 		\item An $(n,k)$ linear block code is described by the following parity-check matrix:
 		
@@ -217,7 +222,9 @@
 			
 			The minimum distance of a linear block code is defined by the minimum number of columns of the $\mathbf{H}$-matrix whose sum is equal to the zero vector:
 			
-			Minimum distance: $d_\text{min} = 7$
+			The first 3 columns of the provided $\mathbf{H}$-matrix sum to the zero vector, and there are no duplicated columns.
+			
+			$\therefore$ Minimum distance: $d_\text{min} = 3$
 			
 			Error correction capability and error detection capability are related to the minimum distance by
 			
@@ -230,18 +237,18 @@
 			To determine error correction capability, we must set $e_d = e_c$ because we must detect the errors in all the bits we correct.
 			
 			\begin{equation*}
-				\Rightarrow d_{\text{min}} \geq 2e_c + 1 \Rightarrow 2e_c \leq d_{\text{min}} - 1 \Rightarrow e_c \leq 3
+				\Rightarrow d_{\text{min}} \geq 2e_c + 1 \Rightarrow 2e_c \leq d_{\text{min}} - 1 \Rightarrow e_c \leq 1
 			\end{equation*}
 			
-			$\therefore$ we can correct up to 3 bits in error.
+			$\therefore$ we can correct up to 1 bits in error.
 			
 			To determine error detection capability, we must set $e_c = 0$ because we are only responsible for detecting errors.
 			
 			\begin{equation*}
-				\Rightarrow d_{\text{min}} \geq e_d + 1 \Rightarrow e_d \leq d_{\text{min}} - 1 \Rightarrow e_d \leq 6
+				\Rightarrow d_{\text{min}} \geq e_d + 1 \Rightarrow e_d \leq d_{\text{min}} - 1 \Rightarrow e_d \leq 2
 			\end{equation*}
 			
-			$\therefore$ we can detect up to 6 bits in error.
+			$\therefore$ we can detect up to 2 bits in error.
 			
 			%\begin{equation*}
 
