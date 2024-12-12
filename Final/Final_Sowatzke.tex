@@ -181,20 +181,20 @@
 		In an Almouti scheme, we only have CSIR. We also consider the effects of fading, since there is a multi-path effect. Therefore, we consider the ergodic channel capacity.
 		
 		\begin{equation*}
-			C = \underset{\mathbf{R_x}:\ Tr(\mathbf{R_x}) = \rho}{\text{max}}\left\langle W \text{log}_2[\text{det}(\mathbf{I} + \mathbf{HR_xH^{\dagger}})]\right\rangle_{\mathbf{H}}
+			C = \underset{\mathbf{R_x}:\ Tr(\mathbf{R_x}) = \rho}{\text{max}}\left\langle W \text{log}_2[\text{det}(\mathbf{I}_{M_{rx}} + \mathbf{HR_xH^{\dagger}})]\right\rangle_{\mathbf{H}}
 		\end{equation*}
 		
 		The optimum input covariance that maximizes ergodic channel capacity is the scaled identity matrix, so that ergodic channel capacity can be written as:
 		
 		\begin{equation*}
-			C = \left\langle W \text{log}_2\left[\text{det}\left(\mathbf{I} + \frac{\bar{\rho}}{M_{Tx}}\mathbf{HH^{\dagger}}\right)\right]\right\rangle_{\mathbf{H}}
+			C = \left\langle W \text{log}_2\left[\text{det}\left(\mathbf{I}_{M_{rx}} + \frac{\bar{\rho}}{M_{Tx}}\mathbf{HH^{\dagger}}\right)\right]\right\rangle_{\mathbf{H}}
 		\end{equation*}
 		
 %		\begin{equation*}
 %			
 %		\end{equation*}
 		
-		To handle simultaneously deal with depolarization and multipath effects, we can employ a $4 \times 4$ MIMO techniques. Specifically, we can use $4 \times 4$ space-time code to simultaneously deal with depolarization and multipath effects.
+		To handle simultaneously deal with depolarization and multipath effects, we can employ a $4 \times 4$ MIMO techniques. Specifically, we could use a linear MMSE receiver to solve for $\mathbf{X}$, which will simultaneously deal with depolarization and multipath effects.
 		
 		For space-time block coding, we have
 		
@@ -501,14 +501,34 @@
 			
 			% Not sure if this is right.
 			
-%			The optimum power adaptation policy is given by
-%			
-%			\begin{equation*}
-%				\frac{P(\rho)}{\bar{P}} = \begin{cases}
-%					1/\rho_{tsh} - 1/\rho K, & \rho \geq p_{tsh}/K \\
-%					0, & \rho < \rho_{tsh}/K
-%				\end{cases}
-%			\end{equation*}
+			For adaptive modulation with coding, the optimum power adaptation policy is water-filling and is given by
+			
+			\begin{equation*}
+				\frac{P(\rho)}{\bar{P}} = \begin{cases}
+					1/\rho_{tsh} - 1/\rho K_c, & \rho \geq p_{tsh}/K_c\\
+					0, & \rho < \rho_{tsh}/K_c
+				\end{cases}
+			\end{equation*}
+			
+			where $K_c = KG_c$ and $K$ is a correction factor used to account for the non-optimum signal constellation.
+			
+			\begin{equation*}
+				K = -\frac{1.5\rho}{\text{log}(5P_b)}
+			\end{equation*}
+			
+			In our case, $G_c$ will depend on the implementation. It will be either $G_h$ or $G_s$ depending on whether hard or soft decisions are used.
+			 
+			The spectral efficiency of the scheme is then given by:
+			
+			\begin{equation*}
+				\frac{R}{BW} = \int_{\rho_K}^{\infty}{\text{log}_2\left[\frac{\rho}{\rho_K}\right]f(p)d\rho}
+			\end{equation*}
+			
+			where $\rho_K = \rho_{tsh}/K_c$ and $f(p)$ is the Nakagami distribution given by
+			
+			\begin{equation*}
+				f(p) = \left(\frac{m}{\bar{\rho}}\right)^m\frac{\rho^{m-1}}{\Gamma(m)}\text{exp}\left(-\frac{m\rho}{\bar{\rho}}\right)
+			\end{equation*}
 %			
 %			where 
 			\item Describe the channel inversion technique for this signal constellation and determine the corresponding spectral efficiency, in the presence of fading and AWGN.
