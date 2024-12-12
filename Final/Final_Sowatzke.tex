@@ -250,8 +250,11 @@
 			
 			$\therefore$ we can detect up to 2 bits in error.
 			
+			Note that for this code, we cannot simultaneously correct 1 bit and detect 2 errors. We can either do single bit error correction \textbf{\underline{or}} 2 bit error detection.
+			
 			%\begin{equation*}
 
+			\pagebreak
 			\item Represent the $\mathbf{H}$-matrix in systematic form and determine the generator matrix $\mathbf{G}$ of the corresponding systematic code. Provide the corresponding shift register based encoding circuit of this systematic code.
 			
 			The systematic form of $\mathbf{H}$ is given as follows:
@@ -334,17 +337,17 @@
 			
 			\begin{equation*}
 				\mathbf{P} = \begin{bmatrix}
-					0 & 0 & 1 & 1 & 0 \\
-					0 & 1 & 0 & 1 & 0 \\
-					0 & 1 & 1 & 0 & 0 \\
-					0 & 1 & 1 & 1 & 1 \\
-					1 & 0 & 0 & 1 & 0 \\
-					1 & 0 & 1 & 0 & 0 \\
-					1 & 0 & 1 & 1 & 1 \\
-					1 & 1 & 0 & 0 & 0 \\
-					1 & 1 & 0 & 1 & 1 \\
-					1 & 1 & 1 & 0 & 1 \\
-					1 & 1 & 1 & 1 & 0
+					0 & 0 & 1 & 1 & 1 \\
+					0 & 1 & 0 & 1 & 1 \\
+					0 & 1 & 1 & 0 & 1 \\
+					0 & 1 & 1 & 1 & 0 \\
+					1 & 0 & 0 & 1 & 1 \\
+					1 & 0 & 1 & 0 & 1 \\
+					1 & 0 & 1 & 1 & 0 \\
+					1 & 1 & 0 & 0 & 1 \\
+					1 & 1 & 0 & 1 & 0 \\
+					1 & 1 & 1 & 0 & 0 \\
+					1 & 1 & 1 & 1 & 1
 				\end{bmatrix}
 			\end{equation*}
 			
@@ -356,7 +359,7 @@
 					0 & 1 & 1 & 1 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 1 & 0 & 0 & 0\\
 					1 & 0 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 0 & 0\\
 					1 & 1 & 0 & 1 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 1 & 0\\
-					0 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 1
+					1 & 1 & 1 & 0 & 1 & 1 & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1
 				\end{bmatrix}
 			\end{equation*}
 				
@@ -380,7 +383,7 @@
 			
 			The minimum distance of a linear block code is defined by the minimum number of columns of the $\mathbf{H}$-matrix whose sum is equal to the zero vector:
 			
-			Minimum distance: $d_\text{min} = 11$
+			Minimum distance: $d_\text{min} = 4$
 			
 			Error correction capability and error detection capability are related to the minimum distance by
 			
@@ -393,18 +396,20 @@
 			To determine error correction capability, we must set $e_d = e_c$ because we must detect the errors in all the bits we correct.
 			
 			\begin{equation*}
-				\Rightarrow d_{\text{min}} \geq 2e_c + 1 \Rightarrow 2e_c \leq d_{\text{min}} - 1 \Rightarrow e_c \leq 5
+				\Rightarrow d_{\text{min}} \geq 2e_c + 1 \Rightarrow 2e_c \leq d_{\text{min}} - 1 \Rightarrow e_c \leq 1.5
 			\end{equation*}
 			
-			$\therefore$ we can correct up to 5 bits in error.
+			$\therefore$ we can correct up to 1 bits in error.
 			
 			To determine error detection capability, we must set $e_c = 0$ because we are only responsible for detecting errors.
 			
 			\begin{equation*}
-				\Rightarrow d_{\text{min}} \geq e_d + 1 \Rightarrow e_d \leq d_{\text{min}} - 1 \Rightarrow e_d \leq 10
+				\Rightarrow d_{\text{min}} \geq e_d + 1 \Rightarrow e_d \leq d_{\text{min}} - 1 \Rightarrow e_d \leq 3
 			\end{equation*}
 			
-			$\therefore$ we can detect up to 10 bits in error.
+			$\therefore$ we can detect up to 3 bits in error.
+			
+			Note that for this code, we cannot simultaneously correct 1 bit and detect 3 errors. However, we can do single bit error correction and detect a single uncorrected bit \textbf{\underline{or}} we can do 3 bit error detection.
 		\end{enumerate}
 		
 		\item This problem is related to the \textbf{adaptive modulation and coding applied to 9-ary 2-D constellation} described below, transmitted over wireless channel in the presence of Nakagami fading and AWGN. The eight constellation points in this 2-D constellation are placed on a circle of radius 1. The last (ninth) point is placed in the origin. Assume that the point in the origin appears with probability 0.5, all others with probability 0.5/8. For channel coding use the extended code from Problem 2(c).
