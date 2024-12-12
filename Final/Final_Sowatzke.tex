@@ -533,7 +533,24 @@
 %			where 
 			\item Describe the channel inversion technique for this signal constellation and determine the corresponding spectral efficiency, in the presence of fading and AWGN.
 			
+			In the channel inversion technique, we maintain a fixed receive SNR and transmit a fixed-rate modulation that meets the target SNR. The spectral efficiency is given by:
+			
+			\begin{equation*}
+				\frac{R}{BW} = \text{log}_2\left[1 + K_c\frac{1}{\langle1/\rho\rangle}\right]
+			\end{equation*}
+			
+			where $K_c$ is the defined above.
+			
 			\item Describe the truncated channel inversion technique for this signal constellation and determine the corresponding spectral efficiency, in the presence of fading and AWGN.
+			
+			The truncated channel inversion technique inverts the power to maintain fixed received SNR, so long as the SNR exceeds a threshold ($\rho_{tsh}$). This threshold is chosen to maximize the spectral efficiency. The spectral efficiency is given by:
+			
+			\begin{equation*}
+				\frac{R}{BW} = \underset{\rho_{tsh}}{\text{max}}\ \text{log}_2\left[1 + K_c\frac{1}{\langle1/\rho\rangle_{\rho_{tsh}}}\right]P(\rho > \rho_{tsh})
+			\end{equation*}
+			
+			where $K_c$ is the defined above.
+			
 		\end{enumerate}
 		
 		\item In this problem we are concerned with designing an OFDM system that can provide data rate $\geq 50$ Mb/s for available bandwidth of 20 MHz, and which can tolerate the delay spread of up to 100 ns. Provide the design of such a system and describe the corresponding OFDM transceiver.
