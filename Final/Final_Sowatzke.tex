@@ -417,6 +417,73 @@
 		\begin{enumerate}
 			\item Determine the average symbol error probability for this modulation format in the presence of fading and AWGN.
 			
+			The average symbol energy is defined by:
+			
+			\begin{equation*}
+				E_{av} = \sum_{i=1}^{9}{p_iE_i} = \sum_{i=1}^{9}{p_i\norm{\mathbf{s_i}}^2} = 0.5(0) + 8(0.5/8)(1) = 0.5
+			\end{equation*}
+			
+			The symbol error probability in an AWGN channel can be expressed as follows:
+			
+			\begin{equation*}
+				P_e = \sum_{i=1}^{9}{p_iP_e(m_i)}
+			\end{equation*}
+				
+			For sufficiently high SNR, we can estimate $P_e(m_i)$ with the nearest neighbor approximation.
+			
+			\begin{equation*}
+				P_e(m_i) \approx M_{dmin}Q\left(\frac{d_{min}}{\sqrt{2N_0}}\right)
+			\end{equation*}
+			
+			where $M_{dmin}$ is the number of nearest nearest neighbors to the constellation point of interest and $d_{min}$ is the distance to the nearest neighbors.
+			
+			For the constellation point at the origin:
+			
+			\begin{equation*}
+				P_e(m_1) \approx 8Q\left(\frac{\sqrt{2E_{av}}}{{\sqrt{2N_0}}}\right) = 8Q(\sqrt{\rho})
+			\end{equation*}
+			
+			For the constellation points on the circle:
+			
+			\begin{equation*}
+				P_e(m_i) \approx 2Q\left(\frac{\sqrt{2E_{av}}(2\text{sin}(\pi/8))}{{\sqrt{2N_0}}}\right) = 2Q(2\sqrt{\rho}\text{sin}(\pi/8))\ \forall\ 2 \leq i \leq 9
+			\end{equation*}
+			
+			where $\rho$ is the SNR of the symbol.
+			
+			$\therefore$, assuming high SNR, we can estimate the symbol error in an AWGN channel as follows:
+			
+			\begin{equation*}
+				P_s(\rho) \approx (0.5)8Q(\sqrt(\rho)) + (0.5/8)(8)2Q(2\sqrt{\rho}\text{sin}(\pi/8))
+			\end{equation*}
+			
+			\begin{equation*}
+				= \mathbf{\boldsymbol{4Q(\sqrt{\rho}) + Q(2\sqrt{\rho}\text{\textbf{sin}}(\pi/8))}}
+			\end{equation*}
+			
+			We can use the union bound to estimate the symbol error probability in an AWGN channel:
+			
+			\begin{equation*}
+				P_e = \sum_{i=1}^{M}{p_iP_e(m_i)} \leq \sum_{i=1}^{M}{p_i\sum_{k=1,k \neq i}^{M}{P(A_{ik})}}
+			\end{equation*}
+			
+			\begin{equation*}
+				= \frac{1}{2}\sum_{i=1}^{M}{p_i\sum_{k=1,k \neq i}^{M}{\text{erfc}\left(\frac{d_{ik}}{2\sqrt{N_0}}\right)}}
+			\end{equation*}
+			
+			\begin{equation*}
+				= \frac{1}{2}(0.5)(8)\text{erfc}\left(\frac{1}{2\sqrt{N_0}}\right) + \frac{1}{2}(8)(0.5/8)(8)\text{erfc}\left(\frac{1}{2\sqrt{N_0}}\right)
+			\end{equation*}
+			
+			The union bound can be used to approximate the symbol error probability for sufficiently high SNRs.
+			
+			\begin{equation*}
+				\Rightarrow P_e \approx \frac{1}{2}\sum_{i=1}^{M}{p_i\sum_{k=1,k \neq i}^{M}{\text{erfc}\left(\frac{d_{ik}}{2\sqrt{N_0}}\right)}}
+			\end{equation*}
+			
+			\begin{equation*}
+			\end{equation*}
+			
 			\item Estimate the coding gain for the extended code from Problem 2(c) and use it in incoming (c)-(e) problems.
 			
 			The coding gain when a \textbf{\underline{hard decision}} is applied in the coding process is given as follows:
