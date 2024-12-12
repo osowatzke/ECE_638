@@ -170,11 +170,17 @@
 %		\end{equation*}
 %		
 %		The received SNR is 1/4 the sum of SNR's from 
-%		The array gain is 1, 
-
-		The array gain of the Alamouti scheme is $M_{RX}$ and the diversity gain is $M_{TX}M_{RX}$. Thus, for a $2 \times 2$ Alamouti scheme, the array gain is \textbf{2} and the diversity gain is \textbf{4}.
+%		The array gain is 1, 	
 		
-		The Almouti scheme also prioritizes diversity over multiplexing gain. As such, the multiplexing gain for this system is \textbf{1}.	
+		The array gain of the Alamouti scheme is $M_{RX}$ and the diversity gain is $M_{TX}M_{RX}$. Thus, for a $2 \times 2$ Alamouti scheme, the array gain is \textbf{2} and the diversity gain is \textbf{4}.
+
+		The Almouti scheme also prioritizes diversity over multiplexing gain. As such, the multiplexing gain for this system is \textbf{1}.
+		
+%		We can compute the capacity of the system by considering the increase in SNR due to the array gain.
+%		
+%		\begin{equation*}
+%			C = \langle W \text{log}_2(1 + \rho) \rangle = \left\langle W \text{log}_2 \left(1 + \frac{\rho(|h_{xx}|^2 + \cdots + |h_{yy}|^2)}{2} \right) \right\rangle
+%		\end{equation*}
 		
 		In an Almouti scheme, we only have CSIR. We also must consider the effects of fading, since there are multi-path effects. Therefore, we use ergodic channel capacity to evaluate the capacity:
 		
