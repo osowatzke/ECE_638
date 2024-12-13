@@ -712,6 +712,16 @@
 		\begin{enumerate}
 			\item Describe the transmitter and receiver configuration for 9-ary LDPC-coded modulation for $2\times 2$ MIMO system.
 			
+			\begin{figure}[H]
+				\centerline{\fbox{\includegraphics[width=0.8\textwidth]{ldpc_mimo.png}}}
+				\caption{Transmitter and Receiver Configuration}
+				\label{fig::ldpc_mimo}
+			\end{figure}
+		
+			Figure \ref{fig::ldpc_mimo} shows a system which using 9-ary LDPC coded modulation in a $2\times 2$ MIMO system. The LPDC encoder encodes a ternary bit stream as points in the 9-ary constellation. Each of the output constellation points are space-time coded (Alamouti code) and then transmitted through an OFDM transmitter. 
+			
+			In the receiver, each lane of data is demodulated with an OFDM receiver. Then, it is space time decoded to obtain a single stream of constellations. Next, constellation demapping is performed to determine the ternary output. Finally, the ternary output is processed with a LDPC decoder.
+			
 			\item Determine the symbol LLRs required for 3-ary LDPC decoding. Describe how to determine the extrinsic information at the output of 3-ary LDPC decoder for APP demapper. Describe how to determine the prior symbol LLRs for next APP-LDPC decoder iteration step.
 			
 			Symbol LLRs:
