@@ -51,7 +51,7 @@ title('Probability of Symbol Error in AWGN Channel')
 % Estimate probability of symbol error
 Q = @(x)normcdf(-x);
 p = 10.^(SNR_dB/10);
-pErrorEst = 0.5*exp(-p/4) + Q(2*sqrt(p)*sin(pi/8));
+pErrorEst = 4*Q(sqrt(p/2)) + Q(2*sqrt(p)*sin(pi/8));%0.5*exp(-p/4) + Q(2*sqrt(p)*sin(pi/8));
 
 % Plot estimate
 hold on;
