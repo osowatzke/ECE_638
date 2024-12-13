@@ -713,6 +713,18 @@
 			\item Describe the transmitter and receiver configuration for 9-ary LDPC-coded modulation for $2\times 2$ MIMO system.
 			
 			\item Determine the symbol LLRs required for 3-ary LDPC decoding. Describe how to determine the extrinsic information at the output of 3-ary LDPC decoder for APP demapper. Describe how to determine the prior symbol LLRs for next APP-LDPC decoder iteration step.
+			
+			Symbol LLRs:
+			
+			\begin{equation*}
+				L(s_i) = \text{log}\left[\frac{P(\mathbf{r_i}|\mathbf{s_i})}{P(\mathbf{r_i}|\mathbf{s_0})}\right] + L_a(s_i)
+			\end{equation*}
+			
+			where the prior symbol LLRs for the next interation are determined by:
+			
+			\begin{equation*}
+				L_a(\mathbf{s_i}) = \text{log}\left[\frac{P(\mathbf{s_i})}{P(\mathbf{s_0})}\right]
+			\end{equation*}
 		\end{enumerate}
 	\end{enumerate}
 	
