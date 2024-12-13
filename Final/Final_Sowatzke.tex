@@ -188,44 +188,42 @@
 			C = \left\langle W \text{log}_2\left[\text{det}\left(\mathbf{I}_{M_{rx}} + \frac{\bar{\rho}}{M_{Tx}}\mathbf{HH^{\dagger}}\right)\right]\right\rangle_{\mathbf{H}}
 		\end{equation*}
 		
-		After space time coding, the effective channel matrix is given by:
-		
-		\begin{equation*}
-			\mathbf{H} = \begin{bmatrix}
-				h_{xx} & h_{xy} \\
-				h_{yx} & h_{yy} \\
-				h_{xy}^* & -h_{xx}^* \\
-				h_{yy}^* & -h_{yx}^* 
-			\end{bmatrix}
-		\end{equation*}
-		
-		We further, find that 
-		
-		We can compute the capacity of the system by considering the increase in SNR due to the array gain.
-		
-		\begin{equation*}
-			C = \langle W \text{log}_2(1 + \rho) \rangle = \left\langle W \text{log}_2 \left(1 + \frac{\rho(|h_{xx}|^2 + \cdots + |h_{yy}|^2)}{2} \right) \right\rangle
-		\end{equation*}
-		
-		In an Almouti scheme, we only have CSIR. We also must consider the effects of fading, since there are multi-path effects. Therefore, we use ergodic channel capacity to evaluate the capacity:
-		
-		\begin{equation*}
-			C = \underset{\mathbf{R_x}:\ Tr(\mathbf{R_x}) = \rho}{\text{max}}\left\langle W \text{log}_2[\text{det}(\mathbf{I}_{M_{rx}} + \mathbf{HR_xH^{\dagger}})]\right\rangle_{\mathbf{H}}
-		\end{equation*}
-		
-		The optimum input covariance that maximizes ergodic channel capacity is the scaled identity matrix, so that ergodic channel capacity can be written as:
-		
-		\begin{equation*}
-			C = \left\langle W \text{log}_2\left[\text{det}\left(\mathbf{I}_{M_{rx}} + \frac{\bar{\rho}}{M_{Tx}}\mathbf{HH^{\dagger}}\right)\right]\right\rangle_{\mathbf{H}}
-		\end{equation*}
+%		After space time coding, the effective channel matrix is given by:
+%		
+%		\begin{equation*}
+%			\mathbf{H} = \begin{bmatrix}
+%				h_{xx} & h_{xy} \\
+%				h_{yx} & h_{yy} \\
+%				h_{xy}^* & -h_{xx}^* \\
+%				h_{yy}^* & -h_{yx}^* 
+%			\end{bmatrix}
+%		\end{equation*}
+%		
+%		We further, find that 
+%		
+%		We can compute the capacity of the system by considering the increase in SNR due to the array gain.
+%		
+%		\begin{equation*}
+%			C = \langle W \text{log}_2(1 + \rho) \rangle = \left\langle W \text{log}_2 \left(1 + \frac{\rho(|h_{xx}|^2 + \cdots + |h_{yy}|^2)}{2} \right) \right\rangle
+%		\end{equation*}
+%		
+%		In an Almouti scheme, we only have CSIR. We also must consider the effects of fading, since there are multi-path effects. Therefore, we use ergodic channel capacity to evaluate the capacity:
+%		
+%		\begin{equation*}
+%			C = \underset{\mathbf{R_x}:\ Tr(\mathbf{R_x}) = \rho}{\text{max}}\left\langle W \text{log}_2[\text{det}(\mathbf{I}_{M_{rx}} + \mathbf{HR_xH^{\dagger}})]\right\rangle_{\mathbf{H}}
+%		\end{equation*}
+%		
+%		The optimum input covariance that maximizes ergodic channel capacity is the scaled identity matrix, so that ergodic channel capacity can be written as:
+%		
+%		\begin{equation*}
+%			C = \left\langle W \text{log}_2\left[\text{det}\left(\mathbf{I}_{M_{rx}} + \frac{\bar{\rho}}{M_{Tx}}\mathbf{HH^{\dagger}}\right)\right]\right\rangle_{\mathbf{H}}
+%		\end{equation*}
 		
 %		\begin{equation*}
 %			
 %		\end{equation*}
 		
-		To deal with depolarization and multipath effects, we can treat the 2x2 MIMO system as a $4\times 4$ MIMO system by including the polarizations of each antenna. We can then use zero-forcing or an MMSE receiver to compensate for spatial interference. The zero-forcing receiver completely removes the spatial interference, but enhances the noise. While the MMSE receiver reduces the MSE of the spatial interference. Either of these receivers should deal with depolarization.
-		
-		To deal with the multipath effects, we can use OFDM modulation. The corresponding channel capacity is then given by:
+		To deal with depolarization and multipath effects, we can treat the 2x2 MIMO system as a $4\times 4$ MIMO system by including the polarizations of each antenna. First, to handle the multipath effects, we can use OFDM modulation. Next, to handle depolarization, we can use zero-forcing or an MMSE receiver to compensate for spatial interference. The zero-forcing receiver completely removes the spatial interference, but enhances the noise. While the MMSE receiver reduces the MSE of the spatial interference. Alternatively, we can use space-time coding to increase diversity gain. The resulting capacity is given by:
 		
 		\begin{equation*}
 			C = \left\langle \frac{1}{N_{sc}}\sum_{k=0}^{N_{sc}-1}{\text{log}_2\left[\text{det}\left(\mathbf{I_{M_Rx}}+\frac{P/\sigma^2}{M_{Rx}N_{sc}}\mathbf{H}(k)\mathbf{H}^{\dagger}(k)\right)\right]}\right\rangle_\mathbf{H}
@@ -647,7 +645,9 @@
 		\item This problem is related to \textbf{coded-modulation applied to 9-ary 2-D constellation} described in Problem 3, in the presence of Nakagami fading and AWGN.
 		
 		\begin{enumerate}
-			\item Describe the transmitter and receiver configuration for 9-ary LDPC-coded modulation for $2 \times 2$ MIMO system.
+			\item 
+			
+			
 			
 			\item Determine the symbol LLRs required for 3-ary LDPC decoding. Describe how to determine the extrinsic information at the output of 3-ary LDPC decoder for APP demapper. Describe how to determine the prior symbol LLRs for next APP-LDPC decoder iteration step.
 		\end{enumerate}
