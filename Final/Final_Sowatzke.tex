@@ -601,10 +601,17 @@
 			In the channel inversion technique, we maintain a fixed receive SNR and transmit a fixed-rate modulation that meets the target SNR. The spectral efficiency is given by:
 			
 			\begin{equation*}
-				\frac{R}{BW} = \text{log}_2\left[1 + K_c\frac{1}{\langle1/\rho\rangle}\right]
+				\frac{R}{BW} = \text{log}_2{M} = \text{log}_2\left[1 + K\rho\frac{P(\rho)}{\bar{P}}\right] = \text{log}_2\left[1 + K_c\frac{1}{\langle1/\rho\rangle}\right]
 			\end{equation*}
 			
-			where $K_c$ is the defined above.
+			where $K_c = G_cK$ with $K$ defined as follows:
+			
+			\begin{equation*}
+				K = \begin{cases}
+					\frac{1.5\rho}{-\text{log}(5P_b)}, & M \geq 4 \\
+					\frac{1.5}{-\text{log}(0.5P_b)}, & M < 4
+				\end{cases}
+			\end{equation*}
 			
 			\item Describe the truncated channel inversion technique for this signal constellation and determine the corresponding spectral efficiency, in the presence of fading and AWGN.
 			
@@ -614,7 +621,7 @@
 				\frac{R}{BW} = \underset{\rho_{tsh}}{\text{max}}\ \text{log}_2\left[1 + K_c\frac{1}{\langle1/\rho\rangle_{\rho_{tsh}}}\right]P(\rho > \rho_{tsh})
 			\end{equation*}
 			
-			where $K_c$ is the defined above.
+			where $K_c$ is defined above.
 			
 		\end{enumerate}
 		
