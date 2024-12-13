@@ -18,7 +18,7 @@ clf;
 semilogy(SNR_dB, pError)
 Q = @(x)normcdf(-x);
 p = 10.^(SNR_dB/10);
-pErrorEst = 8*Q(sqrt(p)) + Q(2*sqrt(p)*sin(pi/8));
+pErrorEst = 4*Q(sqrt(p)) + Q(2*sqrt(p)*sin(pi/8));
 hold on;
 semilogy(SNR_dB, pErrorEst);
 grid on;

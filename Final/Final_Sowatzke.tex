@@ -176,11 +176,36 @@
 
 		The Almouti scheme also prioritizes diversity over multiplexing gain. As such, the multiplexing gain for this system is \textbf{1}.
 		
-%		We can compute the capacity of the system by considering the increase in SNR due to the array gain.
-%		
-%		\begin{equation*}
-%			C = \langle W \text{log}_2(1 + \rho) \rangle = \left\langle W \text{log}_2 \left(1 + \frac{\rho(|h_{xx}|^2 + \cdots + |h_{yy}|^2)}{2} \right) \right\rangle
-%		\end{equation*}
+		In an Almouti scheme, we only have CSIR. We also must consider the effects of fading, since there are multi-path effects. Therefore, we perform an ergodic channel estimate:
+		
+		\begin{equation*}
+			C = \underset{\mathbf{R_x}:\ Tr(\mathbf{R_x}) = \rho}{\text{max}}\left\langle W \text{log}_2[\text{det}(\mathbf{I}_{M_{rx}} + \mathbf{HR_xH^{\dagger}})]\right\rangle_{\mathbf{H}}
+		\end{equation*}
+		
+		The optimum input covariance that maximizes ergodic channel capacity is the scaled identity matrix, so that ergodic channel capacity can be written as:
+		
+		\begin{equation*}
+			C = \left\langle W \text{log}_2\left[\text{det}\left(\mathbf{I}_{M_{rx}} + \frac{\bar{\rho}}{M_{Tx}}\mathbf{HH^{\dagger}}\right)\right]\right\rangle_{\mathbf{H}}
+		\end{equation*}
+		
+		After space time coding, the effective channel matrix is given by:
+		
+		\begin{equation*}
+			\mathbf{H} = \begin{bmatrix}
+				h_{xx} & h_{xy} \\
+				h_{yx} & h_{yy} \\
+				h_{xy}^* & -h_{xx}^* \\
+				h_{yy}^* & -h_{yx}^* 
+			\end{bmatrix}
+		\end{equation*}
+		
+		We further, find that 
+		
+		We can compute the capacity of the system by considering the increase in SNR due to the array gain.
+		
+		\begin{equation*}
+			C = \langle W \text{log}_2(1 + \rho) \rangle = \left\langle W \text{log}_2 \left(1 + \frac{\rho(|h_{xx}|^2 + \cdots + |h_{yy}|^2)}{2} \right) \right\rangle
+		\end{equation*}
 		
 		In an Almouti scheme, we only have CSIR. We also must consider the effects of fading, since there are multi-path effects. Therefore, we use ergodic channel capacity to evaluate the capacity:
 		
@@ -490,7 +515,7 @@
 			The coding gain when a \textbf{\underline{hard decision}} is applied in the coding process is given as follows:
 			
 			\begin{equation*}
-				G_h[\text{dB}] = 10\text{log}_{10}[r(t+1)] = 10\text{log}_10\left[\frac{11}{16}(1+1)\right] = 1.3830 \ \text{dB}
+				G_h[\text{dB}] = 10\text{log}_{10}[r(t+1)] = 10\text{log}_{10}\left[\frac{11}{16}(1+1)\right] = 1.3830 \ \text{dB}
 			\end{equation*}
 				
 			The coding gain when a \textbf{\underline{soft decision}} is applied in the coding process is given as follows:
