@@ -542,30 +542,54 @@
 			
 			\item Determine the optimum power adaptation strategy as well as the corresponding the spectral efficiency of this scheme, in the presence of fading and AWGN.
 			
+			We can approximate the bit error probability for M-ary QAM systems with:
+			
+			\begin{equation*}
+				P_b \leq 0.2\text{exp}\left[\frac{-1.5}{M-1}G_c\rho\frac{P(\rho)}{\bar{P}}\right]
+			\end{equation*}
+			
+			The coding gain $G_c$, mentioned above, will depend on the implementation. It will be either $G_h$ or $G_s$ depending on whether hard or soft decisions are used.
+			
+			We adjust the number of constellation points $M(p)$ and signal power to maintain a desired BER:
+			
+			\begin{equation*}
+				M(\rho) = 1 + \underbrace{\frac{1.5}{-\text{log}(5P_b)}}_{K}G_c\rho\frac{P(\rho)}{\bar{P}} = 1 + K\rho G_c\frac{P(p)}{\bar{P}}
+			\end{equation*}
+			
+			The number of uncoded bits required to select a coset point is now given by
+			
+			\begin{equation*}
+				n(p) - 2k/N = \text{log}_2{M(\rho)} - 2(k+r)/N
+			\end{equation*}
+			
+			The bit rate per transmission is $\text{log}_2M(\rho)$, and the data rate is $\text{log}_2M(p)-2r/N$.
+			
+			We maximize the data rate by maximizing $E[\text{log}_2{M}]$ relative to the average power constraint.
+			
 			For adaptive modulation with coding, the optimum power adaptation policy is water-filling and is given by
 			
 			\begin{equation*}
 				\frac{P(\rho)}{\bar{P}} = \begin{cases}
-					1/\rho_{tsh} - 1/\rho K_c, & \rho \geq p_{tsh}/K_c\\
-					0, & \rho < \rho_{tsh}/K_c
+					1/\rho_{tsh} - 1/\rho K_c, & \rho \geq \rho_{K_c}\\
+					0, & \rho < \rho_{K_c}
 				\end{cases}
 			\end{equation*}
 			
-			where $K_c = KG_c$ and $K$ is a correction factor used to account for the non-optimum signal constellation.
+			where $\rho_{K_c} = \rho_{tsh}/K_c$ with $K_c = KG_c$
+			
+			The adaptive data rate is $\text{log}_2M(p)-2r/N$ with 
 			
 			\begin{equation*}
-				K = -\frac{1.5\rho}{\text{log}(5P_b)}
-			\end{equation*}
-			
-			In our case, $G_c$ will depend on the implementation. It will be either $G_h$ or $G_s$ depending on whether hard or soft decisions are used.
+				M(\rho) = \frac{\rho}{\rho_{K_c}}
+			\end{equation*}			
 			 
-			The spectral efficiency of the scheme is then given by:
+			$\therefore$ the spectral efficiency is given by:
 			
 			\begin{equation*}
-				\frac{R}{BW} = \int_{\rho_K}^{\infty}{\text{log}_2\left[\frac{\rho}{\rho_K}\right]f(p)d\rho}
+				\frac{R}{BW} = \int_{\rho_{K_c}}^{\infty}{\text{log}_2\left[\frac{\rho}{\rho_{K_c}}\right]f(p)d\rho}
 			\end{equation*}
 			
-			where $\rho_K = \rho_{tsh}/K_c$ and $f(p)$ is the Nakagami distribution given by
+			where $f(p)$ is the Nakagami distribution given by
 			
 			\begin{equation*}
 				f(p) = \left(\frac{m}{\bar{\rho}}\right)^m\frac{\rho^{m-1}}{\Gamma(m)}\text{exp}\left(-\frac{m\rho}{\bar{\rho}}\right)
