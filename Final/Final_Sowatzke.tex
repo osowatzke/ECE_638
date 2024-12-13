@@ -506,6 +506,14 @@
 				= 4Q(\sqrt{\rho}) + Q(2\sqrt{\rho}\text{sin}(\pi/8))
 			\end{equation*}
 			
+			Figure \ref{fig::ber} shows the estimated BER against a nearest neighbor selection. Code used for comparison is included in Appendix \ref{source_code}.
+			  
+			\begin{figure}[H]
+				\centerline{\fbox{\includegraphics[width=0.8\textwidth]{ber.png}}}
+				\caption{AWGN BER}
+				\label{fig::ber}
+			\end{figure}
+		
 			We can integrate the probability of symbol error over the fading distribution to get the average symbol error probability.
 			
 			\begin{equation*}
@@ -678,4 +686,12 @@
 			\item Determine the symbol LLRs required for 3-ary LDPC decoding. Describe how to determine the extrinsic information at the output of 3-ary LDPC decoder for APP demapper. Describe how to determine the prior symbol LLRs for next APP-LDPC decoder iteration step.
 		\end{enumerate}
 	\end{enumerate}
+	
+	\pagebreak
+	\appendix
+	\section{Source Code}
+	\label{source_code}
+	\lstset{style=Matlab-editor,basicstyle=\ttfamily\footnotesize}
+	\lstinputlisting{getSymbolErrorProbability.m}
+	\raggedbottom
 \end{document}
