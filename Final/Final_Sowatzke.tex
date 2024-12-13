@@ -3,9 +3,13 @@
 \usepackage{amsmath, nccmath, bm}
 \usepackage{amssymb}
 \usepackage{enumitem}
+\usepackage{etoolbox}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{caption}
+\usepackage{changepage}
+\usepackage{environ,capt-of}
+\usepackage{matlab-prettifier}
 
 \newcommand{\zerodisplayskip}{
 	\setlength{\abovedisplayskip}{0pt}%
@@ -19,6 +23,20 @@
 \makeatletter
 	\newenvironment{equationCenter}{\@fleqnfalse\begin{equation*}}{\end{equation*}}
 \makeatother
+
+\let\oldfigure\figure% Store original figure float environment
+\let\endoldfigure\endfigure
+\RenewEnviron{figure}[1][H]{% Update figure environment
+  %\par\vspace{\intextsep}% Assume in-text placement, so insert appropriate vertical spacing
+  \noindent
+  % \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}
+  \patchcmd{\BODY}{\caption}{\captionof{figure}}{}{}% Replace \caption with \captionof{figure} inside \BODY
+  % Set "figure"
+  \begin{minipage}{\linewidth}
+    \BODY
+  \end{minipage}
+  %\par\vspace{\intextsep}% Assume in-text placement, so insert appropriate vertical spacing
+}
 
 \title{Final Exam}
 \author{Owen Sowatzke}
@@ -332,7 +350,7 @@
 				\end{bmatrix}
 			\end{equation*}
 			
-			The codeword is given as follows:
+			The codeword can be written as follows:
 			
 			\begin{equation*}
 				\mathbf{x} = \begin{bmatrix}{\begin{array}{c|c}
@@ -341,27 +359,22 @@
 					\begin{array}{c|c}
 						\mathbf{I} & \mathbf{P}
 					\end{array}
-				\end{bmatrix} = \mathbf{mG} 
-				\Rightarrow \mathbf{b} = \mathbf{mP}
+				\end{bmatrix} = \mathbf{mG}
 			\end{equation*}
 			
-			The parity bits are given as follows:
-			
-			\begin{equation*}
-				b_0 = p_{4,0}m_{4} + p_{5,0}m_{5} + p_{6,0}m_{6} + p_{7,0}m_{7} + p_{8,0}m_{8} + p_{9,0}m_{9} + p_{10,0}m_{10}
-			\end{equation*}
+			$\therefore$ the parity bits are given as follows:
 			
 			\begin{equation*}
-				b_1 = p_{1,1}m_{1} + p_{2,1}m_{2} + p_{3,1}m_{3} + p_{7,0}m_{7} + p_{8,1}m_{8} + p_{9,1}m_{9} + p_{10,1}m_{10}
+				\mathbf{b} = \mathbf{mP}
 			\end{equation*}
 			
-			\begin{equation*}
-				b_2 = p_{0,2}m_{0} + p_{2,2}m_{2} + p_{3,2}m_{3} + p_{5,3}m_{5} + p_{6,3}m_{6} + p_{9,3}m_{9} + p_{10,3}m_{10}
-			\end{equation*}
+			Figure \ref{fig::shift_register_encoder} shows the corresponding shift-register based encoder. The message bits are fed into the bottom shift register. Once the last shift register ($m_0$) is written, the parity bits are computed. Then, each of the message bits are written out followed by the parity bits.
 			
-			\begin{equation*}
-				b_3 = p_{0,3}m_{0} + p_{1,3}m_{1} + p_{3,3}m_{3} + p_{4,3}m_{4} + p_{6,3}m_{6} + p_{8,3}m_{8} + p_{10,3}m_{10}
-			\end{equation*}
+			\begin{figure}[H]
+				\centerline{\fbox{\includegraphics[width=0.8\textwidth]{shift_register_encoder.png}}}
+				\caption{Shift Register Based Encoder}
+				\label{fig::shift_register_encoder}
+			\end{figure}
 			
 			\item The extended code is created by inserting the additional parity-check bits. The most common way of extending the code is by adding an overall parity-check bit. The extended code is then an $(n+1,k)$ code. Determine the bipartite (Tanner) graph of $\mathbf{H}$-matrix of extended code obtained from the original $\mathbf{H}$-matrix above.
 			
