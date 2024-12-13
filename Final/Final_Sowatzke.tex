@@ -652,6 +652,24 @@
 			32/20\ \text{MHz} = \mathbf{1.6 {\mu}s}
 		\end{equation*}		
 		
+		The OFDM transceiver is shown in Figures \ref{fig::ofdm_tx_config} and \ref{fig::ofdm_rx_config}.
+		
+		\begin{figure}[H]
+			\centerline{\fbox{\includegraphics[width=0.8\textwidth]{ofdm_tx_config.png}}}
+			\caption{OFDM Transmitter}
+			\label{fig::ofdm_tx_config}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centerline{\fbox{\includegraphics[width=0.8\textwidth]{ofdm_rx_config.png}}}
+			\caption{OFDM Receiver}
+			\label{fig::ofdm_rx_config}
+		\end{figure}
+		
+		In the transmitter, the data carriers are populated with data coded with a 5/6 rate encoding. Interleaving is performed to mitigate the effects of slow fading. These symbols are then mapped to QAM 64 symbols and placed in the 20 active data carriers. An IFFT of 32 is performed to modulate the data carriers. Then, a cyclic prefix of length 8 is added to the start of the transmission by appending the last 8 samples of the IFFT output to start the of the symbol. (Appending a cylic prefix helps to mitigate the effects of multipath fading). The transmitter outputs samples at a rate of 20 MHz. 12.5 MHz of the output bandwidth is occupied by the data carriers.
+		
+		In the receiver, an OFDM preamble can be used to synchronize the timing and frequency offsets. For each symbol, the 8 padded samples are removed and 32 samples are input to the FFT. The FFT output can be equalized using the response of the pilots. Symbol detection is then performed on the FFT output. Each of the symbols are finally demapped, deinterleaved, and decoded to form the resulting bit stream.
+		
 		\item This problem is related to \textbf{coded-modulation applied to 9-ary 2-D constellation} described in Problem 3, in the presence of Nakagami fading and AWGN.
 		
 		\begin{enumerate}
