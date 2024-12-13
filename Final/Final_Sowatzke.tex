@@ -33,7 +33,7 @@
 	\maketitle
 	
 	\begin{enumerate}
-		\item In Figure 1 is shown a $2 \times 2$ polarization-time coding MIMO scheme, which employs dual-polarization transmit and receive antennas. Due to multipath effect, the initial orthogonality of polarization states is no longer preserved on a receiver side and we can use the channel coefficients as shown in Fig. 1 to describe this depolarization effect. Show that Alamouti $2 \times 2$ scheme can be used to deal with depolarization effect. Determine the array, diversity and multiplexing gains of this scheme. How would you determine the channel capacity of this scheme? Consider now a MIMO scheme employing two dual-polarization Tx antennas and two dual-polarization Rx antennas. How would approach this system to deal simultaneously with depolarization and multipath effects? How would you determine the channel capacity of this scheme?
+		\item In Figure 1 is shown a $2 \times 2$ polarization-time coding MIMO scheme, which employs dual-polarization transmit and receive antennas. Due to multipath effect, the initial orthogonality of polarization states is no longer preserved on a receiver side and we can use the channel coefficients as shown in Fig. 1 to describe this depolarization effect. Show that Alamouti $2 \times 2$ scheme can be used to deal with depolarization effect. Determine the array, diversity and multiplexing gains of this scheme. How would you determine the channel capacity of this scheme? Consider now a MIMO scheme employing two dual-polarization Tx antennas and two dual-polarization Rx antennas. How would you approach this system to deal simultaneously with depolarization and multipath effects? How would you determine the channel capacity of this scheme?
 
 		\begin{figure}[H]
 			\centerline{\fbox{\includegraphics[width=0.8\textwidth]{2x2_polarization_time_coding_mimo.png}}}
@@ -198,15 +198,13 @@
 %			
 %		\end{equation*}
 		
-		To handle simultaneously deal with depolarization and multipath effects, we can employ $4 \times 4$ MIMO techniques. Specifically, we could use a linear MMSE receiver to solve for $\mathbf{X}$, which will simultaneously deal with depolarization and multipath effects.
+		To deal with depolarization and multipath effects, we can treat the 2x2 MIMO system as a $4\times 4$ MIMO system by including the polarizations of each antenna. We can then use zero-forcing or an MMSE receiver to compensate for spatial interference. The zero-forcing receiver completely removes the spatial interference, but enhances the noise. While the MMSE receiver reduces the MSE of the spatial interference. Either of these receivers should deal with depolarization.
 		
-		For space-time block coding, we have
+		To deal with the multipath effects, we can use OFDM modulation. The corresponding channel capacity is then given by:
 		
 		\begin{equation*}
-			\mathbf{Y} = \mathbf{HX}
+			C = \left\langle \frac{1}{N_{sc}}\sum_{k=0}^{N_{sc}-1}{\text{log}_2\left[\text{det}\left(\mathbf{I_{M_Rx}}+\frac{P/\sigma^2}{M_{Rx}N_{sc}}\mathbf{H}(k)\mathbf{H}^{\dagger}(k)\right)\right]}\right\rangle_\mathbf{H}
 		\end{equation*}
-			
-		where $Y$ is the received vector and $\mathbf{X}$ is the transmit 
 		
 		\item An $(n,k)$ linear block code is described by the following parity-check matrix:
 		
